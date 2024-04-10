@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+#
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5EDD9637-9787-4A74-8BC1-C13C7B5B8463}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WriteWave.Domain", "src\WriteWave.Domain\WriteWave.Domain.csproj", "{176D6079-FEC0-4A98-9E08-CFEF7FDA5E82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WriteWave.Api", "src\WriteWave.Api\WriteWave.Api.csproj", "{358A1120-285E-44B6-BC20-A24D993C53D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WriteWave.Persistence", "src\WriteWave.Persistence\WriteWave.Persistence.csproj", "{E08BD1B3-9640-4EA0-A49F-245A3D0F2011}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WriteWave.Application", "src\WriteWave.Application\WriteWave.Application.csproj", "{C81F3D29-5574-48FD-8BA7-FD6BD8FA04FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WriteWave.Infrastructure", "src\WriteWave.Infrastructure\WriteWave.Infrastructure.csproj", "{348F40A7-A9A7-4119-A537-2C6E2539A40B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{176D6079-FEC0-4A98-9E08-CFEF7FDA5E82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{176D6079-FEC0-4A98-9E08-CFEF7FDA5E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{176D6079-FEC0-4A98-9E08-CFEF7FDA5E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{176D6079-FEC0-4A98-9E08-CFEF7FDA5E82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{358A1120-285E-44B6-BC20-A24D993C53D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{358A1120-285E-44B6-BC20-A24D993C53D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{358A1120-285E-44B6-BC20-A24D993C53D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{358A1120-285E-44B6-BC20-A24D993C53D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E08BD1B3-9640-4EA0-A49F-245A3D0F2011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E08BD1B3-9640-4EA0-A49F-245A3D0F2011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E08BD1B3-9640-4EA0-A49F-245A3D0F2011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E08BD1B3-9640-4EA0-A49F-245A3D0F2011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C81F3D29-5574-48FD-8BA7-FD6BD8FA04FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C81F3D29-5574-48FD-8BA7-FD6BD8FA04FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C81F3D29-5574-48FD-8BA7-FD6BD8FA04FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C81F3D29-5574-48FD-8BA7-FD6BD8FA04FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{348F40A7-A9A7-4119-A537-2C6E2539A40B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{348F40A7-A9A7-4119-A537-2C6E2539A40B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{348F40A7-A9A7-4119-A537-2C6E2539A40B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{348F40A7-A9A7-4119-A537-2C6E2539A40B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{176D6079-FEC0-4A98-9E08-CFEF7FDA5E82} = {5EDD9637-9787-4A74-8BC1-C13C7B5B8463}
+		{358A1120-285E-44B6-BC20-A24D993C53D3} = {5EDD9637-9787-4A74-8BC1-C13C7B5B8463}
+		{E08BD1B3-9640-4EA0-A49F-245A3D0F2011} = {5EDD9637-9787-4A74-8BC1-C13C7B5B8463}
+		{C81F3D29-5574-48FD-8BA7-FD6BD8FA04FE} = {5EDD9637-9787-4A74-8BC1-C13C7B5B8463}
+		{348F40A7-A9A7-4119-A537-2C6E2539A40B} = {5EDD9637-9787-4A74-8BC1-C13C7B5B8463}
+	EndGlobalSection
+EndGlobal

@@ -22,7 +22,8 @@ namespace WriteWave.Persistence.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Username = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
-                    Password = table.Column<string>(type: "text", nullable: false)
+                    Password = table.Column<string>(type: "text", nullable: false),
+                    Role = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -132,11 +133,11 @@ namespace WriteWave.Persistence.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "UserId", "Email", "Password", "Username" },
+                columns: new[] { "UserId", "Email", "Password", "Role", "Username" },
                 values: new object[,]
                 {
-                    { 1, "user1@example.com", "password1", "user1" },
-                    { 2, "user2@example.com", "password2", "user2" }
+                    { 1, "user1@example.com", "password1", 0, "user1" },
+                    { 2, "user2@example.com", "password2", 0, "user2" }
                 });
 
             migrationBuilder.InsertData(
@@ -144,8 +145,8 @@ namespace WriteWave.Persistence.Migrations
                 columns: new[] { "ArticleId", "Content", "PublicationDate", "Title", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "Content of article 1", new DateTime(2024, 4, 8, 10, 42, 29, 654, DateTimeKind.Utc).AddTicks(8952), "Article 1", 1 },
-                    { 2, "Content of article 2", new DateTime(2024, 4, 8, 10, 42, 29, 654, DateTimeKind.Utc).AddTicks(8955), "Article 2", 2 }
+                    { 1, "Content of article 1", new DateTime(2024, 4, 10, 18, 22, 54, 85, DateTimeKind.Utc).AddTicks(6121), "Article 1", 1 },
+                    { 2, "Content of article 2", new DateTime(2024, 4, 10, 18, 22, 54, 85, DateTimeKind.Utc).AddTicks(6123), "Article 2", 2 }
                 });
 
             migrationBuilder.CreateIndex(

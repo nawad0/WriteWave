@@ -22,7 +22,7 @@ namespace WriteWave.Api.Controllers
 
         // GET: api/article
         [HttpGet]
-       
+        [Authorize]
         public async Task<IActionResult> GetArticles(int pageSize = 0, int pageNumber = 0)
         {
             var articles = await _articleRepository.GetAllAsync(
@@ -58,6 +58,7 @@ namespace WriteWave.Api.Controllers
 
 
         // GET: api/article/{id}
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetArticle(int id)
         {

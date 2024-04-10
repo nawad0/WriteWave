@@ -1,6 +1,6 @@
 ﻿namespace WriteWave.Domain.Models;
 
-public enum Role
+public enum Roles
 {
     Admin,
     User

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
       <PrivateAssets>all</PrivateAssets>
@@ -18,6 +19,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WriteWave.Application\WriteWave.Application.csproj" />
+    <ProjectReference Include="..\WriteWave.Domain\WriteWave.Domain.csproj" />
+    <ProjectReference Include="..\WriteWave.Infrastructure\WriteWave.Infrastructure.csproj" />
     <ProjectReference Include="..\WriteWave.Persistence\WriteWave.Persistence.csproj" />
   </ItemGroup>
 

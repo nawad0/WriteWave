@@ -17,8 +17,6 @@ public class User
     [Required]
     public string Password { get; set; }
     
-    public Role Role { get; set; }
-    
     // Список статей, которые написал пользователь
     public List<Article> Articles { get; set; }
     
@@ -30,6 +28,8 @@ public class User
     
     // Список подписок на других пользователей
     public List<Subscription> Subscriptions { get; set; }
+    
+    public Roles Role { get; set; }
 }
 
 

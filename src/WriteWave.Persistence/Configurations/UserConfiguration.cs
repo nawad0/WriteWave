@@ -12,11 +12,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         // Конфигурация ключа
         builder.HasKey(u => u.UserId);
         
-        // Конфигурация свойств
-        builder.Property(u => u.Username).IsRequired();
-        builder.Property(u => u.Email).IsRequired();
-        builder.Property(u => u.Password).IsRequired();
-        
         // Конфигурация отношений
         builder.HasMany(u => u.Articles)
             .WithOne(a => a.User)

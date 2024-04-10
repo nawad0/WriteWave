@@ -55,7 +55,7 @@ namespace WriteWave.Persistence.Migrations
                         {
                             ArticleId = 1,
                             Content = "Content of article 1",
-                            PublicationDate = new DateTime(2024, 4, 10, 7, 0, 33, 637, DateTimeKind.Utc).AddTicks(8989),
+                            PublicationDate = new DateTime(2024, 4, 10, 18, 22, 54, 85, DateTimeKind.Utc).AddTicks(6121),
                             Title = "Article 1",
                             UserId = 1
                         },
@@ -63,7 +63,7 @@ namespace WriteWave.Persistence.Migrations
                         {
                             ArticleId = 2,
                             Content = "Content of article 2",
-                            PublicationDate = new DateTime(2024, 4, 10, 7, 0, 33, 637, DateTimeKind.Utc).AddTicks(8992),
+                            PublicationDate = new DateTime(2024, 4, 10, 18, 22, 54, 85, DateTimeKind.Utc).AddTicks(6123),
                             Title = "Article 2",
                             UserId = 2
                         });

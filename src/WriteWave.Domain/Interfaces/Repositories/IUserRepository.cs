@@ -4,5 +4,7 @@ namespace WriteWave.Domain.Interfaces.Repositories;
 
 public interface IUserRepository : IRepository<User>
 {
-    // Дополнительные методы, специфичные для работы с пользователями, могут быть добавлены здесь
+    public  Task<User> GetByEmail(string email);
+    public  Task<User> GetUserAsync(int id);
+    public Task<User> GetByUserName(string username);
 }

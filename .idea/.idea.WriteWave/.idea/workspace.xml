@@ -9,12 +9,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cb0fc91-c29c-442b-ad5c-d72df9f18d5b" name="Changes" comment="" />
+    <list default="true" id="1cb0fc91-c29c-442b-ad5c-d72df9f18d5b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/dataSources/39753262-916b-427c-b68a-964bde8b9deb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/dataSources/39753262-916b-427c-b68a-964bde8b9deb.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Contracts/Users/AuthenticateRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Contracts/Users/LoginRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/ArticleController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/ArticleController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/WriteWave.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/WriteWave.Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Application/WriteWave.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Application/WriteWave.Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Domain/Interfaces/Repositories/IRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Domain/Interfaces/Repositories/IRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Domain/Interfaces/Repositories/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Domain/Interfaces/Repositories/IUserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Domain/Models/Role.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Domain/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Domain/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Infrastructure/Auth/IJwtUtils.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Infrastructure/Auth/IPasswordHasher.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Infrastructure/WriteWave.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Infrastructure/WriteWave.Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Configurations/UserConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Configurations/UserConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Data/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/20240408104230_Init.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/20240408104230_Init.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/20240410070034_Roles.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/20240410070034_Roles.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Repositories/Repository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Repositories/Repository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Repositories/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Repositories/UserRepository.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3684e888fd93508450e2f4b0d7d38bee648cba98882592491596fc79375185f/SwaggerMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -22,6 +55,7 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2eoDNEjvc17eFrRcgxZHTyjXjOZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -31,6 +65,7 @@
     &quot;.NET Launch Settings Profile.WriteWaveApi: http.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -109,14 +144,38 @@
       <option name="presentableId" value="Default" />
       <updated>1712561997874</updated>
       <workItem from="1712561999354" duration="12819000" />
-      <workItem from="1712728426287" duration="6754000" />
+      <workItem from="1712728426287" duration="16829000" />
+      <workItem from="1712769912635" duration="3245000" />
     </task>
+    <task id="LOCAL-00001" summary="Init">
+      <option name="closed" value="true" />
+      <created>1712735363743</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712735363743</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Init" />
+    <option name="LAST_COMMIT_MESSAGE" value="Init" />
   </component>
 </project>

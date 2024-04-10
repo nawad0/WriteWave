@@ -18,23 +18,13 @@ public class ApplicationDbContext : DbContext
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
     {
-        Database.EnsureCreated();
+        // Database.EnsureCreated();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new UserConfiguration());
-        
-        modelBuilder.ApplyConfiguration(new ArticleConfiguration());
-        
-        modelBuilder.ApplyConfiguration(new CommentConfiguration());
-        
-        modelBuilder.ApplyConfiguration(new LikeConfiguration());
-        
-        modelBuilder.ApplyConfiguration(new SubscriptionConfiguration());
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         SeedData(modelBuilder);
-
-        base.OnModelCreating(modelBuilder);
     }
     private void SeedData(ModelBuilder modelBuilder)
     {

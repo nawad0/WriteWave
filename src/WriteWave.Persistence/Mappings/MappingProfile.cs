@@ -12,13 +12,31 @@ public class MappingProfile : Profile
         CreateMap<User, UserDTO>();
 
         // Маппинг Article на ArticleDTO
-        CreateMap<Article, ArticleDTO>()
-            // .ForMember(dest => dest.LikeCount, opt => opt.MapFrom(src => src.Likes.Count))
-            // .ForMember(dest => dest.CommentCount, opt => opt.MapFrom(src => src.Comments.Count))
-            .ReverseMap(); // Здесь требуется дополнительная логика для определения, поставил ли пользователь лайк
+        // Здесь требуется дополнительная логика для определения, поставил ли пользователь лайк
+        CreateMap<Article, ArticlesDTO>()
+            .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.User.Username))
+            .ForMember(dest => dest.UserImage, opt => opt.MapFrom(src => src.User.Image))
+            .ForMember(dest => dest.LikeCount, opt => opt.MapFrom(src => src.Likes.Count))
+            .ForMember(dest => dest.CommentCount, opt => opt.MapFrom(src => src.Comments.Count));
 
-        // Маппинг Comment на CommentDTO
-        CreateMap<Comment, CommentDTO>();
+        // CreateMap<Article, ArticleDTO>()
+        //     // .ForMember(dest => dest.LikeCount, opt => opt.MapFrom(src => src.Likes.Count))
+        //     // .ForMember(dest => dest.CommentCount, opt => opt.MapFrom(src => src.Comments.Count))
+        //     .ReverseMap();
+        // // Маппинг Comment на CommentDTO
+        // CreateMap<Comment, CommentDTO>()
+        //     .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.User.Username))
+        //     .ForMember(dest => dest.UserImage, opt => opt.MapFrom(src => src.User.Image)).ReverseMap();
+        CreateMap<Comment, CommentDTO>()
+            .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.User.Username))
+            .ForMember(dest => dest.UserImage, opt => opt.MapFrom(src => src.User.Image));
+
+        CreateMap<Article, ArticleDTO>()
+            .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => src.Comments))
+            .ForMember(dest => dest.LikeCount, opt => opt.MapFrom(src => src.Likes.Count))
+            .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.User.Username))
+            .ForMember(dest => dest.UserImage, opt => opt.MapFrom(src => src.User.Image)).ReverseMap();
+    
 
         // Маппинг Subscription на SubscriptionDTO
         CreateMap<Subscription, SubscriptionDTO>();

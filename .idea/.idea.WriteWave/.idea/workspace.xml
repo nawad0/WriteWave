@@ -10,31 +10,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cb0fc91-c29c-442b-ad5c-d72df9f18d5b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/dataSources/39753262-916b-427c-b68a-964bde8b9deb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/dataSources/39753262-916b-427c-b68a-964bde8b9deb.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/dataSources/39753262-916b-427c-b68a-964bde8b9deb/storage_v2/_src_/database/writeDb.veSLXw/schema/information_schema.FNRwLQ.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/dataSources/39753262-916b-427c-b68a-964bde8b9deb/storage_v2/_src_/database/writeDb.veSLXw/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Contracts/Users/AuthenticateRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Contracts/Users/LoginRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/ArticleController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/ArticleController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/WriteWave.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/WriteWave.Api.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WriteWave.Application/WriteWave.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Application/WriteWave.Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Domain/Interfaces/Repositories/IRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Domain/Interfaces/Repositories/IRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Domain/Interfaces/Repositories/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Domain/Interfaces/Repositories/IUserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Domain/Models/Role.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Domain/Models/Article.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Domain/Models/Article.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WriteWave.Domain/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Domain/Models/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Infrastructure/Auth/IJwtUtils.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Infrastructure/Auth/IPasswordHasher.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Infrastructure/WriteWave.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Infrastructure/WriteWave.Infrastructure.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Configurations/UserConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Configurations/UserConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticleCreateEditDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticleCreateEditDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticleDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticleDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/CommentDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/CommentDTO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Data/ApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/20240408104230_Init.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/20240408104230_Init.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/20240410070034_Roles.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/20240410070034_Roles.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Repositories/Repository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Repositories/Repository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Repositories/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Repositories/UserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Mappings/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Mappings/MappingProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +37,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/coreclr/System.Private.CoreLib/src/System/Type.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3684e888fd93508450e2f4b0d7d38bee648cba98882592491596fc79375185f/SwaggerMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -62,7 +55,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.WriteWaveApi: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.WriteWaveApi: http.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
@@ -146,6 +139,11 @@
       <workItem from="1712561999354" duration="12819000" />
       <workItem from="1712728426287" duration="16829000" />
       <workItem from="1712769912635" duration="3245000" />
+      <workItem from="1712820608410" duration="9681000" />
+      <workItem from="1712857009180" duration="228000" />
+      <workItem from="1712857255443" duration="7598000" />
+      <workItem from="1712901460814" duration="19000" />
+      <workItem from="1712910817168" duration="972000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -177,5 +175,9 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Init" />
     <option name="LAST_COMMIT_MESSAGE" value="Init" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

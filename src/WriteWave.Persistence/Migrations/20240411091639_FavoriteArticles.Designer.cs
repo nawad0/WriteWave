@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WriteWave.Persistence.Data;
@@ -11,9 +12,11 @@ using WriteWave.Persistence.Data;
 namespace WriteWave.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240411091639_FavoriteArticles")]
+    partial class FavoriteArticles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,7 +58,7 @@ namespace WriteWave.Persistence.Migrations
                         {
                             ArticleId = 1,
                             Content = "Content of article 1",
-                            PublicationDate = new DateTime(2024, 4, 11, 19, 55, 48, 73, DateTimeKind.Utc).AddTicks(6888),
+                            PublicationDate = new DateTime(2024, 4, 11, 9, 16, 38, 211, DateTimeKind.Utc).AddTicks(941),
                             Title = "Article 1",
                             UserId = 1
                         },
@@ -63,7 +66,7 @@ namespace WriteWave.Persistence.Migrations
                         {
                             ArticleId = 2,
                             Content = "Content of article 2",
-                            PublicationDate = new DateTime(2024, 4, 11, 19, 55, 48, 73, DateTimeKind.Utc).AddTicks(6890),
+                            PublicationDate = new DateTime(2024, 4, 11, 9, 16, 38, 211, DateTimeKind.Utc).AddTicks(944),
                             Title = "Article 2",
                             UserId = 2
                         });
@@ -152,9 +155,6 @@ namespace WriteWave.Persistence.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Image")
                         .HasColumnType("text");
 
                     b.Property<string>("Password")

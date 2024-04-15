@@ -24,4 +24,6 @@ public class Article
     
     // Список лайков для статьи
     public List<Like> Likes { get; set; }
+    
+    public List<UserArticle> FavoritedByUsers { get; set; }
 }

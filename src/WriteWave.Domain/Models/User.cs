@@ -30,6 +30,7 @@ public class User
     public List<Subscription> Subscriptions { get; set; }
     
     public Roles Role { get; set; }
+    public List<UserArticle> FavoritedArticles { get; set; }
+    
+    public string Image { get; set; }
 }
-
-

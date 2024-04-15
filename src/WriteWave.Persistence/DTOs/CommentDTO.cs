@@ -6,4 +6,5 @@ public class CommentDTO
     public string Content { get; set; }
     public int UserId { get; set; }
     public string Username { get; set; }
+    public string UserImage { get; set; }
 }

@@ -2,10 +2,13 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Minio;
 using WriteWave.Application.Auth;
+using WriteWave.Application.Minio;
 using WriteWave.Application.Services;
 using WriteWave.Domain.Interfaces.Repositories;
 using WriteWave.Infrastructure.Auth;
+using WriteWave.Infrastructure.Minio;
 using WriteWave.Persistence.Data;
 using WriteWave.Persistence.Mappings;
 using WriteWave.Persistence.Repositories;
@@ -77,7 +80,13 @@ builder.Services.AddAuthorization(options =>
         policy.RequireClaim("User", "true");
     });
 } );
+builder.Services.AddScoped<IMinioService, MinioService>();
 
+builder.Services.AddMinio(configureClient => configureClient
+    .WithEndpoint(builder.Configuration["Minio:Client"])
+    .WithCredentials(builder.Configuration["Minio:AccessKey"],
+        builder.Configuration["Minio:SecretKey"])
+    .WithSSL(false));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

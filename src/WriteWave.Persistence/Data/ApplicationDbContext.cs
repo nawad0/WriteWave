@@ -1,8 +1,5 @@
 ﻿using WriteWave.Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
-using WriteWave.Persistence.Configurations;
 
 
 namespace WriteWave.Persistence.Data;

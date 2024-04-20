@@ -9,7 +9,7 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         // Маппинг User на UserDTO
-        CreateMap<User, UserDTO>();
+        CreateMap<User, UserDTO>().ReverseMap();
 
         // Маппинг Article на ArticleDTO
         // Здесь требуется дополнительная логика для определения, поставил ли пользователь лайк

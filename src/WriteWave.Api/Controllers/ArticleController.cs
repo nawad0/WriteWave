@@ -19,8 +19,12 @@ namespace WriteWave.Api.Controllers
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
         private readonly IMinioService _minioService;
-        
-        public ArticleController(IArticleRepository articleRepository, IMapper mapper, IUserRepository userRepository, IRepository<Like> likeRepository, IRepository<Comment> commentRepository, IRepository<UserArticle> userArticleRepository, IMinioService minioService)
+        private readonly ISubscriptionRepository _subscriptionRepository;
+
+        public ArticleController(IArticleRepository articleRepository, IMapper mapper, IUserRepository userRepository,
+            IRepository<Like> likeRepository, IRepository<Comment> commentRepository,
+            IRepository<UserArticle> userArticleRepository, IMinioService minioService,
+            ISubscriptionRepository subscriptionRepository)
         {
             _articleRepository = articleRepository;
             _mapper = mapper;
@@ -29,6 +33,7 @@ namespace WriteWave.Api.Controllers
             _commentRepository = commentRepository;
             _userArticleRepository = userArticleRepository;
             _minioService = minioService;
+            _subscriptionRepository = subscriptionRepository;
         }
 
         // GET: api/article
@@ -42,9 +47,9 @@ namespace WriteWave.Api.Controllers
                 pageNumber: pageNumber
             );
             var articleDTOs = new List<ArticlesDTO>();
-            
 
-            foreach(var article in articles)
+
+            foreach (var article in articles)
             {
                 var articleDTO = _mapper.Map<ArticlesDTO>(article);
                 articleDTOs.Add(articleDTO);
@@ -62,6 +67,7 @@ namespace WriteWave.Api.Controllers
                     article.UserLiked = true;
                 }
             }
+
             var response = new
             {
                 TotalCount = totalCount,
@@ -71,38 +77,116 @@ namespace WriteWave.Api.Controllers
 
             return Ok(response);
         }
+
+        [HttpPost("subscribe/{targetUserId}")]
+        [Authorize] // Add authorization as needed
+        public async Task<IActionResult> SubscribeToUser(int targetUserId)
+        {
+            // Get the current user's id
+            var userId = int.Parse(User.FindFirst("userId").Value);
+
+            // Check if the target user exists
+            var targetUser = await _userRepository.GetUserAsync(targetUserId);
+            if (targetUser == null)
+            {
+                return NotFound("Пользователь не найден");
+            }
+
+            var existingSubscription = await _subscriptionRepository.GetSubscriptionAsync(userId, targetUserId);
+            if (existingSubscription != null)
+            {
+                await _subscriptionRepository.RemoveAsync(existingSubscription);
+                return Conflict("Вы отписались от этого пользователя");
+            }
+
+            // Create a new subscription
+            var subscription = new Subscription
+            {
+                SubscriberUserId = userId,
+                TargetUserId = targetUserId
+            };
+
+            // Add the subscription to the repository
+            await _subscriptionRepository.CreateAsync(subscription);
+
+            return Ok("Вы подписались на этого пользователя");
+        }
+        
+        [HttpGet("subscriptions")]
+        [Authorize] 
+        public async Task<IActionResult> GetUserSubscriptions()
+        {
+            var userId = int.Parse(User.FindFirst("userId").Value);
+            
+            var subscriptions = await _subscriptionRepository.GetAllAsync(filter: u => u.SubscriberUserId == userId);
+            var users = await _userRepository.GetAllAsync(filter: u => subscriptions.Select(s => s.TargetUserId).Contains(u.UserId));
+            
+            return Ok(new {Subscriptions = _mapper.Map<List<UserDTO>>(users)});
+        }
+        [HttpGet("subscribed-articles")]
+        [Authorize] 
+        public async Task<IActionResult> GetSubscribedArticles(int pageSize = 0, int pageNumber = 0)
+        {
+            var userId = int.Parse(User.FindFirst("userId").Value);
+
+            var subscriptions = await _subscriptionRepository.GetAllAsync(filter: u => u.SubscriberUserId == userId);
+            
+            var targetUserIds = subscriptions.Select(s => s.TargetUserId).ToList();
+            
+            var articles = await _articleRepository.GetAllAsync(filter: a => targetUserIds.Contains(a.UserId),
+                includeProperties: "Comments,Likes,User",
+                pageSize: pageSize,
+                pageNumber: pageNumber);
+           
+            // Преобразуем каждую статью в DTO и добавляем в список
+            var articlesDTOs = articles.Select(a => _mapper.Map<ArticlesDTO>(a)).ToList();
+            foreach (var article in articlesDTOs)
+            {
+                var like = await _likeRepository.GetAsync(l => l.UserId == userId && l.ArticleId == article.ArticleId);
+                if (like != null)
+                {
+                    article.UserLiked = true;
+                }
+            }
+            var response = new
+            {
+                PageNumber = pageNumber,
+                Articles = articlesDTOs
+            };
+
+            return Ok(response);
+        }
+
         [HttpPost]
         [Route("favorite/{articleId}")]
         public async Task<IActionResult> AddFavorite(int articleId)
         {
-            // Получаем текущего пользователя
+
             var userId = int.Parse(User.FindFirst("userId").Value);
-            // Проверяем, существует ли статья с указанным articleId
             var article = await _articleRepository.GetAsync(a => a.ArticleId == articleId);
             if (article == null)
             {
                 return NotFound("Статья не найдена");
             }
-            // Проверяем, добавил ли пользователь уже эту статью в избранное
-            var favorite = await _userArticleRepository.GetAsync(ua => ua.UserId == userId && ua.ArticleId == articleId );
+            
+            var favorite = await _userArticleRepository.GetAsync(ua => ua.UserId == userId && ua.ArticleId == articleId);
             if (favorite != null)
             {
                 await _userArticleRepository.RemoveAsync(favorite);
                 return Ok("Статья удалена из избранного");
-                
+
             }
-            // Создаем новый объект UserArticle
+
             var newUserArticle = new UserArticle
             {
                 UserId = userId,
                 ArticleId = articleId
             };
-            // Добавляем статью в избранное пользователя
             _userArticleRepository.CreateAsync(newUserArticle);
 
             return Ok("Статья успешно добавлена в избранное");
         }
-        // GET: api/article/favorites
+    
         // GET: api/article/favorites
         [HttpGet]
         [Route("favorites")]
@@ -137,6 +221,11 @@ namespace WriteWave.Api.Controllers
                     article.UserLiked = true;
                 }
             }
+            var response = new
+            {
+                PageNumber = pageNumber,
+                Articles = articlesDTOs
+            };
 
             return Ok(articlesDTOs);
 

@@ -12,16 +12,27 @@
     <list default="true" id="1cb0fc91-c29c-442b-ad5c-d72df9f18d5b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/ArticleController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/ArticleController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/UserController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/WriteWave.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/WriteWave.Api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/UserDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/UserDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Domain/Models/Article.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Domain/Models/Article.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticleCreateEditDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticleCreateEditDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticleDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticleDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticlesDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticlesDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/SubscriptionDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/SubscriptionDTO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Mappings/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Mappings/MappingProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/WriteWave.Persistence.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/WriteWave.Persistence.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JSX File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -29,7 +40,10 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/coreclr/System.Private.CoreLib/src/System/Type.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3684e888fd93508450e2f4b0d7d38bee648cba98882592491596fc79375185f/SwaggerMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/WriteWave/src/WriteWave.Api/Controllers/ArticleController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/web/package-lock.json" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -44,34 +58,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.WriteWaveApi: http.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.WriteWaveApi: http.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Programs\\JetBrains Rider 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ],
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "PLAIN_TEXT"
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PLAIN_TEXT&quot;
     ],
-    "rider.external.source.directories": [
-      "C:\\Users\\nawado\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\nawado\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\nawado\\AppData\\Local\\Symbols\\src"
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\nawado\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\nawado\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\nawado\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.WriteWaveApi: http">
     <configuration name="WriteWaveApi: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/WriteWave.Api/WriteWave.Api.csproj" />
@@ -137,7 +152,18 @@
       <workItem from="1712910817168" duration="972000" />
       <workItem from="1713180186653" duration="890000" />
       <workItem from="1713601211516" duration="877000" />
-      <workItem from="1713602435740" duration="4925000" />
+      <workItem from="1713602435740" duration="5269000" />
+      <workItem from="1713783640930" duration="4728000" />
+      <workItem from="1713854387456" duration="50000" />
+      <workItem from="1713855481160" duration="109000" />
+      <workItem from="1713857619816" duration="2391000" />
+      <workItem from="1713941672098" duration="11988000" />
+      <workItem from="1714036877987" duration="10600000" />
+      <workItem from="1714111421805" duration="10073000" />
+      <workItem from="1714300394440" duration="1292000" />
+      <workItem from="1714302814922" duration="13469000" />
+      <workItem from="1714377060578" duration="14488000" />
+      <workItem from="1714413888360" duration="599000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -155,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713180254186</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Subscribe">
+      <option name="closed" value="true" />
+      <created>1713609452403</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713609452403</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,7 +211,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Init" />
     <MESSAGE value="ArticleMethods" />
-    <option name="LAST_COMMIT_MESSAGE" value="ArticleMethods" />
+    <MESSAGE value="Subscribe" />
+    <option name="LAST_COMMIT_MESSAGE" value="Subscribe" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

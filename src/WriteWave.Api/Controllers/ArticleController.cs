@@ -118,68 +118,145 @@ namespace WriteWave.Api.Controllers
 
             return Ok(response);
         }
-        [HttpGet("published")]
-        public async Task<IActionResult> GetPublishedArticles(int pageSize = 0, int pageNumber = 0)
+        private async Task<List<ArticlesDTO>> ProcessArticles(List<Article> articles, int userId, string? search)
         {
-            // Получаем опубликованные статьи
+            var articlesDTOs = articles.Select(a => _mapper.Map<ArticlesDTO>(a)).ToList();
+            var userArticles = await _userArticleRepository.GetAllAsync(ua => ua.UserId == userId);
+            var favoriteArticleIds = userArticles.Select(ua => ua.ArticleId).ToList();
+
+            foreach (var article in articlesDTOs)
+            {
+                var like = await _likeRepository.GetAsync(l => l.UserId == userId && l.ArticleId == article.ArticleId);
+                if (like != null)
+                {
+                    article.UserLiked = true;
+                }
+
+                var subscription = await _subscriptionRepository.GetAsync(s => s.SubscriberUserId == userId && s.TargetUserId == article.UserId);
+                if (subscription != null)
+                {
+                    article.UserSubscribed = true;
+                }
+
+                if (favoriteArticleIds.Contains(article.ArticleId))
+                {
+                    article.UserFavorited = true;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                articlesDTOs = articlesDTOs.Where(a => a.Content.ToLower().Contains(search.ToLower())).ToList();
+            }
+
+            return articlesDTOs;
+        }
+        [HttpGet("moderation")]
+        [Authorize (Roles = "Admin")]
+        public async Task<IActionResult> GetModerationArticles([FromQuery] string? search, int pageSize = 0, int pageNumber = 1)
+        {
             var publishedArticles = await _articleRepository.GetAllAsync(
-                filter: a => a.Status == ArticleStatus.Published,
-                includeProperties: "Comments,Likes,User",
+                filter: a => a.Status == ArticleStatus.Moderation,
                 pageSize: pageSize,
                 pageNumber: pageNumber
             );
-            var articles = await _articleRepository.GetAllAsync(
-                filter: a => a.Status == ArticleStatus.Published,
-                pageSize: 0,
-                pageNumber: 0
-            );
-            var totalCount = articles.Count();
-            
-            var publishedArticleDTOs = publishedArticles.Select(article => _mapper.Map<ArticlesDTO>(article)).ToList();
-            
-            try
-            {
-                var userId = int.Parse(User.FindFirst("userId").Value);
-                var userArticles = await _userArticleRepository.GetAllAsync(ua => ua.UserId == userId);
-                var favoriteArticleIds = userArticles.Select(ua => ua.ArticleId).ToList();
-                foreach (var article in publishedArticleDTOs)
-                {
-                    var like = await _likeRepository.GetAsync(l => l.UserId == userId && l.ArticleId == article.ArticleId);
-                    if (like != null)
-                    {
-                        article.UserLiked = true;
-                    }
-                    var subscription = await _subscriptionRepository.GetAsync(s => s.SubscriberUserId == userId && s.TargetUserId == article.UserId);
-                    if (subscription != null)
-                    {
-                        article.UserSubscribed = true;
-                    }
-                    if (favoriteArticleIds.Contains(article.ArticleId))
-                    {
-                        article.UserFavorited = true; 
-                    }
-                    else
-                    {
-                        article.UserFavorited = false; 
-                    }
-                }
-            }
-            catch(NullReferenceException e)
-            {
-                foreach (var article in publishedArticleDTOs)
-                {
-                    article.UserLiked = false;
-                    article.UserSubscribed = false;
-                }
-            }
-            
 
-            // Формируем ответ
+            var totalCount = await _articleRepository.CountAsync(a => a.Status == ArticleStatus.Moderation);
+
+            var articlesDTOs = await ProcessArticles(publishedArticles, int.Parse(User.FindFirst("userId").Value), search);
+            var articles = articlesDTOs.Select(a => new { a.ArticleId, a.UserId, a.Content, a.Title});
+
             var response = new
             {
                 TotalCount = totalCount,
                 PageNumber = pageNumber,
-                Articles = publishedArticleDTOs
+                Articles = articles
+            };
+
+            return Ok(response);
+        }
+
+        [HttpGet("published")]
+        public async Task<IActionResult> GetPublishedArticles([FromQuery] string? search, string? orderBy, int pageSize = 0, int pageNumber = 1)
+        {
+            var publishedArticles = await _articleRepository.GetArticlesAsync(
+                filter: a => a.Status == ArticleStatus.Published,
+                includeProperties: "Comments,Likes,User",
+                orderBy: orderBy,
+                pageSize: pageSize,
+                pageNumber: pageNumber
+            );
+
+            var totalCount = await _articleRepository.CountAsync(a => a.Status == ArticleStatus.Published);
+
+            var articlesDTOs = await ProcessArticles(publishedArticles, int.Parse(User.FindFirst("userId").Value), search);
+
+            var response = new
+            {
+                TotalCount = totalCount,
+                PageNumber = pageNumber,
+                Articles = articlesDTOs
+            };
+
+            return Ok(response);
+        }
+
+        [HttpGet("subscribed-articles")]
+        [Authorize]
+        public async Task<IActionResult> GetSubscribedArticles([FromQuery] string? search,string? orderBy, int pageSize = 0, int pageNumber = 1)
+        {
+            var userId = int.Parse(User.FindFirst("userId").Value);
+            var subscriptions = await _subscriptionRepository.GetAllAsync(filter: u => u.SubscriberUserId == userId);
+            var targetUserIds = subscriptions.Select(s => s.TargetUserId).ToList();
+
+            var articles = await _articleRepository.GetArticlesAsync(
+                filter: a => targetUserIds.Contains(a.UserId) && a.Status == ArticleStatus.Published,
+                includeProperties: "Comments,Likes,User",
+                pageSize: pageSize,
+                orderBy: orderBy,
+                pageNumber: pageNumber
+            );
+
+            var totalCount = await _articleRepository.CountAsync(a => targetUserIds.Contains(a.UserId) && a.Status == ArticleStatus.Published);
+
+            var articlesDTOs = await ProcessArticles(articles, userId, search);
+
+            var response = new
+            {
+                TotalCount = totalCount,
+                PageNumber = pageNumber,
+                Articles = articlesDTOs
+            };
+
+            return Ok(response);
+        }
+
+        [HttpGet]
+        [Route("favorites")]
+        [Authorize]
+        public async Task<IActionResult> GetFavoriteArticles([FromQuery] string? search,string? orderBy, int pageSize = 0, int pageNumber = 1)
+        {
+            var userId = int.Parse(User.FindFirst("userId").Value);
+            var userArticles = await _userArticleRepository.GetAllAsync(ua => ua.UserId == userId);
+            var articleIds = userArticles.Select(ua => ua.ArticleId).ToList();
+
+            var articles = await _articleRepository.GetArticlesAsync(
+                filter: a => articleIds.Contains(a.ArticleId) && a.Status == ArticleStatus.Published,
+                includeProperties: "Comments,Likes,User",
+                pageSize: pageSize,
+                orderBy: orderBy,
+                pageNumber: pageNumber
+            );
+
+            var totalCount = await _articleRepository.CountAsync( a => articleIds.Contains(a.ArticleId) && a.Status == ArticleStatus.Published);
+
+            var articlesDTOs = await ProcessArticles(articles, userId, search);
+
+            var response = new
+            {
+                TotalCount = totalCount,
+                PageNumber = pageNumber,
+                Articles = articlesDTOs
             };
 
             return Ok(response);
@@ -234,122 +311,6 @@ namespace WriteWave.Api.Controllers
             };
 
             return Ok(response);
-        }
-        [HttpGet("subscribed-articles")]
-        [Authorize] 
-        public async Task<IActionResult> GetSubscribedArticles(int pageSize = 0, int pageNumber = 0)
-        {
-            var userId = int.Parse(User.FindFirst("userId").Value);
-
-            var subscriptions = await _subscriptionRepository.GetAllAsync(filter: u => u.SubscriberUserId == userId);
-            
-            var targetUserIds = subscriptions.Select(s => s.TargetUserId).ToList();
-            
-            var articles = await _articleRepository.GetAllAsync(filter: a => targetUserIds.Contains(a.UserId) && a.Status == ArticleStatus.Published,
-                includeProperties: "Comments,Likes,User",
-                pageSize: pageSize,
-                pageNumber: pageNumber);
-            
-            var art = await _articleRepository.GetAllAsync(
-                filter: a => targetUserIds.Contains(a.UserId) && a.Status == ArticleStatus.Published,
-                pageSize: 0,
-                pageNumber: 0
-            );
-            var totalCount = art.Count();
-            var userArticles = await _userArticleRepository.GetAllAsync(ua => ua.UserId == userId);
-            var favoriteArticleIds = userArticles.Select(ua => ua.ArticleId).ToList();
-            // Преобразуем каждую статью в DTO и добавляем в список
-            var articlesDTOs = articles.Select(a => _mapper.Map<ArticlesDTO>(a)).ToList();
-            foreach (var article in articlesDTOs)
-            {
-                var like = await _likeRepository.GetAsync(l => l.UserId == userId && l.ArticleId == article.ArticleId);
-                if (like != null)
-                {
-                    article.UserLiked = true;
-                }
-                var subscription = await _subscriptionRepository.GetAsync(s => s.SubscriberUserId == userId && s.TargetUserId == article.UserId);
-                if (subscription != null)
-                {
-                    article.UserSubscribed = true;
-                }
-                if (favoriteArticleIds.Contains(article.ArticleId))
-                {
-                    article.UserFavorited = true; 
-                }
-                else
-                {
-                    article.UserFavorited = false; 
-                }
-            }
-            var response = new
-            {
-                TotalCount = totalCount,
-                PageNumber = pageNumber,
-                Articles = articlesDTOs
-            };
-
-            return Ok(response);
-        }
-
-        // GET: api/article/favorites
-        [HttpGet]
-        [Route("favorites")]
-        [Authorize]
-        public async Task<IActionResult> GetFavoriteArticles(int pageSize = 0, int pageNumber = 0)
-        {
-            var userId = int.Parse(User.FindFirst("userId").Value);
-            var userArticles = await _userArticleRepository.GetAllAsync(ua => ua.UserId == userId);
-
-            var articleIds = userArticles.Select(ua => ua.ArticleId).ToList();
-
-            var articles = await _articleRepository.GetAllAsync(
-                filter: a => articleIds.Contains(a.ArticleId) && a.Status == ArticleStatus.Published,
-                includeProperties: "Comments,Likes,User",
-                pageSize: pageSize,
-                pageNumber: pageNumber
-            );
-            var art = await _articleRepository.GetAllAsync(
-                filter: a => a.Status == ArticleStatus.Published,
-                pageSize: 0,
-                pageNumber: 0
-            );
-            var totalCount = articles.Count(); 
-            var favoriteArticleIds = userArticles.Select(ua => ua.ArticleId).ToList();
-            
-            var articlesDTOs = articles.Select(a => _mapper.Map<ArticlesDTO>(a)).ToList();
-            foreach (var article in articlesDTOs)
-            {
-                var like = await _likeRepository.GetAsync(l => l.UserId == userId && l.ArticleId == article.ArticleId);
-                if (like != null)
-                {
-                    article.UserLiked = true;
-                }
-                var subscription = await _subscriptionRepository.GetAsync(s => s.SubscriberUserId == userId && s.TargetUserId == article.UserId);
-                if (subscription != null)
-                {
-                    article.UserSubscribed = true;
-                }
-              
-                if (favoriteArticleIds.Contains(article.ArticleId))
-                {
-                    article.UserFavorited = true; 
-                }
-                else
-                {
-                    article.UserFavorited = false; 
-                }
-                
-
-            }
-            var response = new
-            {
-                TotalCount = totalCount,
-                PageNumber = pageNumber,
-                Articles = articlesDTOs
-            };
-
-            return Ok(response);
-
         }
         
         [HttpPost]
@@ -546,6 +507,16 @@ namespace WriteWave.Api.Controllers
         {
             var existingArticle = await _articleRepository.GetAsync(a => a.ArticleId == id);
             existingArticle.Status = (ArticleStatus)articleStatus;
+            await _articleRepository.UpdateAsync(existingArticle);
+            return NoContent();
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpPut("admin/publish/{articleId}")]
+        public async Task<IActionResult> UpdateStatus(int articleId)
+        {
+            var existingArticle = await _articleRepository.GetAsync(a => a.ArticleId == articleId, includeProperties: "Comments");
+            existingArticle.Status = (ArticleStatus)1;
+            existingArticle.Comments.Clear();
             await _articleRepository.UpdateAsync(existingArticle);
             return NoContent();
         }

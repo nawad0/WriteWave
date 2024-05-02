@@ -135,8 +135,7 @@ const UpdateArticleForm = ({ onUpdate, article }) => {
             <div>
                 <label>Status:</label>
                 <select value={status} onChange={handleStatusChange}>
-                    <option value="0">Moderation</option>
-                    <option value="1">Published</option>
+                    <option value="0">Published</option>
                     <option value="2">Unpublished</option>
                 </select>
             </div>

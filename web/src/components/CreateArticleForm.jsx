@@ -85,7 +85,7 @@ const uploadImageCallBack = (file) => {
 const CreateArticleForm = ({ onCreate }) => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-    const [status, setStatus] = useState('Moderation'); // Default status
+    const [status, setStatus] = useState('0'); // Default status
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
@@ -109,7 +109,7 @@ const CreateArticleForm = ({ onCreate }) => {
         onCreate(newArticle);
         setTitle('');
         setContent('');
-        setStatus('Moderation'); // Reset status to default after submission
+        setStatus('0'); // Reset status to default after submission
     };
 
     return (
@@ -132,8 +132,7 @@ const CreateArticleForm = ({ onCreate }) => {
             <div>
                 <label>Status:</label>
                 <select value={status} onChange={handleStatusChange}>
-                    <option value="0">Moderation</option>
-                    <option value="1">Published</option>
+                    <option value="0">Published</option>
                     <option value="2">Unpublished</option>
                 </select>
             </div>

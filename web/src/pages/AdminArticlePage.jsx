@@ -2,14 +2,60 @@
 import { useParams } from 'react-router-dom';
 import Pagination from '../components/Pagination';
 import CommentForm from '../components/CommentForm';
+import { useNavigate } from 'react-router-dom';
 const ArticlePage = () => {
     const { articleId } = useParams();
     const [article, setArticle] = useState(null);
     const [commectSuccess, setCommectSuccess] = useState(false);
     const [userId, setUserId] = useState(0);
-    const [pageNumber, setPageNumber] = useState(1); 
+    const [pageNumber, setPageNumber] = useState(1);
+    const [isAdmin, setIsAdmin] = useState(false);
+    const navigate = useNavigate();
     useEffect(() => {
-        fetch(`http://localhost:5177/api/article/${articleId}?commentPageSize=3&commentPageNumber=${pageNumber -1}`, { 
+        // Получаем информацию о текущем пользователе, включая его роль
+        fetch('http://localhost:5177/Admin/current', {
+            method: 'GET',
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then(data => {
+                setUserId(data.userId);
+                setIsAdmin(data.role === 'Admin');
+            })
+            .catch(error => console.error('Error fetching user info:', error));
+        
+    }, []);
+
+    const handlePublishArticle = () => {
+        // Отправляем запрос на публикацию статьи, если пользователь администратор
+        if (isAdmin) {
+            fetch(`http://localhost:5177/api/article/admin/publish/${articleId}`, {
+                method: 'PUT',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userId: userId
+                })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to publish article');
+                    }
+                    // Обновляем статью после публикации
+                    setArticle(prevArticle => ({
+                        ...prevArticle,
+                        status: 'Published'
+                    }));
+                    navigate('/admin');
+                    
+                })
+                .catch(error => console.error('Error publishing article:', error));
+        }
+    };
+    useEffect(() => {
+        fetch(`http://localhost:5177/api/article/${articleId}?commentPageSize=3&commentPageNumber=${pageNumber -1}`, {
             method: 'GET',
             credentials: 'include'
         })
@@ -28,80 +74,6 @@ const ArticlePage = () => {
             .catch(error => console.error('Error fetching data:', error));
     }, [articleId, pageNumber, commectSuccess]);
 
-    const handleLike = (articleId) => {
-        fetch(`http://localhost:5177/api/article/like/${articleId}`, {
-            method: 'POST',
-            credentials: 'include'
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to add like');
-                }
-                return response.json();
-            })
-            .then(data => {
-                
-                var like;
-                if(data.userLiked == true) {
-                    like = article.likeCount + 1;
-                }
-                else
-                {
-                    like = article.likeCount -1;
-                }
-                const updatedArticle = {
-                    ...article,
-                    userLiked: data.userLiked,
-                    likeCount: like
-                };
-                setArticle(updatedArticle); 
-            })
-            .catch(error => console.error('Ошибка лайка статьи:', error));
-    };
-
-    const handleFavorite = (articleId) => {
-        fetch(`http://localhost:5177/api/article/favorite/${articleId}`, {
-            method: 'POST',
-            credentials: 'include'
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to add favorite');
-                }
-                return response.json();
-            })
-            .then(data => {
-                
-                const updatedArticle = {
-                    ...article,
-                    userFavorited: data.userFavorited
-                };
-                setArticle(updatedArticle);
-            })
-            .catch(error => console.error('Ошибка добавления статьи в избранное:', error));
-    };
-
-    const handleSubscribe = (articleId, userId) => {
-        fetch(`http://localhost:5177/api/article/subscribe/${userId}`, {
-            method: 'POST',
-            credentials: 'include'
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to subscribe');
-                }
-                return response.json();
-            })
-            .then(data => {
-                
-                const updatedArticle = {
-                    ...article,
-                    userSubscribed: data.userSubscribed
-                };
-                setArticle(updatedArticle);
-            })
-            .catch(error => console.error('Ошибка подписки на статью:', error));
-    };
     const handleDeleteComment = (commentId) => {
         fetch(`http://localhost:5177/api/article/comment/${commentId}`, {
             method: 'DELETE',
@@ -122,15 +94,15 @@ const ArticlePage = () => {
                         comments: updatedComments
                     };
                 });
-                
+
             })
             .catch(error => console.error('Ошибка удаления комментария:', error));
     };
 
     const handlePageChange = (page) => {
-        setPageNumber(page); 
+        setPageNumber(page);
     };
-    
+
     if (!article) {
         return <div>Loading...</div>;
     }
@@ -142,20 +114,11 @@ const ArticlePage = () => {
             <img
                 src={article.userImage ? "http://localhost:9000/writewave/" + article.userImage : "Default User Image URL"}
                 alt="User Avatar" style={{width: '50px', height: '50px', borderRadius: '50%'}}/>
-            <div dangerouslySetInnerHTML={{__html: article.content}}/>
+            <p dangerouslySetInnerHTML={{__html: article.content}}/>
             <p>Likes: {article.likeCount}</p>
             <p>Comments: {article.commentCount}</p>
-
-            <button onClick={() => handleLike(article.articleId)}>
-                {article.userLiked ? 'Liked' : 'Like'}
-            </button>
-            <button onClick={() => handleFavorite(article.articleId)}>
-                {article.userFavorited ? 'Favorited' : 'Favorite'}
-            </button>
-            {userId !== article.userId && (
-                <button onClick={() => handleSubscribe(article.articleId, article.userId)}>
-                    {article.userSubscribed ? 'Subscribed' : 'Subscribe'}
-                </button>
+            {isAdmin && article.status !== 'Published' && ( // Условное отображение кнопки "Publish" для администратора
+                <button onClick={handlePublishArticle}>Publish</button>
             )}
 
             <h2>Comments</h2>
@@ -173,7 +136,7 @@ const ArticlePage = () => {
                     </li>
                 ))}
             </ul>
-
+    
             <Pagination pageNumber={pageNumber} totalCount={article.commentCount} onPageChange={handlePageChange}/>
             <CommentForm articleId={articleId} setCommectSuccess={setCommectSuccess}/>
         </div>

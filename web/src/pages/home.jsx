@@ -5,39 +5,34 @@ import Pagination from '../components/Pagination';
 const Home = () => {
     const [articles, setArticles] = useState([]);
     const [pageNumber, setPageNumber] = useState(1);
-    const [userId, setUserId] = useState(0);
     const [totalCount, setTotalCount] = useState(0);
+    const [userId, setUserId] = useState(0);
+    const [searchQuery, setSearchQuery] = useState('');
     const [selectedEndpoint, setSelectedEndpoint] = useState('http://localhost:5177/api/article/published');
+    const [orderBy, setOrderBy] = useState('title'); 
 
     useEffect(() => {
-      
-            fetch(`${selectedEndpoint}?pageSize=3&pageNumber=${pageNumber}`, {
-                method: 'GET',
-                credentials: 'include'
+        fetch(`${selectedEndpoint}?search=${searchQuery}&orderBy=${orderBy}&pageSize=3&pageNumber=${pageNumber}`, {
+            method: 'GET',
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then(data => {
+                setArticles(data.articles);
+                setTotalCount(data.totalCount);
             })
-                .then(response => response.json())
-                .then(data => {
-                    setArticles(data.articles);
-                    setTotalCount(data.totalCount);
-                    
-                  
-                })
-                .catch(error => console.error('Error fetching data:', error)); 
-            
-            fetch('http://localhost:5177/api/user', {
-                method: 'GET',
-                credentials: 'include'
+            .catch(error => console.error('Error fetching data:', error));
+
+        fetch('http://localhost:5177/api/user', {
+            method: 'GET',
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then(data => {
+                setUserId(data.user.userId);
             })
-                .then(response => response.json())
-                .then(data => {
-                    setUserId(data.user.userId);
-                    
-                  
-                })
-                .catch(error => console.error('Error fetching data:', error));
-          
-        
-    }, [pageNumber, selectedEndpoint]);
+            .catch(error => console.error('Error fetching data:', error));
+    }, [pageNumber, selectedEndpoint, searchQuery, orderBy]); // Добавляем orderBy в зависимости useEffect
 
     const handleLike = (articleId) => {
         fetch(`http://localhost:5177/api/article/like/${articleId}`, {
@@ -159,19 +154,6 @@ const Home = () => {
             })
             .catch(error => console.error('Ошибка подписки на статью:', error));
     }
-    // Функция для получения пользователя по запросу
-    const handleGetUserByQuery = (query) => {
-        fetch(`http://localhost:5177/api/user/${query}`, {
-            method: 'GET',
-            credentials: 'include'
-        })
-            .then(response => response.json())
-            .then(data => {
-                setUserId(data.userId);
-            })
-            .catch(error => console.error('Error fetching data:', error));
-    }
-    
 
     const handlePageChange = (newPageNumber) => {
         setPageNumber(newPageNumber);
@@ -182,14 +164,49 @@ const Home = () => {
         setPageNumber(1);
     };
 
+    const handleSearch = (query) => {
+        setSearchQuery(query);
+        setPageNumber(1);
+    };
+
+    const handleOrderByChange = (newOrderBy) => {
+        setOrderBy(newOrderBy);
+        setPageNumber(1);
+    };
+
     return (
         <div>
+            
             <div>
-                <button onClick={() => handleEndpointChange('http://localhost:5177/api/article/published')}>Published Articles</button>
-                <button onClick={() => handleEndpointChange('http://localhost:5177/api/article/favorites')}>Favorite Articles</button>
-                <button onClick={() => handleEndpointChange('http://localhost:5177/api/article/subscribed-articles')}>Subscribed Articles</button>
+                <button onClick={() => handleOrderByChange('title')}>Sort by Title</button>
+                <button onClick={() => handleOrderByChange('publicationDate')}>Sort by Publication Date</button>
+                <button onClick={() => handleOrderByChange('likecount.1month')}>Popular in this month</button>
+                {/* Добавьте здесь другие кнопки с типами сортировки */}
             </div>
-            <ArticleList articles={articles} handleLike={handleLike} handleSubscribe = {handleSubscribe} userId = {userId} handleFavorite = {handleFavorite}/>
+
+            <div>
+                <button onClick={() => handleEndpointChange('http://localhost:5177/api/article/published')}>Published
+                    Articles
+                </button>
+                <button onClick={() => handleEndpointChange('http://localhost:5177/api/article/favorites')}>Favorite
+                    Articles
+                </button>
+                <button
+                    onClick={() => handleEndpointChange('http://localhost:5177/api/article/subscribed-articles')}>Subscribed
+                    Articles
+                </button>
+            </div>
+            <div>
+                <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => handleSearch(e.target.value)}
+                    placeholder="Search articles..."
+                />
+                <button onClick={() => handleSearch('')}>Clear</button>
+            </div>
+            <ArticleList articles={articles} handleLike={handleLike} handleSubscribe={handleSubscribe} userId={userId}
+                         handleFavorite={handleFavorite}/>
             <Pagination
                 pageNumber={pageNumber}
                 totalCount={totalCount}
@@ -198,8 +215,5 @@ const Home = () => {
         </div>
     );
 };
-
-
-
 
 export default Home;

@@ -12,15 +12,15 @@
     <list default="true" id="1cb0fc91-c29c-442b-ad5c-d72df9f18d5b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/ArticleController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/ArticleController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/UserController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Domain/Models/Article.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Domain/Models/Article.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticleCreateEditDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticleCreateEditDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticleDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticleDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticlesDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticlesDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/SubscriptionDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/SubscriptionDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Mappings/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Mappings/MappingProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Domain/Interfaces/Repositories/IArticleRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Domain/Interfaces/Repositories/IArticleRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Repositories/ArticleRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Repositories/ArticleRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Repositories/Repository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Repositories/Repository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/CreateArticleForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/CreateArticleForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/UpdateArticleForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/UpdateArticleForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/ArticlePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/ArticlePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/home.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +40,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/coreclr/System.Private.CoreLib/src/System/Type.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3684e888fd93508450e2f4b0d7d38bee648cba98882592491596fc79375185f/SwaggerMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/WriteWave/src/WriteWave.Persistence/Migrations/ApplicationDbContextModelSnapshot.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/web/package-lock.json" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -164,6 +165,8 @@
       <workItem from="1714302814922" duration="13469000" />
       <workItem from="1714377060578" duration="14488000" />
       <workItem from="1714413888360" duration="599000" />
+      <workItem from="1714474674138" duration="8834000" />
+      <workItem from="1714645154487" duration="1187000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -189,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713609452403</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Frontend">
+      <option name="closed" value="true" />
+      <created>1714476891375</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714476891375</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,7 +223,8 @@
     <MESSAGE value="Init" />
     <MESSAGE value="ArticleMethods" />
     <MESSAGE value="Subscribe" />
-    <option name="LAST_COMMIT_MESSAGE" value="Subscribe" />
+    <MESSAGE value="Frontend" />
+    <option name="LAST_COMMIT_MESSAGE" value="Frontend" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

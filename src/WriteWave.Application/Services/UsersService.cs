@@ -1,4 +1,5 @@
 ﻿
+using System.Security.Cryptography;
 using WriteWave.Application.Auth;
 using WriteWave.Domain.Interfaces.Repositories;
 using WriteWave.Domain.Models;
@@ -26,23 +27,58 @@ namespace WriteWave.Application.Services
                 Username = userName,
                 Email = email,
                 Password = hashedPassword,
-                Role = Roles.User
-                 
-
+                Role = Roles.User,
+                VerificationToken = GenerateToken()
+                
             };
 
             await _userRepository.CreateAsync(user);
         }
+        public async Task<bool> ConfirmEmailAsync(User user)
+        {
+            user.VerifiedAt = DateTime.UtcNow;
+            user.EmailConfirmed = true;
+            await _userRepository.UpdateAsync(user);
+            return true;
+        }
+        public async Task<string> ForgotPassword(User user)
+        {
+            user.PasswordResetToken = GenerateToken();
+            user.PasswordResetTokenExpires = DateTime.UtcNow.AddDays(1);
+            await _userRepository.UpdateAsync(user);
+            return user.PasswordResetToken;
+        }
+
         public async Task<string> Login(string username, string password)
         {
             var user = await _userRepository.GetByUserName(username);
+            if (user.VerifiedAt == null)
+            {
+                throw new UnauthorizedAccessException("User not verified");
+            }
             var result = _passwordHasher.Verify(password, user.Password);
             if (result == false) 
             {
-                throw new Exception("Failed");
+                return null;
             }
             var token = _jwtProvider.GenerateToken(user);
             return token;
+        }
+        
+
+        private string GenerateToken()
+        {
+           return Convert.ToHexString(RandomNumberGenerator.GetBytes(64)); 
+        }
+
+        public async Task<bool> ResetPassword(User user, string? requestPassword)
+        {
+            var hashedPassword = _passwordHasher.Generate(requestPassword);
+            user.Password = hashedPassword;
+            user.PasswordResetToken = null;
+            user.PasswordResetTokenExpires = null;
+            await _userRepository.UpdateAsync(user);
+            return true;
         }
     }
 }

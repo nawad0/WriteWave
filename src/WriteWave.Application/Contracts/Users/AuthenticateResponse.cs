@@ -1,4 +1,4 @@
-﻿namespace WriteWave.Persistence.DTOs;
+﻿namespace WriteWave.Application.Contracts.Users;
 
 public class AuthenticateResponse
 {

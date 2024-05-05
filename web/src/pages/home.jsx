@@ -9,7 +9,7 @@ const Home = () => {
     const [userId, setUserId] = useState(0);
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedEndpoint, setSelectedEndpoint] = useState('http://localhost:5177/api/article/published');
-    const [orderBy, setOrderBy] = useState('title'); 
+    const [orderBy, setOrderBy] = useState('likeCount_1month'); 
 
     useEffect(() => {
         fetch(`${selectedEndpoint}?search=${searchQuery}&orderBy=${orderBy}&pageSize=3&pageNumber=${pageNumber}`, {
@@ -180,7 +180,7 @@ const Home = () => {
             <div>
                 <button onClick={() => handleOrderByChange('title')}>Sort by Title</button>
                 <button onClick={() => handleOrderByChange('publicationDate')}>Sort by Publication Date</button>
-                <button onClick={() => handleOrderByChange('likecount.1month')}>Popular in this month</button>
+                <button onClick={() => handleOrderByChange('likeCount_1month')}>Popular in this month</button>
                 {/* Добавьте здесь другие кнопки с типами сортировки */}
             </div>
 

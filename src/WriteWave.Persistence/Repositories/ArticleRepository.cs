@@ -35,48 +35,51 @@ public class ArticleRepository : Repository<Article>, IArticleRepository
         // Применяем сортировку в зависимости от переданного orderBy
         if (!string.IsNullOrEmpty(orderBy))
         {
-            var orderByParts = orderBy.Split('.');
-            foreach (var part in orderByParts)
-            {
-                if (part == "content_desc")
+                if (orderBy == "content_desc")
                 {
                     query = query.OrderByDescending(a => a.Content);
                 }
-                else if (part == "publicationDate")
+                else if (orderBy == "publicationDate")
                 {
                     query = query.OrderBy(a => a.PublicationDate);
                 }
-                else if (part == "publicationDate_desc")
+                else if (orderBy == "publicationDate_desc")
                 {
                     query = query.OrderByDescending(a => a.PublicationDate);
                 }
-                else if (part == "likeCount")
+                else if (orderBy == "likeCount_1month")
                 {
-                    query = query.OrderByDescending(a => a.Likes.Count);
+                    // Calculate the date one month ago from now
+                    var oneMonthAgo = DateTime.UtcNow.AddMonths(-1);
+                    
+                    query = query.Where(a => a.PublicationDate >= oneMonthAgo)
+                        .OrderByDescending(a => a.Likes.Count);
+                    
                 }
-                else if (part == "commentCount")
+
+                else if (orderBy == "commentCount")
                 {
                     query = query.OrderByDescending(a => a.Comments.Count);
                 }
-                else if (part == "1month")
+                else if (orderBy == "1month")
                 {
                     var oneMonthAgo = DateTime.UtcNow.AddMonths(-1);
                     query = query.Where(a => a.PublicationDate >= oneMonthAgo)
                         .OrderBy(a => a.PublicationDate);
                 }
-                else if (part == "6months")
+                else if (orderBy == "6months")
                 {
                     var sixMonthsAgo = DateTime.UtcNow.AddMonths(-6);
                     query = query.Where(a => a.PublicationDate >= sixMonthsAgo)
                         .OrderBy(a => a.PublicationDate);
                 }
-                else if (part == "1year")
+                else if (orderBy == "1year")
                 {
                     var oneYearAgo = DateTime.UtcNow.AddYears(-1);
                     query = query.Where(a => a.PublicationDate >= oneYearAgo)
                         .OrderBy(a => a.PublicationDate);
                 }
-                else if (part == "allTime")
+                else if (orderBy == "allTime")
                 {
                     // Нет необходимости в дополнительной фильтрации
                     query = query.OrderBy(a => a.PublicationDate);
@@ -86,8 +89,6 @@ public class ArticleRepository : Repository<Article>, IArticleRepository
                     // По умолчанию сортируем по заголовку статьи
                     query = query.OrderBy(a => a.Title);
                 }
-            }
-
 
         }
 

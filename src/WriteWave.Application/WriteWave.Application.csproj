@@ -13,6 +13,8 @@
 
     <ItemGroup>
       <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+      <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+      <PackageReference Include="MailKit" Version="4.5.0" />
       <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="6.0.0-preview.4.21253.5" />
       <PackageReference Include="Minio" Version="6.0.2" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.1" />

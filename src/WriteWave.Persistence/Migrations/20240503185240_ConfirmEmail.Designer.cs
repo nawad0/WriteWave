@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WriteWave.Persistence.Data;
@@ -11,9 +12,11 @@ using WriteWave.Persistence.Data;
 namespace WriteWave.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240503185240_ConfirmEmail")]
+    partial class ConfirmEmail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,7 +61,7 @@ namespace WriteWave.Persistence.Migrations
                         {
                             ArticleId = 1,
                             Content = "Content of article 1",
-                            PublicationDate = new DateTime(2024, 5, 4, 12, 20, 2, 883, DateTimeKind.Utc).AddTicks(5997),
+                            PublicationDate = new DateTime(2024, 5, 3, 18, 52, 37, 908, DateTimeKind.Utc).AddTicks(9083),
                             Status = 0,
                             Title = "Article 1",
                             UserId = 1
@@ -67,7 +70,7 @@ namespace WriteWave.Persistence.Migrations
                         {
                             ArticleId = 2,
                             Content = "Content of article 2",
-                            PublicationDate = new DateTime(2024, 5, 4, 12, 20, 2, 883, DateTimeKind.Utc).AddTicks(5999),
+                            PublicationDate = new DateTime(2024, 5, 3, 18, 52, 37, 908, DateTimeKind.Utc).AddTicks(9085),
                             Status = 0,
                             Title = "Article 2",
                             UserId = 2
@@ -169,24 +172,12 @@ namespace WriteWave.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("PasswordResetToken")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("PasswordResetTokenExpires")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<int>("Role")
                         .HasColumnType("integer");
 
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<string>("VerificationToken")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("VerifiedAt")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("UserId");
 

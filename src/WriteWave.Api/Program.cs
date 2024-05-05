@@ -1,13 +1,18 @@
 using System.Text;
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Minio;
 using WriteWave.Application.Auth;
+using WriteWave.Application.Contracts.Users;
+using WriteWave.Application.Email;
+using WriteWave.Application.Fluent;
 using WriteWave.Application.Minio;
 using WriteWave.Application.Services;
 using WriteWave.Domain.Interfaces.Repositories;
 using WriteWave.Infrastructure.Auth;
+using WriteWave.Infrastructure.Email;
 using WriteWave.Infrastructure.Minio;
 using WriteWave.Persistence.Data;
 using WriteWave.Persistence.Mappings;
@@ -24,7 +29,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
+builder.Services.AddScoped<IValidator<RegisterRequest>, RegisterRequestValidator>();
+builder.Services.AddScoped<IValidator<LoginRequest>, LoginRequestValidator>();
+builder.Services.AddScoped<IValidator<ResetPasswordRequest>, ResetPasswordRequestValidator>();
+builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IArticleRepository, ArticleRepository>();

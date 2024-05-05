@@ -31,6 +31,10 @@ public class User
     
     public Roles Role { get; set; }
     public List<UserArticle> FavoritedArticles { get; set; }
-    
+    public bool EmailConfirmed { get; set; } = false;
+    public string? VerificationToken { get; set; }
+    public DateTime? VerifiedAt { get; set; }
+    public string PasswordResetToken { get; set; }
+    public DateTime? PasswordResetTokenExpires { get; set; }
     public string Image { get; set; }
 }

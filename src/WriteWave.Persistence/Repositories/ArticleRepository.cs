@@ -31,8 +31,7 @@ public class ArticleRepository : Repository<Article>, IArticleRepository
         {
             query = query.Where(filter);
         }
-    
-        // Применяем сортировку в зависимости от переданного orderBy
+        
         if (!string.IsNullOrEmpty(orderBy))
         {
                 if (orderBy == "content_desc")
@@ -81,12 +80,11 @@ public class ArticleRepository : Repository<Article>, IArticleRepository
                 }
                 else if (orderBy == "allTime")
                 {
-                    // Нет необходимости в дополнительной фильтрации
                     query = query.OrderBy(a => a.PublicationDate);
                 }
                 else
                 {
-                    // По умолчанию сортируем по заголовку статьи
+                    
                     query = query.OrderBy(a => a.Title);
                 }
 
@@ -111,5 +109,9 @@ public class ArticleRepository : Repository<Article>, IArticleRepository
 
         return await query.ToListAsync();
     }
+    // public async Task<List<Article>> GetArticlesUsingSqlAsync(string sqlQuery, params object[] parameters)
+    // {
+    //     return await _db.Articles.FromSqlRaw(sqlQuery, parameters).ToListAsync();
+    // }
 
 }

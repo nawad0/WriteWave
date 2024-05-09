@@ -11,11 +11,12 @@ public class ApplicationDbContext : DbContext
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Like> Likes { get; set; }
     public DbSet<Subscription> Subscriptions { get; set; }
+    
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
     {
-        // Database.EnsureCreated();
+        
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -25,12 +26,13 @@ public class ApplicationDbContext : DbContext
     }
     private void SeedData(ModelBuilder modelBuilder)
     {
+        
         // Здесь вы можете добавить код для заполнения базы данных начальными данными
         // Например, создание и добавление объектов в контекст
         var users = new List<User>
         {
-            new User { UserId = 1,Username = "user1", Email = "user1@example.com", Password = "password1" },
-            new User { UserId = 2, Username = "user2", Email = "user2@example.com", Password = "password2" },
+            new User { UserId = 1,Username = "user1", Email = "user1@example.com", Password = "password1", VerifiedAt = DateTime.UtcNow },
+            new User { UserId = 2, Username = "user2", Email = "user2@example.com", Password = "password2", VerifiedAt = DateTime.UtcNow},
             // Другие пользователи
         };
 
@@ -38,8 +40,8 @@ public class ApplicationDbContext : DbContext
 
         var articles = new List<Article>
         {
-            new Article { ArticleId = 1, Title = "Article 1", Content = "Content of article 1", PublicationDate = DateTime.UtcNow, UserId = 1 },
-            new Article { ArticleId = 2,Title = "Article 2", Content = "Content of article 2", PublicationDate = DateTime.UtcNow, UserId = 2 },
+            new Article { ArticleId = 1, Title = "Article 1", Content = "Content of article 1", PublicationDate = DateTime.UtcNow, UserId = 1, Status = (ArticleStatus)1},
+            new Article { ArticleId = 2,Title = "Article 2", Content = "Content of article 2", PublicationDate = DateTime.UtcNow, UserId = 2 , Status = (ArticleStatus)1},
             // Другие статьи
         };
 

@@ -9,26 +9,59 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cb0fc91-c29c-442b-ad5c-d72df9f18d5b" name="Changes" comment="Moder">
-      <change afterPath="$PROJECT_DIR$/src/WriteWave.Application/Contracts/Users/RegisterRequest.cs" afterDir="false" />
+    <list default="true" id="1cb0fc91-c29c-442b-ad5c-d72df9f18d5b" name="Changes" comment="EmailConfirm and password reset in front and back">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Contracts/Users/AuthenticateResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Application/Contracts/Users/AuthenticateResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Contracts/Users/LoginRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Application/Contracts/Users/LoginRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Contracts/Users/RegisterRequest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/AuthController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/ArticleController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/ArticleController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/WriteWave.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/WriteWave.Api.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WriteWave.Application/Services/UsersService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Application/Services/UsersService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Application/WriteWave.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Application/WriteWave.Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Domain/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Domain/Models/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Domain/Interfaces/Repositories/IArticleRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Domain/Interfaces/Repositories/IArticleRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Infrastructure/Minio/MInioService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Infrastructure/Minio/MInioService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Configurations/CommentConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Configurations/CommentConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticleDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticleDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticlesDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/ArticlesDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Data/ApplicationDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Repositories/ArticleRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Repositories/ArticleRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/web/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/web/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/ArticleList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/ArticleList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/CommentForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/CommentForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/CreateArticleForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/CreateArticleForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/MyArticlesList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/MyArticlesList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/Pagination.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/Pagination.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/UpdateArticleForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/UpdateArticleForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/AdminArticlePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/AdminArticlePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/AdminPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/AdminPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/ArticlePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/ArticlePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/ConfirmEmailPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/ConfirmEmailPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/CreateArticlePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/CreateArticlePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/ForgotPasswordPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/ForgotPasswordPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/LoginPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/MyArticlesPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/MyArticlesPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/MyProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/MyProfilePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/ProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/ProfilePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/RegisterPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/RegisterPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/ResetPasswordPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/ResetPasswordPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/UpdateArticlePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/UpdateArticlePage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/pages/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/reportWebVitals.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/reportWebVitals.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/setupTests.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +81,10 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/da7e9894ce22ef8cc02e5acc56e95a6f8cf8f644/src/Mvc/Mvc.Core/src/Infrastructure/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/coreclr/System.Private.CoreLib/src/System/Type.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Private.CoreLib/src/System/IO/MemoryStream.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3684e888fd93508450e2f4b0d7d38bee648cba98882592491596fc79375185f/SwaggerMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/web/package-lock.json" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -68,36 +104,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.WriteWaveApi: http.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "D:\\Programs\\JetBrains Rider 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.WriteWaveApi: http.executor&quot;: &quot;Debug&quot;,
+    &quot;Docker.Unnamed.executor&quot;: &quot;Debug&quot;,
+    &quot;Docker.WriteWave.Api/Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.43700787&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Programs\\JetBrains Rider 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ],
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "PLAIN_TEXT"
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PLAIN_TEXT&quot;
     ],
-    "rider.external.source.directories": [
-      "C:\\Users\\nawado\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\nawado\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\nawado\\AppData\\Local\\Symbols\\src"
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\nawado\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\nawado\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\nawado\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.WriteWaveApi: http">
+}</component>
+  <component name="RunManager" selected="Docker.Unnamed">
     <configuration name="WriteWaveApi: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/WriteWave.Api/WriteWave.Api.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -143,6 +182,56 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="Unnamed" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="services">
+            <list>
+              <option value="write-wave-api" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="WriteWave.Api/Dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="writewave.api" />
+          <option name="containerName" value="writewave.api" />
+          <option name="contextFolderPath" value="." />
+          <option name="portBindings">
+            <list>
+              <DockerPortBindingImpl>
+                <option name="containerPort" value="8080" />
+                <option name="hostIp" value="127.0.0.1" />
+                <option name="hostPort" value="8080" />
+              </DockerPortBindingImpl>
+            </list>
+          </option>
+          <option name="sourceFilePath" value="src/WriteWave.Api/Dockerfile" />
+        </settings>
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue=".NET Launch Settings Profile.WriteWaveApi: http" />
+      <item itemvalue=".NET Launch Settings Profile.WriteWaveApi: https" />
+      <item itemvalue=".NET Launch Settings Profile.WriteWaveApi: IIS Express" />
+      <item itemvalue="Docker.WriteWave.Api/Dockerfile" />
+      <item itemvalue="Docker.Unnamed" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -176,7 +265,15 @@
       <workItem from="1714413888360" duration="599000" />
       <workItem from="1714474674138" duration="8834000" />
       <workItem from="1714645154487" duration="1187000" />
-      <workItem from="1714675347889" duration="36627000" />
+      <workItem from="1714675347889" duration="37528000" />
+      <workItem from="1714979939123" duration="13252000" />
+      <workItem from="1715060120334" duration="5875000" />
+      <workItem from="1715066914465" duration="4773000" />
+      <workItem from="1715104106416" duration="502000" />
+      <workItem from="1715108321512" duration="1113000" />
+      <workItem from="1715150655348" duration="597000" />
+      <workItem from="1715166533944" duration="9609000" />
+      <workItem from="1715193201390" duration="41869000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -218,7 +315,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714675369937</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="EmailConfirm and password reset in front and back">
+      <option name="closed" value="true" />
+      <created>1714911257001</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1714911257001</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,7 +348,18 @@
     <MESSAGE value="Subscribe" />
     <MESSAGE value="Frontend" />
     <MESSAGE value="Moder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moder" />
+    <MESSAGE value="EmailConfirm and password reset in front and back" />
+    <option name="LAST_COMMIT_MESSAGE" value="EmailConfirm and password reset in front and back" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="writewave-write-wave-api-1">
+        <watch expression="this.&lt;&gt;4__this._minioClient" />
+        <watch expression="((Minio.MinioClient) this.&lt;&gt;4__this._minioClient).RequestLogger" language="C#" />
+        <watch expression="$exception" />
+        <watch expression="$exception" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

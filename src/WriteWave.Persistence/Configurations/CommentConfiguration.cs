@@ -8,13 +8,9 @@ public class CommentConfiguration : IEntityTypeConfiguration<Comment>
 {
     public void Configure(EntityTypeBuilder<Comment> builder)
     {
-        // Конфигурация ключа
         builder.HasKey(c => c.CommentId);
-        
-        // Конфигурация свойств
         builder.Property(c => c.Content).IsRequired();
-        
-        // Конфигурация отношений
+
         builder.HasOne(c => c.User)
             .WithMany(u => u.Comments)
             .HasForeignKey(c => c.UserId)

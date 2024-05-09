@@ -115,6 +115,14 @@ builder.Services.AddMinio(configureClient => configureClient
     .WithSSL(false));
 var app = builder.Build();
 
+// Migrate latest database changes during startup
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider
+        .GetRequiredService<ApplicationDbContext>();
+
+    dbContext.Database.EnsureCreated();
+}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -122,7 +130,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors("AllowSpecificOrigin");
-app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();

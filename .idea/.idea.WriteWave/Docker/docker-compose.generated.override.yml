@@ -1,0 +1,35 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  write-wave-api:
+    build:
+      context: "D:\\Projects\\WriteWave"
+      dockerfile: "src/WriteWave.Api/Dockerfile"
+      target: "build"
+      args:
+        BUILD_CONFIGURATION: "Debug"
+    command: []
+    entrypoint:
+    - "/opt/rider-debugger/linux-x64/dotnet/dotnet"
+    - "/opt/rider-debugger/JetBrains.Debugger.Worker.exe"
+    - "--mode=server"
+    - "--frontend-port=57100"
+    - "--backend-port=57300"
+    - "--timeout=60"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+      RIDER_DEBUGGER_LOG_DIR: "/var/opt/rider-debugger"
+      RESHARPER_LOG_CONF: "/etc/opt/rider-debugger/backend-log.xml"
+    image: "nawado/write-wave-api:dev"
+    ports:
+    - "127.0.0.1:57002:57100"
+    - "127.0.0.1:57202:57300"
+    volumes:
+    - "C:\\Users\\nawado\\.nuget\\packages:/root/.nuget/packages"
+    - "D:\\Projects\\WriteWave\\src\\WriteWave.Api:/app:rw"
+    - "D:\\Projects\\WriteWave:/src:rw"
+    - "C:\\Users\\nawado\\AppData\\Local\\JetBrains\\RiderRemoteDebugger\\2023.3.4\\\
+      Linux64:/opt/rider-debugger"
+    - "D:\\Programs\\JetBrains Rider 2023.3.4\\bin:/etc/opt/rider-debugger/backend-log.xml"
+    - "C:\\Users\\nawado\\AppData\\Local\\JetBrains\\Rider2023.3\\log\\DebuggerWorker\\\
+      JetBrains.Debugger.Worker.2024_5_08_16_09_22:/var/opt/rider-debugger:rw"
+    working_dir: "/app"

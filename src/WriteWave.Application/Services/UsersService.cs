@@ -56,13 +56,28 @@ namespace WriteWave.Application.Services
             {
                 throw new UnauthorizedAccessException("User not verified");
             }
-            var result = _passwordHasher.Verify(password, user.Password);
-            if (result == false) 
+
+            try
             {
-                return null;
+                var result = _passwordHasher.Verify(password, user.Password);
+                if (result == false) 
+                {
+                    return null;
+                }
+                var token = _jwtProvider.GenerateToken(user);
+                return token;
             }
-            var token = _jwtProvider.GenerateToken(user);
-            return token;
+            catch (BCrypt.Net.SaltParseException e)
+            {
+                var result = password==user.Password;
+                if (result == false)
+                {
+                    return null;
+                }
+                var token = _jwtProvider.GenerateToken(user);
+                return token;
+            }
+            
         }
         
 

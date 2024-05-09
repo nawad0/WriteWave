@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,6 +26,12 @@
     <ProjectReference Include="..\WriteWave.Domain\WriteWave.Domain.csproj" />
     <ProjectReference Include="..\WriteWave.Infrastructure\WriteWave.Infrastructure.csproj" />
     <ProjectReference Include="..\WriteWave.Persistence\WriteWave.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\.dockerignore">
+      <Link>.dockerignore</Link>
+    </Content>
   </ItemGroup>
 
 </Project>

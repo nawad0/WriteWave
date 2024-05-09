@@ -1,6 +1,7 @@
 ﻿import { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link} from 'react-router-dom';
 import axios from 'axios';
+import './Confirm.css'
 
 const ConfirmEmailPage = () => {
     const navigate = useNavigate();
@@ -34,7 +35,7 @@ const ConfirmEmailPage = () => {
         <div>
             {message &&
                 <div>
-                <p>{message}</p>
+                <p className='a'>{message}</p>
                 <Link to="/login">Вход</Link>
                 </div>
             }

@@ -1,0 +1,101 @@
+.register__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    width: 100%; /* Изменено на 100% */
+    margin-top: 90px;
+}
+
+.register__box {
+    width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.register__heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.register__box input {
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: rgba(207, 207, 207, 0.227);
+}
+
+.box {
+    width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 200px auto; /* Изменено на auto */
+}
+
+.box button {
+    padding: 10px;
+    background-color: #943dd7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 340px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.box button:hover {
+    background-color: #7532a8;
+}
+
+.button {
+    padding: 10px;
+    background-color: #943dd7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button1 {
+    padding: 10px;
+    background-color: #943dd7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 90%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #7532a8;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    margin-left: 30px;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: #7532a8;
+}

@@ -1,6 +1,8 @@
 ﻿services:
   postgres:
     image: postgres
+    networks:
+      - minionetwork
     environment:
       - POSTGRES_PASSWORD=postgrespw
     ports:
@@ -8,7 +10,7 @@
     volumes:
       - pgdata:/var/lib/postgresql/data
   minio:
-    image: docker.io/bitnami/minio:2022
+    image: minio/minio:latest
     ports:
       - '9000:9000'
       - '9001:9001'
@@ -19,7 +21,40 @@
     environment:
       - MINIO_ROOT_USER=admin
       - MINIO_ROOT_PASSWORD=password
-      - MINIO_DEFAULT_BUCKETS=writewave
+    command: server /data --console-address ":9001"
+  write-wave-api:
+    image: nawado/write-wave-api:latest
+    build:
+      context: .
+      dockerfile: src/WriteWave.Api/Dockerfile
+    networks:
+      - minionetwork
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5177
+      - ConnectionStrings__DefaultConnection=Server=postgres:5432;User Id=postgres;Password=postgrespw;Database=writeDb
+      - Kestrel__Endpoints__WebApi__Protocols=Http1
+      - Kestrel__Endpoints__WebApi__Url=Http://+:5177
+      - Minio__Client=minio:9000
+      - Minio__AccessKey=admin
+      - Minio__SecretKey=password
+    ports:
+      - 5177:5177
+    depends_on:
+      - postgres
+      - minio
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+  frontend:
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - minionetwork
 networks:
   minionetwork:
     driver: bridge

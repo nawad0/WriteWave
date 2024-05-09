@@ -1,0 +1,188 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+
+	margin: 60px 0 10px 0;
+	/* margin: 160px 0 30px 0; arina */
+	/* background-color: #7732ac; */
+}
+.cancel {
+	background-color: #f5f5f5 !important;
+	color: #943dd7 !important;
+}
+.cancel:hover {
+	background-color: #d5d5d5 !important;
+	color: #943dd7 !important;
+}
+.profile-card {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	margin-bottom: 50px;
+	width: 400px;
+	height: 400px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+.name {
+	font-size: 30px;
+	color: #943dd7;
+	font-weight: 800;
+}
+.email {
+	font-size: 19px;
+	margin-top: -20px;
+	font-weight: 400;
+}
+
+.profile-info {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+
+.profile-info img {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+}
+
+.profile-data {
+	display: flex;
+	flex-direction: column;
+}
+
+.profile-data input {
+	margin-bottom: 10px;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	width: 280px;
+}
+
+.profile-data label {
+	font-weight: bold;
+}
+
+.profile-data button {
+	margin-top: 10px;
+	padding: 10px 20px;
+	background-color: #943dd7;
+	color: #fff;
+	border: none;
+	width: 300px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+.profile-data button:hover {
+	background-color: #7831ad;
+}
+
+.subscriptions-container {
+	width: 100%;
+	max-width: 600px;
+}
+
+.subscriptions-container h2 {
+	margin-bottom: 10px;
+}
+
+.subscriptions-container ul {
+	list-style: none;
+	padding: 0;
+}
+
+.subscriptions-container li {
+	margin-bottom: 10px;
+}
+
+.avatar {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.subscr {
+	/* background-color: #7831ad; */
+	border-radius: 20px;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	padding: 10px;
+}
+
+.subscrs {
+	/* background-color: aqua; */
+	display: flex;
+	flex-wrap: wrap; /* Чтобы элементы переносились на новую строку при нехватке места */
+	justify-content: space-around; /* Чтобы элементы равномерно распределялись по горизонтали */
+	width: 99vw;
+	margin-bottom: 20px;
+}
+
+.subscrs1 {
+	/* background-color: aqua; */
+	display: flex;
+	flex-wrap: wrap; /* Чтобы элементы переносились на новую строку при нехватке места */
+	justify-content: space-around; /* Чтобы элементы равномерно распределялись по горизонтали */
+	width: 99vw;
+	margin-bottom: 30px;
+}
+
+.stati {
+	margin-top: 30px;
+	display: flex;
+	flex-wrap: wrap; /* Чтобы элементы переносились на новую строку при нехватке места */
+	justify-content: space-around;
+	gap: 20px;
+	width: 99vw;
+}
+
+.card {
+	border-radius: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	/* width: 500px; */
+	text-align: left;
+	/* background-color: #943dd715; */
+	display: block;
+	flex-wrap: wrap;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	transition: 0.3s;
+	padding: 10px;
+	max-width: 300px;
+	word-break: break-all;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	/* background-color: aqua; */
+}
+
+.card:hover {
+	transform: translateY(-10px); /* поднимает блок на 10px вверх */
+	transition: 0.3s;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.313);
+}
+
+.card button {
+	padding: 10px 20px;
+	background-color: #943dd7;
+	color: #ffffff;
+	border: none;
+	/* width: 120px; */
+	border-radius: 20px;
+	cursor: pointer;
+	font-size: 13px;
+}
+
+.card button:hover {
+	background-color: #7732ac;
+}

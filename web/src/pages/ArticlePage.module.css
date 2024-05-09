@@ -1,0 +1,231 @@
+.main {
+	display: flex;
+
+	width: 99vw;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.image__container p {
+	/* background-color: chocolate;
+	text-align: left;
+	display: flex;
+	justify-content: center; */
+	/* justify-content: space-around; */
+	font-size: 20px;
+}
+
+.image__container img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* max-height: 300px; */
+}
+
+.image__container {
+	/* background-color: aqua; */
+	/* height: 420px; */
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	word-break: break-all;
+	align-items: center;
+	overflow: hidden;
+
+	/* align-items: center; */
+	/* margin-top: 9px; */
+}
+
+ul {
+	list-style-type: none; /* Убираем маркеры у списка */
+	padding: 0;
+}
+
+li {
+	display: flex; /* Располагаем элементы в строку */
+}
+
+.user {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	/* background-color: brown; */
+}
+
+.user__img {
+	margin-right: 10px;
+}
+
+.user h3 {
+	margin-right: 35vw;
+}
+
+.subscribe {
+	height: 30px;
+	width: 120px;
+	border-radius: 5px;
+	background-color: #943dd7;
+	color: #ffffff;
+	border: none;
+	font-size: 16px;
+}
+
+.subscribed {
+	height: 30px;
+	width: 120px;
+	border-radius: 5px;
+	background-color: #7732ac;
+	color: #ffffff;
+	border: none;
+	font-size: 16px;
+}
+
+.card__buttons {
+	display: flex;
+	flex-direction: row;
+	/* justify-content: space-between; */
+	/* background-color: rgb(121, 9, 118); */
+}
+
+.dop {
+	/* background-color: aqua; */
+}
+
+.card__buttons > :first-child {
+	margin-right: 10px;
+}
+
+.card__buttons > :last-child {
+	/* margin-left: auto; */
+}
+
+.title__container {
+	text-align: center;
+	margin: 0px;
+	padding: 0;
+	/* background-color: #943dd7; */
+}
+
+.title__container h2 {
+	font-size: 28px;
+}
+
+h2 {
+	margin: 0px;
+}
+
+* {
+	cursor: default;
+}
+
+.card {
+	/* border: 2px solid #943dd7; */
+	border-radius: 20px;
+	padding: 10px;
+	margin-bottom: 50px;
+	/* background-color: brown; */
+	width: 1000px;
+
+	/* height: 700px; */
+	/* display: flex;
+	align-items: center;
+	flex-direction: column; */
+	background-color: #943dd715;
+	display: block;
+	flex-wrap: wrap;
+	background-color: #fff;
+	/* padding: 20px;
+    border-radius: 10px; */
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	margin-top: 30px;
+}
+
+.main__content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	/* background-color: blue; */
+}
+
+.buttons__card {
+	background-color: rgba(255, 255, 255, 0);
+	border: none;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.buttons__card:active {
+	transform: scale(1.2);
+}
+
+.form {
+	/* background-color: #7732ac; */
+	border-radius: 20px;
+	width: 1000px;
+	padding: 10px;
+	margin-bottom: 20px;
+	flex-direction: column;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form p {
+	word-break: break-all;
+	padding: 0 15px 0 15px;
+	font-size: 20px;
+}
+
+.user {
+	flex-direction: row;
+	/* background-color: aqua; */
+}
+
+.username {
+	margin-left: 20px;
+}
+
+.forms {
+	display: flex;
+	/* flex-wrap: wrap;
+	justify-content: space-around; */
+	width: 99vw;
+	margin-top: 20px;
+	flex-direction: column;
+	align-items: center;
+}
+
+.comm__title {
+	margin-bottom: 10px;
+}
+
+.allform {
+	margin-bottom: 30px;
+}
+
+.pagin {
+	padding: 15px 0 30px 0;
+}
+
+.del_btn_cont {
+	/* background-color: aqua; */
+	display: flex;
+	justify-content: right;
+}
+.delete_button {
+	background-color: #943dd7;
+	border: none;
+	border-radius: 50px;
+	width: 50px;
+	height: 50px;
+	margin-right: 10px;
+}
+.delete_button:hover {
+	background-color: #7732ac;
+}
+.delete_button img {
+	width: 75%;
+	height: 75%;
+}

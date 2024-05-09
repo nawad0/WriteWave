@@ -1,0 +1,43 @@
+.form {
+	/* background-color: aqua; */
+}
+.textarea {
+	max-width: 980px;
+	min-width: 980px;
+	width: 980px;
+	max-height: 150px;
+	height: 150px;
+	min-height: 150px;
+	margin-bottom: 5px;
+	border-radius: 20px;
+	font-size: 20px;
+	padding: 20px;
+	resize: none;
+	border: none;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	transition: 0.3s;
+}
+
+.textarea:focus {
+	outline: none;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.379);
+}
+.btn__append {
+	width: 100%;
+	height: 40px;
+	font-size: 16px;
+	border-radius: 20px;
+	border: none;
+	background-color: #943dd7;
+	color: #ffffff;
+	border: none;
+}
+
+.btn__append:hover {
+	background-color: #7732ac;
+}
+
+.textarea::placeholder {
+	padding-top: 4px;
+	font-size: 20px;
+}

@@ -7,41 +7,67 @@ using WriteWave.Persistence.DTOs;
 namespace WriteWave.Infrastructure.Minio;
 
 public class MinioService : IMinioService
+{
+    private readonly IMinioClient _minioClient;
+    //private readonly string? _bucket = Accessor.AppConfiguration["Minio:Bucket"];
+ 
+    private readonly string? _bucket = "writewave";
+
+    private Task<bool> IsBucketExists() =>
+        _minioClient.BucketExistsAsync(new BucketExistsArgs().WithBucket(_bucket));
+
+    private async Task<string> IsFileExists(string token)
     {
-        private readonly IMinioClient _minioClient;
-        //private readonly string? _bucket = Accessor.AppConfiguration["Minio:Bucket"];
-     
-        private readonly string? _bucket = "writewave";
+        var statObjectArgs = new StatObjectArgs()
+            .WithBucket(_bucket)
+            .WithObject(token);
 
-        private Task<bool> IsBucketExists() =>
-            _minioClient.BucketExistsAsync(new BucketExistsArgs().WithBucket(_bucket));
+        var status = await _minioClient.StatObjectAsync(statObjectArgs);
+        if (status == null)
+            throw new Exception("File not found or deleted");
 
-        private async Task<string> IsFileExists(string token)
+        return status.ContentType;
+    }
+
+    public MinioService(IMinioClientFactory minioClientFactory)
+    {
+        _minioClient = minioClientFactory.CreateClient();
+    }
+
+    public async Task<string> PutObject(IFormFile file)
+    {
+        if (!await IsBucketExists())
         {
-            var statObjectArgs = new StatObjectArgs()
+            await _minioClient.MakeBucketAsync(new MakeBucketArgs().WithBucket(_bucket));
+            
+            var policy = @"{
+                ""Version"": ""2012-10-17"",
+                ""Statement"": [
+                    {
+                        ""Effect"": ""Allow"",
+                        ""Principal"": ""*"",
+                        ""Action"": [
+                            ""s3:GetObject""
+                        ],
+                        ""Resource"": [
+                            ""arn:aws:s3:::" + _bucket + @"/*""
+                        ]
+                    }
+                ]
+            }";
+    
+            await _minioClient.SetPolicyAsync(new SetPolicyArgs()
                 .WithBucket(_bucket)
-                .WithObject(token);
-
-            var status = await _minioClient.StatObjectAsync(statObjectArgs);
-            if (status == null)
-                throw new Exception("File not found or deleted");
-
-            return status.ContentType;
+                .WithPolicy(policy));
         }
 
-        public MinioService(IMinioClientFactory minioClientFactory)
+        
+
+        var filestream = new MemoryStream(await file.GetBytes());
+        var filename = Guid.NewGuid().ToString();
+
+        try
         {
-            _minioClient = minioClientFactory.CreateClient();
-        }
-
-        public async Task<string> PutObject(IFormFile file)
-        {
-            if (!await IsBucketExists())
-                throw new Exception("NotFound");
-
-            var filestream = new MemoryStream(await file.GetBytes());
-            var filename = Guid.NewGuid().ToString();
-
             var putObjectArgs = new PutObjectArgs()
                 .WithBucket(_bucket)
                 .WithObject(filename)
@@ -52,36 +78,43 @@ public class MinioService : IMinioService
             await _minioClient.PutObjectAsync(putObjectArgs);
             return filename;
         }
-
-        public async Task<GetObjectDto> GetObject(string token)
+        catch (HttpRequestException e)
         {
-            if (!await IsBucketExists())
-                throw new Exception("NotFound");
-
-            var contentType = await IsFileExists(token);
-
-            var destination = new MemoryStream();
-
-            var getObjectArgs = new GetObjectArgs()
-                .WithBucket(_bucket)
-                .WithObject(token)
-                .WithCallbackStream((stream) => { stream.CopyTo(destination); });
-            await _minioClient.GetObjectAsync(getObjectArgs);
-
-            return new GetObjectDto()
-            {
-                Bytes = destination.ToArray(),
-                ContentType = contentType
-            };
+            Console.WriteLine(e);
+            throw;
         }
+       
     }
 
-    public static class FormFileExtensions
+    public async Task<GetObjectDto> GetObject(string token)
     {
-        public static async Task<byte[]> GetBytes(this IFormFile formFile)
+        if (!await IsBucketExists())
+            throw new Exception("NotFound");
+
+        var contentType = await IsFileExists(token);
+
+        var destination = new MemoryStream();
+
+        var getObjectArgs = new GetObjectArgs()
+            .WithBucket(_bucket)
+            .WithObject(token)
+            .WithCallbackStream((stream) => { stream.CopyTo(destination); });
+        await _minioClient.GetObjectAsync(getObjectArgs);
+
+        return new GetObjectDto()
         {
-            await using var memoryStream = new MemoryStream();
-            await formFile.CopyToAsync(memoryStream);
-            return memoryStream.ToArray();
-        }
+            Bytes = destination.ToArray(),
+            ContentType = contentType
+        };
     }
+}
+
+public static class FormFileExtensions
+{
+    public static async Task<byte[]> GetBytes(this IFormFile formFile)
+    {
+        await using var memoryStream = new MemoryStream();
+        await formFile.CopyToAsync(memoryStream);
+        return memoryStream.ToArray();
+    }
+}

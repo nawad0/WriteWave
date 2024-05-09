@@ -1,0 +1,25 @@
+.pagin {
+	display: flex;
+	justify-content: center;
+}
+
+.pagin button {
+	background-color: #943dd7ae;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	margin-right: 5px;
+	min-width: 45px;
+	height: 45px;
+	font-size: 17px;
+	transition: 0.3s;
+}
+
+.pagin button:hover {
+	background-color: #943dd7;
+	box-shadow: 0 0 10px #3c1957;
+}
+
+.pagin button.active {
+	background-color: #943dd7;
+}

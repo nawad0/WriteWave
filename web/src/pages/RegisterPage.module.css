@@ -1,0 +1,109 @@
+.register__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 98vw;
+}
+
+.register__box {
+    width: 400px;
+    padding: 20px;
+    margin-top: 60px;
+    background-color: #fff;
+   
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.register__heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register__form input {
+    padding: 10px;
+    width: 95%;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color:rgba(207, 207, 207, 0.227);
+}
+.register__form input::after{
+    padding: 10px;
+    width: 95%;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color:rgba(207, 207, 207, 0.227);
+}
+
+.register__form button {
+    
+    padding: 10px;
+    background-color: #943dd7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 400px !important;
+    transition: background-color 0.3s ease;
+}
+
+.register__form button:hover {
+    background-color: #7532a8;
+}
+
+
+.link{
+    text-decoration: none;
+    color:black;
+}.link:hover{
+    text-decoration: none;
+    color: #7532a8;
+}
+.register__form button {
+    
+    padding: 10px;
+    background-color: #943dd7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 340px;
+    transition: background-color 0.3s ease;
+}
+
+.register__form button:hover {
+    background-color: #7532a8;
+}
+.error__message {
+    position: absolute;
+    width: 20%;
+    bottom: 110px;
+    left: 38%;
+    font-size: 14px;
+    color: #fff;
+    background-color: #7532a8;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 1;
+}
+
+.error__message::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #7532a8;
+    top: -6px;
+    left: calc(50% - 6px);
+}

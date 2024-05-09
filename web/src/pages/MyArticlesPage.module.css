@@ -1,0 +1,29 @@
+.button__container {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	margin-right: 1%;
+	margin-bottom: 3%;
+	z-index: 10;
+}
+
+.button__container button {
+	border-radius: 50px;
+	height: 80px;
+	width: 80px;
+	font-size: 60px;
+	border: none;
+	color: white;
+	background-color: #943dd7;
+	z-index: 10;
+}
+
+.button__container button:hover {
+	border-radius: 50px;
+	height: 80px;
+	width: 80px;
+	font-size: 60px;
+	border: none;
+	color: white;
+	background-color: #7732ac;
+}

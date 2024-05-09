@@ -1,0 +1,169 @@
+.main10 {
+	width: 99vw;
+	/* background-color: aquamarine; */
+	display: flex;
+	justify-content: center;
+	padding-bottom: 50px;
+}
+
+.main10 form {
+	width: 80%;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	/* background-color: rgb(111, 211, 45); */
+	padding: 40px;
+	margin-top: 40px;
+}
+
+.title10 {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+}
+
+.title10 input {
+	padding: 10px;
+	width: 60%;
+	margin-bottom: 15px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	background-color: rgba(207, 207, 207, 0.227);
+	color: black;
+}
+
+.title10 input::placeholder {
+	color: rgb(152, 152, 152);
+	font-size: 20px;
+}
+
+.title10 input {
+	font-size: 20px;
+	font-weight: bold;
+}
+.content10 {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+}
+
+.content10 label {
+	margin-bottom: 20px;
+	font-size: 20px;
+}
+
+.react-quill {
+	width: 62%; /* Установите желаемую ширину здесь */
+}
+
+.react-quill p {
+	font-size: 20px;
+}
+
+.status10 {
+	display: inline-block;
+	margin-top: 30px;
+}
+
+.status10 select {
+	font-size: 18px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	background-color: rgba(207, 207, 207, 0.227);
+	color: black;
+	padding: 5px 0 5px 5px;
+	/* color: rgb(152, 152, 152); */
+}
+
+.status10 option {
+	font-size: 18px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	background-color: rgba(207, 207, 207, 0.227);
+	color: rgb(152, 152, 152);
+	/* color: black; */
+	padding: 5px 0 5px 5px;
+}
+.status10 button {
+	background-color: #943dd7;
+	border: none;
+	border-radius: 20px;
+	color: white;
+	margin-right: 5px;
+	min-width: 45px;
+	height: 45px;
+	font-size: 17px;
+	margin-left: 30px;
+}
+.button10 {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.status10 label {
+	font-size: 20px;
+}
+/* CSS */
+.custom-select {
+	position: relative;
+	display: inline-block;
+}
+
+.select-styled {
+	display: inline-block;
+	background-color: #f2f2f2;
+	padding: 10px 20px;
+	border: 1px solid #ccc;
+	cursor: pointer;
+	user-select: none;
+}
+
+.select-styled:after {
+	content: '';
+	width: 0;
+	height: 0;
+	border: 6px solid transparent;
+	border-top-color: #555;
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+}
+
+.select-styled:hover {
+	background-color: #e0e0e0;
+}
+
+.select-styled:active,
+.select-styled.active {
+	background-color: #ddd;
+}
+
+/* Опции */
+.select-options {
+	display: none;
+	position: absolute;
+	top: calc(100% + 2px);
+	left: 0;
+	right: 0;
+	z-index: 999;
+	background: #fff;
+	border: 1px solid #ccc;
+}
+
+.custom-select:hover .select-options {
+	display: block;
+}
+
+.select-option {
+	padding: 10px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.select-option:hover {
+	background-color: #f2f2f2;
+}

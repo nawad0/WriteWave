@@ -1,0 +1,156 @@
+.main {
+	display: flex;
+	flex-wrap: wrap; /* Чтобы элементы переносились на новую строку при нехватке места */
+	justify-content: space-around; /* Чтобы элементы равномерно распределялись по горизонтали */
+	max-width: 99vw;
+	margin-top: 40px;
+	/* background-color: bisque; */
+}
+
+.card {
+	/* border: 2px solid #943dd7; */
+	border-radius: 20px;
+	padding: 10px;
+	margin-bottom: 50px;
+	/* background-color: brown; */
+	width: 500px;
+
+	/* height: 700px; */
+	/* display: flex;
+	align-items: center;
+	flex-direction: column; */
+	background-color: #943dd715;
+	display: block;
+	flex-wrap: wrap;
+	background-color: #fff;
+	/* padding: 20px;
+    border-radius: 10px; */
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	transition: 0.3s;
+}
+
+.image__container {
+	/* background-color: aqua; */
+	height: 450px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	word-break: break-all;
+	align-items: center;
+	/* overflow: hidden; */
+	/* max-width: 400px; */
+	text-align: left !important;
+	margin: 10px 0 10px 0;
+
+	/* align-items: center; */
+	/* margin-top: 9px; */
+	/* background-color: aqua; */
+}
+
+.image__container img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-height: 320px;
+	max-width: 500px;
+}
+
+.card:hover {
+	transform: translateY(-10px); /* поднимает блок на 10px вверх */
+	transition: 0.3s;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.313);
+	z-index: 0;
+}
+
+.user {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	/* background-color: brown; */
+}
+
+.user img {
+	margin-right: 10px;
+}
+.delete_button {
+	background-color: #943dd7;
+	border: none;
+	border-radius: 50px;
+	width: 50px;
+	height: 50px;
+}
+.delete_button:hover {
+	background-color: #7732ac;
+	border: none;
+	border-radius: 50px;
+	width: 50px;
+	height: 50px;
+}
+.delete_button img {
+	width: 75%;
+	height: 75%;
+}
+
+.redact_button {
+	background-color: #943dd7;
+	border: none;
+	border-radius: 50px;
+	width: 50px;
+	height: 50px;
+}
+
+.redact_button:hover {
+	background-color: #7732ac;
+	border: none;
+	border-radius: 50px;
+	width: 50px;
+	height: 50px;
+}
+
+.card:hover {
+	transform: translateY(-10px); /* поднимает блок на 10px вверх */
+	transition: 0.3s;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.313);
+}
+
+.redact_button img {
+	width: 75%;
+	height: 75%;
+}
+.post_button {
+	background-color: #943dd7;
+	border: none;
+	border-radius: 50px;
+	width: 50px;
+	height: 50px;
+}
+
+.post_button:hover {
+	background-color: #7732ac;
+	border: none;
+	border-radius: 50px;
+	width: 50px;
+	height: 50px;
+}
+
+.post_button img {
+	width: 75%;
+	height: 75%;
+}
+
+.buttons {
+	/* background-color: aqua; */
+	display: flex;
+	align-items: end;
+	padding: 0 10px 10px 0;
+	gap: 10px;
+}
+
+.dop {
+	/* background-color: blue; */
+}
+
+.dop__and__buttons {
+	display: flex;
+	justify-content: space-between;
+}

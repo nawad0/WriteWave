@@ -175,6 +175,19 @@ namespace WriteWave.Api.Controllers
 
             return Ok(response);
         }
+        // [HttpGet("articles/sql")]
+        // public async Task<ActionResult<List<Article>>> GetArticlesUsingSqlAsync(string sqlQuery, [FromQuery] object[] parameters)
+        // {
+        //     try
+        //     {
+        //         var articles = await _articleRepository.GetArticlesUsingSqlAsync(sqlQuery, parameters);
+        //         return Ok(articles);
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         return StatusCode(500, $"Internal server error: {ex.Message}");
+        //     }
+        // }
 
         [HttpGet("published")]
         public async Task<IActionResult> GetPublishedArticles([FromQuery] string? search, string? orderBy, int pageSize = 0, int pageNumber = 1)
@@ -424,7 +437,7 @@ namespace WriteWave.Api.Controllers
                 return NotFound();
             }
 
-            List<Comment> comments = article.Comments.Skip(commentPageSize * commentPageNumber)
+            List<Comment> comments = article.Comments.OrderByDescending(c => c.CommentId).Skip(commentPageSize * commentPageNumber)
                     .Take(commentPageSize)
                     .ToList();
             

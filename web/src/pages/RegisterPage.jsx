@@ -47,7 +47,7 @@ const RegisterPage = () => {
 		handleBoolFalse();
 
 		toast.promise(
-			axios.post('http://localhost:5177/api/auth/register', {
+			axios.post('http://83.229.83.240:5177/api/auth/register', {
 				username,
 				email,
 				password,

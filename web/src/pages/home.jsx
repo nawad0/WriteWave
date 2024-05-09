@@ -25,7 +25,7 @@ const Home = () => {
 			})
 			.catch((error) => console.error('Error fetching data:', error));
 
-		fetch('http://localhost:5177/api/user', {
+		fetch(`${window.apiUrl}/api/user`, {
 			method: 'GET',
 			credentials: 'include',
 		})

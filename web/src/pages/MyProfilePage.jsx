@@ -116,7 +116,7 @@ const MyProfilePage = () => {
 				<div className={classes['profile-info']}>
 					{!isEditing && user && (
 						<div>
-							<img src={'http://localhost:9000/writewave/' + user.userImage} alt="User Avatar" />
+							<img src={'http://83.229.83.240:9000/writewave/' + user.userImage} alt="User Avatar" />
 							<div className={classes['profile-data']}>
 								<p className={classes.name}> {user.username}</p>
 								<p className={classes.email}> {user.email}</p>

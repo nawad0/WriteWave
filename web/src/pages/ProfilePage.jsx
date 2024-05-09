@@ -138,7 +138,7 @@ const ProfilePage = () => {
 					<div className={classes['profile-info']}>
 						{user && (
 							<div>
-								<img src={'http://localhost:9000/writewave/' + user.userImage} alt="User Avatar" />
+								<img src={'http://83.229.83.240:9000/writewave/' + user.userImage} alt="User Avatar" />
 								<div className={classes['profile-data']}>
 									<p className={classes.name}> {user.username}</p>
 									<p className={classes.email}> {user.email}</p>
@@ -154,7 +154,7 @@ const ProfilePage = () => {
 							<h3>{subscription.username}</h3>
 							<p>{subscription.email}</p>
 							{subscription.userImage && (
-								<img src={'http://localhost:9000/writewave/' + subscription.userImage} alt="Subscription Avatar" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
+								<img src={'http://83.229.83.240:9000/writewave/' + subscription.userImage} alt="Subscription Avatar" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
 							)}
 						</div>
 					))}
@@ -166,7 +166,7 @@ const ProfilePage = () => {
 							<h3>{subscription.username}</h3>
 							<p>{subscription.email}</p>
 							{subscription.userImage && (
-								<img src={'http://localhost:9000/writewave/' + subscription.userImage} alt="Subscription Avatar" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
+								<img src={'http://83.229.83.240:9000/writewave/' + subscription.userImage} alt="Subscription Avatar" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
 							)}
 						</div>
 					))}

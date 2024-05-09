@@ -12,7 +12,7 @@ const ProfilePage = () => {
 	const [currentUserId, setCurrentUserId] = useState(0);
 	const navigate = useNavigate();
 	useEffect(() => {
-		fetch('http://localhost:5177/api/user', {
+		fetch(`${window.apiUrl}/api/user`, {
 			method: 'GET',
 			credentials: 'include',
 		})
@@ -23,7 +23,7 @@ const ProfilePage = () => {
 			})
 			.catch((error) => console.error('Error fetching data:', error));
 
-		fetch(`http://localhost:5177/api/user/${userId}`, {
+		fetch(`${window.apiUrl}/api/user/${userId}`, {
 			method: 'GET',
 			credentials: 'include',
 		})
@@ -32,7 +32,7 @@ const ProfilePage = () => {
 				setUser(data.user);
 				setUserSubscribed(data.userSubscribed);
 				// Выполняем запросы к API только после установки пользователя
-				fetch(`http://localhost:5177/api/user/subscriptions/${data.user.userId}`, {
+				fetch(`${window.apiUrl}/api/user/subscriptions/${data.user.userId}`, {
 					method: 'GET',
 					credentials: 'include',
 				})
@@ -42,7 +42,7 @@ const ProfilePage = () => {
 					})
 					.catch((error) => console.error('Error fetching user subscriptions:', error));
 
-				fetch(`http://localhost:5177/api/user/subscribers/${data.user.userId}`, {
+				fetch(`${window.apiUrl}/api/user/subscribers/${data.user.userId}`, {
 					method: 'GET',
 					credentials: 'include',
 				})
@@ -54,7 +54,7 @@ const ProfilePage = () => {
 			})
 			.catch((error) => console.error('Error fetching user data:', error));
 
-		fetch(`http://localhost:5177/api/article/getArticlesByUser/${userId}`, {
+		fetch(`${window.apiUrl}/api/article/getArticlesByUser/${userId}`, {
 			method: 'GET',
 			credentials: 'include',
 		})
@@ -66,7 +66,7 @@ const ProfilePage = () => {
 	}, [userId, userSubscribed]);
 
 	const handleSubscribe = (userId) => {
-		fetch(`http://localhost:5177/api/article/subscribe/${userId}`, {
+		fetch(`${window.apiUrl}/api/article/subscribe/${userId}`, {
 			method: 'POST',
 			credentials: 'include',
 		})

@@ -52,7 +52,7 @@ const uploadImageCallBack = (file) => {
 		formData.append('file', file);
 
 		try {
-			const response = await fetch('http://localhost:5177/Object/Post', {
+			const response = await fetch(`${window.apiUrl}/Object/Post`, {
 				method: 'POST',
 				body: formData,
 			});

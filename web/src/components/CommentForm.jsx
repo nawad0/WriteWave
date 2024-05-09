@@ -7,7 +7,7 @@ const CommentForm = ({ articleId, handleAddComment}) => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		// Отправка данных на сервер
-		fetch(`http://localhost:5177/api/article/comment/${articleId}`, {
+		fetch(`${window.apiUrl}/api/article/comment/${articleId}`, {
 			method: 'POST',
 			credentials: 'include',
 			headers: {

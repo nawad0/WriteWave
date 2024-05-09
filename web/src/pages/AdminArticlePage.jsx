@@ -15,7 +15,7 @@ const AdminArticlePage = () => {
 	const navigate = useNavigate();
 	useEffect(() => {
 		// Получаем информацию о текущем пользователе, включая его роль
-		fetch('http://localhost:5177/Admin/current', {
+		fetch(`${window.apiUrl}/Admin/current`, {
 			method: 'GET',
 			credentials: 'include',
 		})
@@ -30,7 +30,7 @@ const AdminArticlePage = () => {
 	const handlePublishArticle = () => {
 		// Отправляем запрос на публикацию статьи, если пользователь администратор
 		if (isAdmin) {
-			fetch(`http://localhost:5177/api/article/admin/publish/${articleId}`, {
+			fetch(`${window.apiUrl}/api/article/admin/publish/${articleId}`, {
 				method: 'PUT',
 				credentials: 'include',
 				headers: {
@@ -55,7 +55,7 @@ const AdminArticlePage = () => {
 		}
 	};
 	useEffect(() => {
-		fetch(`http://localhost:5177/api/article/${articleId}?commentPageSize=3&commentPageNumber=${pageNumber - 1}`, {
+		fetch(`${window.apiUrl}/api/article/${articleId}?commentPageSize=3&commentPageNumber=${pageNumber - 1}`, {
 			method: 'GET',
 			credentials: 'include',
 		})
@@ -75,7 +75,7 @@ const AdminArticlePage = () => {
 	}, [articleId, pageNumber, count]);
 
 	const handleDeleteComment = (commentId) => {
-		fetch(`http://localhost:5177/api/article/comment/${commentId}`, {
+		fetch(`${window.apiUrl}/api/article/comment/${commentId}`, {
 			method: 'DELETE',
 			credentials: 'include',
 			headers: {
@@ -107,7 +107,7 @@ const AdminArticlePage = () => {
 				<div className={classes.user}>
 					<img
 						className={classes.user__img}
-						src={article.userImage ? 'http://localhost:9000/writewave/' + article.userImage : 'Default User Image URL'}
+						src={article.userImage ? `${window.apiUrl}/api:9000/writewave/` + article.userImage : 'Default User Image URL'}
 						alt="User Avatar"
 						style={{ width: '50px', height: '50px', borderRadius: '50%' }}
 					/>
@@ -149,7 +149,7 @@ const AdminArticlePage = () => {
 					<li key={comment.commentId} className={classes.form}>
 						<div className={classes.user}>
 							<img
-								src={comment.userImage ? 'http://localhost:9000/writewave/' + comment.userImage : 'Default User Image URL'}
+								src={comment.userImage ? `${window.apiUrl}/api:9000/writewave/` + comment.userImage : 'Default User Image URL'}
 								alt="Comment Author Avatar"
 								style={{ width: '50px', height: '50px', borderRadius: '50%' }}
 							/>

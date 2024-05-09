@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+window.apiUrl = "http://83.229.83.240:5177";
 root.render(
   // <React.StrictMode>
     <App />

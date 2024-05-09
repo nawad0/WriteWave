@@ -8,7 +8,7 @@ const CreateArticlePage = () => {
 	const [article, setArticle] = useState({});
 	const navigate = useNavigate();
 	useEffect(() => {
-		fetch(`http://localhost:5177/api/article/${articleId}?commentPageSize=0&commentPageNumber=0`, {
+		fetch(`${window.apiUrl}/api/article/${articleId}?commentPageSize=0&commentPageNumber=0`, {
 			method: 'GET',
 			credentials: 'include',
 		})
@@ -19,7 +19,7 @@ const CreateArticlePage = () => {
 
 	const handleUpdateArticle = (newArticle, articleId) => {
 		toast.promise(
-			fetch(`http://localhost:5177/api/article/${articleId}`, {
+			fetch(`${window.apiUrl}/api/article/${articleId}`, {
 				method: 'PUT',
 				credentials: 'include',
 				headers: {

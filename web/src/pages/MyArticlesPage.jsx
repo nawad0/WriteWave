@@ -14,7 +14,7 @@ const MyArticlesPage = () => {
 	};
 
 	useEffect(() => {
-		fetch('http://localhost:5177/api/article/myArticles?pageSize=0&pageNumber=0', {
+		fetch(`${window.apiUrl}/api/article/myArticles?pageSize=0&pageNumber=0`, {
 			method: 'GET',
 			credentials: 'include',
 		})
@@ -28,7 +28,7 @@ const MyArticlesPage = () => {
 	const handlePublishArticle = (articleId) => {
 		handleUpdate();
 		setDeleteArticle(true);
-		fetch(`http://localhost:5177/api/article/updateStatus/${articleId}?articleStatus=0`, {
+		fetch(`${window.apiUrl}/api/article/updateStatus/${articleId}?articleStatus=0`, {
 			method: 'PUT',
 			credentials: 'include',
 		})
@@ -45,7 +45,7 @@ const MyArticlesPage = () => {
 	const handleDeleteArticle = (articleId) => {
 		handleUpdate();
 		setDeleteArticle(true);
-		fetch(`http://localhost:5177/api/article/${articleId}`, {
+		fetch(`${window.apiUrl}/api/article/${articleId}`, {
 			method: 'DELETE',
 			credentials: 'include',
 			headers: {

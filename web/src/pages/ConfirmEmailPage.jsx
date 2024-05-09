@@ -12,7 +12,7 @@ const ConfirmEmailPage = () => {
     useEffect(() => {
         const confirmEmail = async () => {
             try {
-                const response = await axios.get(`http://localhost:5177/api/auth/confirm-email?token=${token}`);
+                const response = await axios.get(`${window.apiUrl}/api/auth/confirm-email?token=${token}`);
                 const data = response.data;
                 if (response.status === 200) {
                     setMessage(data.message);

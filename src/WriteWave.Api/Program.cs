@@ -51,7 +51,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin",
         builder =>
         {
-            builder.WithOrigins("http://localhost:3000")
+            builder.WithOrigins("http://83.229.83.240:3000")
                 .AllowCredentials()
                 .AllowAnyMethod()
                 .AllowAnyHeader(); // Разрешить передачу кук

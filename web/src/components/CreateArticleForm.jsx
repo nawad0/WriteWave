@@ -22,7 +22,7 @@ const modules = {
 		upload: async (file) => {
 			try {
 				const compressedFile = await compressImage(file);
-				const filename = 'http://localhost:9000/writewave/' + (await uploadImageCallBack(compressedFile));
+				const filename = `http://83.229.83.240:9000/writewave/` + (await uploadImageCallBack(compressedFile));
 				return filename;
 			} catch (error) {
 				console.error('Failed to upload image:', error);
@@ -52,7 +52,7 @@ const uploadImageCallBack = (file) => {
 		formData.append('file', file);
 
 		try {
-			const response = await fetch('http://localhost:5177/Object/Post', {
+			const response = await fetch(`${window.apiUrl}/Object/Post`, {
 				method: 'POST',
 				body: formData,
 			});

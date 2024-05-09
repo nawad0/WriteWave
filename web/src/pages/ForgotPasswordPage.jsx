@@ -12,7 +12,7 @@ const ForgotPasswordPage = () => {
 
 	const sendLetter = async () => {
 		try {
-			const response = await axios.post(`http://localhost:5177/api/auth/forgot-password?email=${email}`);
+			const response = await axios.post(`${window.apiUrl}/api/auth/forgot-password?email=${email}`);
 			const data = response.data;
 			const status = response.status;
 

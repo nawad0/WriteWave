@@ -22,7 +22,7 @@ function App() {
     const [isAdmin, setIsAdmin] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     useEffect(() => {
-        fetch('http://localhost:5177/Admin/current', {
+        fetch(`${window.apiUrl}/Admin/current`, {
             method: 'GET',
             credentials: 'include'
         })

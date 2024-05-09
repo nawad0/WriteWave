@@ -10,7 +10,7 @@ const Home = () => {
 	const [totalCount, setTotalCount] = useState(0);
 	const [userId, setUserId] = useState(0);
 	const [searchQuery, setSearchQuery] = useState('');
-	const [selectedEndpoint, setSelectedEndpoint] = useState('http://localhost:5177/api/article/published');
+	const [selectedEndpoint, setSelectedEndpoint] = useState(`${window.apiUrl}/api/article/published`);
 	const [orderBy, setOrderBy] = useState('likeCount_1month');
 
 	useEffect(() => {
@@ -25,7 +25,7 @@ const Home = () => {
 			})
 			.catch((error) => console.error('Error fetching data:', error));
 
-		fetch('http://localhost:5177/api/user', {
+		fetch(`${window.apiUrl}/api/user`, {
 			method: 'GET',
 			credentials: 'include',
 		})
@@ -37,7 +37,7 @@ const Home = () => {
 	}, [pageNumber, selectedEndpoint, searchQuery, orderBy]); // Добавляем orderBy в зависимости useEffect
 
 	const handleLike = (articleId) => {
-		fetch(`http://localhost:5177/api/article/like/${articleId}`, {
+		fetch(`${window.apiUrl}/api/article/like/${articleId}`, {
 			method: 'POST',
 			credentials: 'include',
 		})
@@ -74,7 +74,7 @@ const Home = () => {
 			.catch((error) => console.error('Error liking article:', error));
 	};
 	const handleFavorite = (articleId) => {
-		fetch(`http://localhost:5177/api/article/favorite/${articleId}`, {
+		fetch(`${window.apiUrl}/api/article/favorite/${articleId}`, {
 			method: 'POST',
 			credentials: 'include',
 		})
@@ -109,7 +109,7 @@ const Home = () => {
 			.catch((error) => console.error('Error favoriting article:', error));
 	};
 	const handleSubscribe = (articleId, userId) => {
-		fetch(`http://localhost:5177/api/article/subscribe/${userId}`, {
+		fetch(`${window.apiUrl}/api/article/subscribe/${userId}`, {
 			method: 'POST',
 			credentials: 'include',
 		})
@@ -160,7 +160,7 @@ const Home = () => {
 
 	const handleOrderByChange = (newOrderBy) => {
 		setOrderBy(newOrderBy);
-        handleEndpointChange('http://localhost:5177/api/article/published');
+        handleEndpointChange(`${window.apiUrl}/api/article/published`);
 		setPageNumber(1);
 	};
 
@@ -174,9 +174,9 @@ const Home = () => {
 					<button onClick={() => handleOrderByChange('title')}>По названию</button>
 					<button onClick={() => handleOrderByChange('publicationDate_desc')}>По дате публикации</button>
 					<button onClick={() => handleOrderByChange('likeCount_1month')}>Популярные в этом месяце</button>
-					<button onClick={() => handleEndpointChange('http://localhost:5177/api/article/published')}>Все статьи</button>
-					<button onClick={() => handleEndpointChange('http://localhost:5177/api/article/favorites')}>Избранные</button>
-					<button onClick={() => handleEndpointChange('http://localhost:5177/api/article/subscribed-articles')}>Подписки</button>
+					<button onClick={() => handleEndpointChange(`${window.apiUrl}/api/article/published`)}>Все статьи</button>
+					<button onClick={() => handleEndpointChange(`${window.apiUrl}/api/article/favorites`)}>Избранные</button>
+					<button onClick={() => handleEndpointChange(`${window.apiUrl}/api/article/subscribed-articles`)}>Подписки</button>
 				</div>
 
 				<div>

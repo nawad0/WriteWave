@@ -8,7 +8,7 @@ const CreateArticlePage = () => {
 
 	const handleCreateArticle = (newArticle) => {
 		toast.promise(
-			fetch('http://localhost:5177/api/article', {
+			fetch(`${window.apiUrl}/api/article`, {
 				method: 'POST',
 				credentials: 'include',
 				headers: {

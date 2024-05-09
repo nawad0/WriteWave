@@ -12,7 +12,7 @@ const ProfilePage = () => {
 	const [currentUserId, setCurrentUserId] = useState(0);
 	const navigate = useNavigate();
 	useEffect(() => {
-		fetch('http://localhost:5177/api/user', {
+		fetch(`${window.apiUrl}/api/user`, {
 			method: 'GET',
 			credentials: 'include',
 		})
@@ -23,7 +23,7 @@ const ProfilePage = () => {
 			})
 			.catch((error) => console.error('Error fetching data:', error));
 
-		fetch(`http://localhost:5177/api/user/${userId}`, {
+		fetch(`${window.apiUrl}/api/user/${userId}`, {
 			method: 'GET',
 			credentials: 'include',
 		})
@@ -32,7 +32,7 @@ const ProfilePage = () => {
 				setUser(data.user);
 				setUserSubscribed(data.userSubscribed);
 				// Выполняем запросы к API только после установки пользователя
-				fetch(`http://localhost:5177/api/user/subscriptions/${data.user.userId}`, {
+				fetch(`${window.apiUrl}/api/user/subscriptions/${data.user.userId}`, {
 					method: 'GET',
 					credentials: 'include',
 				})
@@ -42,7 +42,7 @@ const ProfilePage = () => {
 					})
 					.catch((error) => console.error('Error fetching user subscriptions:', error));
 
-				fetch(`http://localhost:5177/api/user/subscribers/${data.user.userId}`, {
+				fetch(`${window.apiUrl}/api/user/subscribers/${data.user.userId}`, {
 					method: 'GET',
 					credentials: 'include',
 				})
@@ -54,7 +54,7 @@ const ProfilePage = () => {
 			})
 			.catch((error) => console.error('Error fetching user data:', error));
 
-		fetch(`http://localhost:5177/api/article/getArticlesByUser/${userId}`, {
+		fetch(`${window.apiUrl}/api/article/getArticlesByUser/${userId}`, {
 			method: 'GET',
 			credentials: 'include',
 		})
@@ -66,7 +66,7 @@ const ProfilePage = () => {
 	}, [userId, userSubscribed]);
 
 	const handleSubscribe = (userId) => {
-		fetch(`http://localhost:5177/api/article/subscribe/${userId}`, {
+		fetch(`${window.apiUrl}/api/article/subscribe/${userId}`, {
 			method: 'POST',
 			credentials: 'include',
 		})
@@ -138,7 +138,7 @@ const ProfilePage = () => {
 					<div className={classes['profile-info']}>
 						{user && (
 							<div>
-								<img src={'http://localhost:9000/writewave/' + user.userImage} alt="User Avatar" />
+								<img src={'http://83.229.83.240:9000/writewave/' + user.userImage} alt="User Avatar" />
 								<div className={classes['profile-data']}>
 									<p className={classes.name}> {user.username}</p>
 									<p className={classes.email}> {user.email}</p>
@@ -154,7 +154,7 @@ const ProfilePage = () => {
 							<h3>{subscription.username}</h3>
 							<p>{subscription.email}</p>
 							{subscription.userImage && (
-								<img src={'http://localhost:9000/writewave/' + subscription.userImage} alt="Subscription Avatar" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
+								<img src={'http://83.229.83.240:9000/writewave/' + subscription.userImage} alt="Subscription Avatar" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
 							)}
 						</div>
 					))}
@@ -166,7 +166,7 @@ const ProfilePage = () => {
 							<h3>{subscription.username}</h3>
 							<p>{subscription.email}</p>
 							{subscription.userImage && (
-								<img src={'http://localhost:9000/writewave/' + subscription.userImage} alt="Subscription Avatar" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
+								<img src={'http://83.229.83.240:9000/writewave/' + subscription.userImage} alt="Subscription Avatar" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
 							)}
 						</div>
 					))}

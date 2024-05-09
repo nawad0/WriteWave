@@ -11,7 +11,7 @@ const ArticlePage = () => {
 	const [count, setCounter] = useState(1);
 	const [commentAdded, setCommentAdded] = useState(false); 
 	useEffect(() => {
-		fetch(`http://localhost:5177/api/article/${articleId}?commentPageSize=3&commentPageNumber=${pageNumber - 1}`, {
+		fetch(`${window.apiUrl}/api/article/${articleId}?commentPageSize=3&commentPageNumber=${pageNumber - 1}`, {
 			method: 'GET',
 			credentials: 'include',
 		})
@@ -19,7 +19,7 @@ const ArticlePage = () => {
 			.then((data) => setArticle(data))
 			.catch((error) => console.error('Error fetching article:', error));
 
-		fetch(`http://localhost:5177/api/user`, {
+		fetch(`${window.apiUrl}:5177/api/user`, {
 			method: 'GET',
 			credentials: 'include',
 		})
@@ -33,7 +33,7 @@ const ArticlePage = () => {
 	}, [articleId, pageNumber, count]);
 
 	const handleLike = (articleId) => {
-		fetch(`http://localhost:5177/api/article/like/${articleId}`, {
+		fetch(`${window.apiUrl}/api/article/like/${articleId}`, {
 			method: 'POST',
 			credentials: 'include',
 		})
@@ -61,7 +61,7 @@ const ArticlePage = () => {
 	};
 
 	const handleFavorite = (articleId) => {
-		fetch(`http://localhost:5177/api/article/favorite/${articleId}`, {
+		fetch(`${window.apiUrl}/api/article/favorite/${articleId}`, {
 			method: 'POST',
 			credentials: 'include',
 		})
@@ -82,7 +82,7 @@ const ArticlePage = () => {
 	};
 
 	const handleSubscribe = (articleId, userId) => {
-		fetch(`http://localhost:5177/api/article/subscribe/${userId}`, {
+		fetch(`${window.apiUrl}/api/article/subscribe/${userId}`, {
 			method: 'POST',
 			credentials: 'include',
 		})
@@ -102,7 +102,7 @@ const ArticlePage = () => {
 			.catch((error) => console.error('Ошибка подписки на статью:', error));
 	};
 	const handleDeleteComment = (commentId) => {
-		fetch(`http://localhost:5177/api/article/comment/${commentId}`, {
+		fetch(`${window.apiUrl}/api/article/comment/${commentId}`, {
 			method: 'DELETE',
 			credentials: 'include',
 			headers: {

@@ -38,7 +38,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
 		handleBoolFalse();
 
 		toast.promise(
-			axios.post('http://localhost:5177/api/auth/login', {
+			axios.post(`${window.apiUrl}/api/auth/login`, {
 				username,
 				password,
 			}),

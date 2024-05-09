@@ -11,7 +11,7 @@ const AdminPage = () => {
 	const [totalCount, setTotalCount] = useState(0);
 
 	useEffect(() => {
-		fetch(`http://localhost:5177/api/article/moderation?pageSize=10&pageNumber=${pageNumber}`, {
+		fetch(`${window.apiUrl}/api/article/moderation?pageSize=10&pageNumber=${pageNumber}`, {
 			method: 'GET',
 			credentials: 'include',
 		})

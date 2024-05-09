@@ -25,7 +25,7 @@ const MyProfilePage = () => {
 	const [openSubscriptions, setOpenSubscriptions] = useState(false);
 	const [openSubscribers, setOpenSubscribers] = useState(false);
 	useEffect(() => {
-		fetch('http://localhost:5177/api/user', {
+		fetch(`${window.apiUrl}/api/user`, {
 			method: 'GET',
 			credentials: 'include',
 		})
@@ -46,7 +46,7 @@ const MyProfilePage = () => {
 
 	const fetchUserData = (userId) => {
 		// Fetch subscriptions
-		fetch(`http://localhost:5177/api/user/subscriptions/${userId}`, {
+		fetch(`${window.apiUrl}/api/user/subscriptions/${userId}`, {
 			method: 'GET',
 			credentials: 'include',
 		})
@@ -57,7 +57,7 @@ const MyProfilePage = () => {
 			.catch((error) => console.error('Error fetching user subscriptions:', error));
 
 		// Fetch subscribers
-		fetch(`http://localhost:5177/api/user/subscribers/${userId}`, {
+		fetch(`${window.apiUrl}/api/user/subscribers/${userId}`, {
 			method: 'GET',
 			credentials: 'include',
 		})
@@ -94,7 +94,7 @@ const MyProfilePage = () => {
 			formDataToSend.append('UserImage', formData.userImage);
 		}
 
-		fetch('http://localhost:5177/api/user', {
+		fetch(`${window.apiUrl}/api/user`, {
 			method: 'PUT',
 			credentials: 'include',
 			body: formDataToSend,
@@ -116,7 +116,7 @@ const MyProfilePage = () => {
 				<div className={classes['profile-info']}>
 					{!isEditing && user && (
 						<div>
-							<img src={'http://localhost:9000/writewave/' + user.userImage} alt="User Avatar" />
+							<img src={'http://83.229.83.240:9000/writewave/' + user.userImage} alt="User Avatar" />
 							<div className={classes['profile-data']}>
 								<p className={classes.name}> {user.username}</p>
 								<p className={classes.email}> {user.email}</p>

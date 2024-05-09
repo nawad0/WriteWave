@@ -9,7 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cb0fc91-c29c-442b-ad5c-d72df9f18d5b" name="Changes" comment="test" />
+    <list default="true" id="1cb0fc91-c29c-442b-ad5c-d72df9f18d5b" name="Changes" comment="url">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -218,7 +222,7 @@
       <workItem from="1715108321512" duration="1113000" />
       <workItem from="1715150655348" duration="597000" />
       <workItem from="1715166533944" duration="9609000" />
-      <workItem from="1715193201390" duration="44258000" />
+      <workItem from="1715193201390" duration="45987000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -292,7 +296,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715288814360</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="url">
+      <option name="closed" value="true" />
+      <created>1715290155140</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1715290155140</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,7 +332,8 @@
     <MESSAGE value="EmailConfirm and password reset in front and back" />
     <MESSAGE value="Front Update and dockerizing" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="url" />
+    <option name="LAST_COMMIT_MESSAGE" value="url" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

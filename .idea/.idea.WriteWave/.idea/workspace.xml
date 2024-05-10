@@ -10,10 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cb0fc91-c29c-442b-ad5c-d72df9f18d5b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/ArticleCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/ArticleCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

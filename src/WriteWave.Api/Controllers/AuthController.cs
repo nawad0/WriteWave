@@ -77,6 +77,7 @@ namespace WriteWave.Api.Controllers;
             return Unauthorized(e.Message);
         }
     }
+    
     [HttpGet("confirm-email")]
     public async Task<IActionResult> ConfirmEmail(string token)
     {

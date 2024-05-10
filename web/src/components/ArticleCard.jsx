@@ -58,7 +58,7 @@ const ArticleCard = ({articleImages, article, type, handleViewArticle, handleLik
                 {userId != article.userId && type === 'first' && (
                     <button className={article.userSubscribed ? classes.subscribed : classes.subscribe}
                             onClick={() => handleSubscribe(article.articleId, article.userId)}>
-                        {article.userSubscribed ? 'Описаться' : 'Подписаться'}
+                        {article.userSubscribed ? 'Отписаться' : 'Подписаться'}
                     </button>
                 )}
             </div>

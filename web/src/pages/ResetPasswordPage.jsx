@@ -16,7 +16,7 @@ const ResetPasswordPage = () => {
 		setErrorMessage('');
 		console.log(token, password, confirmPassword);
 		try {
-			const response = await axios.post('${window.apiUrl}/api/auth/reset-password', {
+			const response = await axios.post(`${window.apiUrl}/api/auth/reset-password`, {
 				token,
 				password,
 				confirmPassword,

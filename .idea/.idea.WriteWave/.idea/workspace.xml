@@ -9,7 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cb0fc91-c29c-442b-ad5c-d72df9f18d5b" name="Changes" comment="qwe" />
+    <list default="true" id="1cb0fc91-c29c-442b-ad5c-d72df9f18d5b" name="Changes" comment="wqe">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/AuthController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/ArticleCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/ArticleCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/CreateArticleForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/CreateArticleForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/MyProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/MyProfilePage.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +38,7 @@
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/coreclr/System.Private.CoreLib/src/System/Type.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Private.CoreLib/src/System/IO/MemoryStream.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3684e888fd93508450e2f4b0d7d38bee648cba98882592491596fc79375185f/SwaggerMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/WriteWave/src/WriteWave.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Projects/WriteWave/src/WriteWave.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/web/package-lock.json" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -220,6 +229,7 @@
       <workItem from="1715166533944" duration="9609000" />
       <workItem from="1715193201390" duration="47680000" />
       <workItem from="1715368669756" duration="1764000" />
+      <workItem from="1715406063442" duration="462000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -349,7 +359,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715378830664</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="21">
+      <option name="closed" value="true" />
+      <created>1715378969740</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1715378969740</updated>
+    </task>
+    <task id="LOCAL-00018" summary="wqe">
+      <option name="closed" value="true" />
+      <created>1715379065419</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1715379065419</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,7 +406,9 @@
     <MESSAGE value="url" />
     <MESSAGE value="URL" />
     <MESSAGE value="qwe" />
-    <option name="LAST_COMMIT_MESSAGE" value="qwe" />
+    <MESSAGE value="21" />
+    <MESSAGE value="wqe" />
+    <option name="LAST_COMMIT_MESSAGE" value="wqe" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

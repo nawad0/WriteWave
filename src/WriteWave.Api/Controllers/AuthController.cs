@@ -141,7 +141,7 @@ namespace WriteWave.Api.Controllers;
     
     private async Task<bool> SendConfirmationEmail(string? email, string VerificationToken)
     {
-        var confirmationLink = $"http://83.229.83.240:3000/confirm-email/{VerificationToken}";
+        var confirmationLink = $"http://localhost:3000/confirm-email/{VerificationToken}";
 
         var emailBody = $@"
             <html>
@@ -207,7 +207,7 @@ namespace WriteWave.Api.Controllers;
     
    private async Task<bool> SendResetPasswordEmail(string? email, string VerificationToken)
     {
-        var confirmationLink = $"http://83.229.83.240:3000/reset-password/{VerificationToken}";
+        var confirmationLink = $"http://localhost:3000/reset-password/{VerificationToken}";
         
         var emailBody = $@"
             <html>

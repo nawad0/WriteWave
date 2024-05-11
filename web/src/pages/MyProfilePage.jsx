@@ -144,7 +144,7 @@ const MyProfilePage = () => {
 					)}
 				</div>
 			</div>
-			<Button style={{ margin: '20px' }} variant="contained" color="purple" onClick={() => setOpenSubscriptions(true)}>Подписки</Button>
+			<Button style={{ margin: '20px' }} variant="contained" color="primary" onClick={() => setOpenSubscriptions(true)}>Подписки</Button>
 			<Dialog open={openSubscriptions} onClose={() => setOpenSubscriptions(false)}>
 				<DialogTitle>Подписки</DialogTitle>
 				<DialogContent>
@@ -160,11 +160,11 @@ const MyProfilePage = () => {
 					</List>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={() => setOpenSubscriptions(false)} color="purple">Закрыть</Button>
+					<Button onClick={() => setOpenSubscriptions(false)} color="primary">Закрыть</Button>
 				</DialogActions>
 			</Dialog>
 
-			<Button variant="contained" color="purple" onClick={() => setOpenSubscribers(true)}>Подписчики</Button>
+			<Button variant="contained" color="primary" onClick={() => setOpenSubscribers(true)}>Подписчики</Button>
 			<Dialog open={openSubscribers} onClose={() => setOpenSubscribers(false)}>
 				<DialogTitle>Подписчики</DialogTitle>
 				<DialogContent>
@@ -180,7 +180,7 @@ const MyProfilePage = () => {
 					</List>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={() => setOpenSubscribers(false)} color="purple">Закрыть</Button>
+					<Button onClick={() => setOpenSubscribers(false)} color="primary">Закрыть</Button>
 				</DialogActions>
 			</Dialog>
 		</div>

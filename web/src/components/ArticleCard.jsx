@@ -48,7 +48,7 @@ const ArticleCard = ({articleImages, article, type, handleViewArticle, handleLik
         <div className={classes.card}>
             <div className={classes.user}>
                 {article.userImage ? (
-                    <Avatar sx={{ width: 56, height: 56 }} src={`http://83.229.83.240:9000/writewave/` + article.userImage} alt="User Avatar" />
+                    <Avatar sx={{ width: 56, height: 56 }} src={`${window.minioUrl}/writewave/` + article.userImage} alt="User Avatar" />
                 ) : (
                     <Avatar  sx={{ width: 56, height: 56 }} sx={{ bgcolor: 'red' }}>{getUserInitials(article.username)}</Avatar>
                 )}
@@ -69,7 +69,7 @@ const ArticleCard = ({articleImages, article, type, handleViewArticle, handleLik
                 {/* Извлекаем изображение из контента */}
                 {articleImages[article.articleId] ? (
                     <img src={articleImages[article.articleId]} alt="Article" className={classes.articleImage} />
-                ) : null}
+                ) : extractImage(article.content)}
                 {/* Используем truncateText для корректного отображения контента */}
                 <div className={classes.image} dangerouslySetInnerHTML={{ __html: truncateText(article.content, 240) }} />
             </div>

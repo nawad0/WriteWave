@@ -6,7 +6,21 @@
 	justify-content: center;
 	align-items: center;
 }
+.reply_button{
+	
+	border-radius: 5px;
+	background-color: #ffffff;
+	color: #943dd7;
+	border: none;
+	font-size: 16px;
+	height: 40px;
+	
+}
+.reply_button p{
 
+	margin: 0;
+	padding: 0;
+}
 .image__container p {
 	/* background-color: chocolate;
 	text-align: left;
@@ -91,7 +105,10 @@ li {
 .dop {
 	/* background-color: aqua; */
 }
-
+.replies{
+	padding-left: 0;
+	margin-left: 0;
+}
 .card__buttons > :first-child {
 	margin-right: 10px;
 }
@@ -164,12 +181,14 @@ h2 {
 
 .form {
 	/* background-color: #7732ac; */
-	border-radius: 20px;
-	width: 1000px;
+	/*border-radius: 20px;*/
+	/*width: 1000px;*/
 	padding: 10px;
-	margin-bottom: 20px;
+	/*margin-bottom: 20px;*/
 	flex-direction: column;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	border-left: 4px solid #943dd7;
+	margin-right: 0;
 }
 
 .form p {
@@ -187,15 +206,15 @@ h2 {
 	margin-left: 20px;
 }
 
-.forms {
-	display: flex;
-	/* flex-wrap: wrap;
-	justify-content: space-around; */
-	width: 99vw;
-	margin-top: 20px;
-	flex-direction: column;
-	align-items: center;
-}
+/*.forms {*/
+/*	display: flex;*/
+/*	!* flex-wrap: wrap;*/
+/*	justify-content: space-around; *!*/
+/*	width: 2000px;*/
+/*	margin-top: 20px;*/
+/*	flex-direction: column;*/
+/*	align-items: center;*/
+/*}*/
 
 .comm__title {
 	margin-bottom: 10px;
@@ -218,9 +237,10 @@ h2 {
 	background-color: #943dd7;
 	border: none;
 	border-radius: 50px;
-	width: 50px;
-	height: 50px;
+	width: 40px;
+	height: 40px;
 	margin-right: 10px;
+	margin-bottom: 10px;
 }
 .delete_button:hover {
 	background-color: #7732ac;
@@ -228,4 +248,5 @@ h2 {
 .delete_button img {
 	width: 75%;
 	height: 75%;
+	margin-left: 5px;
 }

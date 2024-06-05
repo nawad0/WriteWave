@@ -58,8 +58,8 @@ namespace WriteWave.Persistence.Migrations
                         {
                             ArticleId = 1,
                             Content = "Content of article 1",
-                            PublicationDate = new DateTime(2024, 5, 4, 12, 20, 2, 883, DateTimeKind.Utc).AddTicks(5997),
-                            Status = 0,
+                            PublicationDate = new DateTime(2024, 5, 28, 7, 46, 38, 119, DateTimeKind.Utc).AddTicks(2816),
+                            Status = 1,
                             Title = "Article 1",
                             UserId = 1
                         },
@@ -67,8 +67,8 @@ namespace WriteWave.Persistence.Migrations
                         {
                             ArticleId = 2,
                             Content = "Content of article 2",
-                            PublicationDate = new DateTime(2024, 5, 4, 12, 20, 2, 883, DateTimeKind.Utc).AddTicks(5999),
-                            Status = 0,
+                            PublicationDate = new DateTime(2024, 5, 28, 7, 46, 38, 119, DateTimeKind.Utc).AddTicks(2820),
+                            Status = 1,
                             Title = "Article 2",
                             UserId = 2
                         });
@@ -89,12 +89,20 @@ namespace WriteWave.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int?>("ParentCommentId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("PublicationDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("CommentId");
 
                     b.HasIndex("ArticleId");
+
+                    b.HasIndex("ParentCommentId");
 
                     b.HasIndex("UserId");
 
@@ -122,6 +130,40 @@ namespace WriteWave.Persistence.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Likes");
+                });
+
+            modelBuilder.Entity("WriteWave.Domain.Models.PrivateMessage", b =>
+                {
+                    b.Property<int>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("MessageId"));
+
+                    b.Property<int>("ChatId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("text");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("SentAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("MessageId");
+
+                    b.HasIndex("ChatId");
+
+                    b.HasIndex("SenderId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PrivateMessages", (string)null);
                 });
 
             modelBuilder.Entity("WriteWave.Domain.Models.Subscription", b =>
@@ -200,7 +242,8 @@ namespace WriteWave.Persistence.Migrations
                             EmailConfirmed = false,
                             Password = "password1",
                             Role = 0,
-                            Username = "user1"
+                            Username = "user1",
+                            VerifiedAt = new DateTime(2024, 5, 28, 7, 46, 38, 119, DateTimeKind.Utc).AddTicks(2763)
                         },
                         new
                         {
@@ -209,7 +252,8 @@ namespace WriteWave.Persistence.Migrations
                             EmailConfirmed = false,
                             Password = "password2",
                             Role = 0,
-                            Username = "user2"
+                            Username = "user2",
+                            VerifiedAt = new DateTime(2024, 5, 28, 7, 46, 38, 119, DateTimeKind.Utc).AddTicks(2769)
                         });
                 });
 
@@ -226,6 +270,29 @@ namespace WriteWave.Persistence.Migrations
                     b.HasIndex("ArticleId");
 
                     b.ToTable("UserArticle");
+                });
+
+            modelBuilder.Entity("WriteWave.Domain.Models.UserChat", b =>
+                {
+                    b.Property<int>("ChatId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ChatId"));
+
+                    b.Property<int>("User1Id")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("User2Id")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ChatId");
+
+                    b.HasIndex("User1Id");
+
+                    b.HasIndex("User2Id");
+
+                    b.ToTable("UserChats", (string)null);
                 });
 
             modelBuilder.Entity("WriteWave.Domain.Models.Article", b =>
@@ -247,6 +314,11 @@ namespace WriteWave.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("WriteWave.Domain.Models.Comment", "ParentComment")
+                        .WithMany("Replies")
+                        .HasForeignKey("ParentCommentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("WriteWave.Domain.Models.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
@@ -254,6 +326,8 @@ namespace WriteWave.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("Article");
+
+                    b.Navigation("ParentComment");
 
                     b.Navigation("User");
                 });
@@ -275,6 +349,29 @@ namespace WriteWave.Persistence.Migrations
                     b.Navigation("Article");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WriteWave.Domain.Models.PrivateMessage", b =>
+                {
+                    b.HasOne("WriteWave.Domain.Models.UserChat", "Chat")
+                        .WithMany("Messages")
+                        .HasForeignKey("ChatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WriteWave.Domain.Models.User", "Sender")
+                        .WithMany("SentMessages")
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("WriteWave.Domain.Models.User", null)
+                        .WithMany("ReceivedMessages")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Chat");
+
+                    b.Navigation("Sender");
                 });
 
             modelBuilder.Entity("WriteWave.Domain.Models.Subscription", b =>
@@ -315,6 +412,25 @@ namespace WriteWave.Persistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("WriteWave.Domain.Models.UserChat", b =>
+                {
+                    b.HasOne("WriteWave.Domain.Models.User", "User1")
+                        .WithMany("UserChats1")
+                        .HasForeignKey("User1Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("WriteWave.Domain.Models.User", "User2")
+                        .WithMany("UserChats2")
+                        .HasForeignKey("User2Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User1");
+
+                    b.Navigation("User2");
+                });
+
             modelBuilder.Entity("WriteWave.Domain.Models.Article", b =>
                 {
                     b.Navigation("Comments");
@@ -322,6 +438,11 @@ namespace WriteWave.Persistence.Migrations
                     b.Navigation("FavoritedByUsers");
 
                     b.Navigation("Likes");
+                });
+
+            modelBuilder.Entity("WriteWave.Domain.Models.Comment", b =>
+                {
+                    b.Navigation("Replies");
                 });
 
             modelBuilder.Entity("WriteWave.Domain.Models.User", b =>
@@ -334,7 +455,20 @@ namespace WriteWave.Persistence.Migrations
 
                     b.Navigation("Likes");
 
+                    b.Navigation("ReceivedMessages");
+
+                    b.Navigation("SentMessages");
+
                     b.Navigation("Subscriptions");
+
+                    b.Navigation("UserChats1");
+
+                    b.Navigation("UserChats2");
+                });
+
+            modelBuilder.Entity("WriteWave.Domain.Models.UserChat", b =>
+                {
+                    b.Navigation("Messages");
                 });
 #pragma warning restore 612, 618
         }

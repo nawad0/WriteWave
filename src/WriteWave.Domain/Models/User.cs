@@ -37,4 +37,9 @@ public class User
     public string PasswordResetToken { get; set; }
     public DateTime? PasswordResetTokenExpires { get; set; }
     public string Image { get; set; }
+    
+    public List<UserChat> UserChats1 { get; set; } = new();
+    public List<UserChat> UserChats2 { get; set; } = new();
+    public List<PrivateMessage> SentMessages { get; set; } = new();
+    public List<PrivateMessage> ReceivedMessages { get; set; } = new();
 }

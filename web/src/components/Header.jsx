@@ -41,6 +41,9 @@ const Header = ({ isAuthenticated, setIsAuthenticated, isAdmin }) => {
 							<li className={classes.li}>
 								<Link to="/profile">Профиль</Link>
 							</li>
+							<li className={classes.li}>
+								<Link to="/chats">Чаты</Link>
+							</li>
 						</>
 					)}
 				</ul>

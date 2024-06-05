@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Minio;
+using WriteWave.Api.Hubs;
 using WriteWave.Application.Auth;
 using WriteWave.Application.Contracts.Users;
 using WriteWave.Application.Email;
@@ -21,7 +22,7 @@ using WriteWave.Persistence.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 
-
+var config = builder.Configuration;
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -51,7 +52,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin",
         builder =>
         {
-            builder.WithOrigins("http://83.229.83.240:3000")
+            builder.WithOrigins(config["AllowedOrigins"])
                 .AllowCredentials()
                 .AllowAnyMethod()
                 .AllowAnyHeader(); // Разрешить передачу кук
@@ -65,7 +66,7 @@ builder.Services.AddCors(options =>
         });
 });
 
-
+builder.Services.AddSignalR();
 builder.Services
     .AddAuthentication(options =>
     {
@@ -115,7 +116,6 @@ builder.Services.AddMinio(configureClient => configureClient
     .WithSSL(false));
 var app = builder.Build();
 
-// Migrate latest database changes during startup
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider
@@ -123,12 +123,13 @@ using (var scope = app.Services.CreateScope())
 
     dbContext.Database.EnsureCreated();
 }
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.MapHub<ItemHub>("/api/hub");
+app.MapHub<ChatHub>("/api/chat");
 app.UseCors("AllowSpecificOrigin");
 
 app.UseAuthentication();

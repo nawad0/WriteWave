@@ -9,7 +9,56 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cb0fc91-c29c-442b-ad5c-d72df9f18d5b" name="Changes" comment="url" />
+    <list default="true" id="1cb0fc91-c29c-442b-ad5c-d72df9f18d5b" name="Changes" comment="url">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/dataSources/39753262-916b-427c-b68a-964bde8b9deb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/dataSources/39753262-916b-427c-b68a-964bde8b9deb.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WriteWave/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/ArticleController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/ArticleController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Controllers/AuthController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Api/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Api/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Application/Fluent/LoginRequestValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Application/Fluent/LoginRequestValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Application/Services/UsersService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Application/Services/UsersService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Domain/Models/Comment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Domain/Models/Comment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Domain/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Domain/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Configurations/CommentConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Configurations/CommentConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/CommentDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/DTOs/CommentDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Data/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Mappings/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Mappings/MappingProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/WriteWave.Persistence/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/ArticleCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/ArticleCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/ArticleList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/ArticleList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/CommentForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/CommentForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/CommentForm.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/CommentForm.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/CreateArticleForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/CreateArticleForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/Header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/Header.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/MyArticlesList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/MyArticlesList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/MyArticlesList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/MyArticlesList.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/UpdateArticleForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/UpdateArticleForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/errorAllert.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/errorAllert.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/AdminArticlePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/AdminArticlePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/ArticlePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/ArticlePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/ArticlePage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/ArticlePage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/LoginPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/MyArticlesPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/MyArticlesPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/MyArticlesPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/MyArticlesPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/MyProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/MyProfilePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/MyProfilePgae.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/MyProfilePgae.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/ProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/ProfilePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/ProfilePage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/ProfilePage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/RegisterPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/RegisterPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/RegisterPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/RegisterPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/loginPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/loginPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/vite.config.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +68,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JSX File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -29,9 +79,8 @@
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/da7e9894ce22ef8cc02e5acc56e95a6f8cf8f644/src/Mvc/Mvc.Core/src/Infrastructure/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/coreclr/System.Private.CoreLib/src/System/Type.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Private.CoreLib/src/System/IO/MemoryStream.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Private.CoreLib/src/System/Threading/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3684e888fd93508450e2f4b0d7d38bee648cba98882592491596fc79375185f/SwaggerMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/WriteWave/src/WriteWave.Api/Controllers/AuthController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/WriteWave/src/WriteWave.Api/Controllers/AuthController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/web/package-lock.json" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -52,19 +101,21 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.WriteWaveApi: http.executor&quot;: &quot;Debug&quot;,
+    &quot;.NET Launch Settings Profile.WriteWaveApi: http.executor&quot;: &quot;Run&quot;,
     &quot;Docker.Unnamed.executor&quot;: &quot;Debug&quot;,
     &quot;Docker.WriteWave.Api/Dockerfile.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.43700787&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;,
+    &quot;settings.editor.splitter.proportion&quot;: &quot;0.28134558&quot;,
     &quot;ts.external.directory.path&quot;: &quot;D:\\Programs\\JetBrains Rider 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -82,7 +133,7 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="Docker.Unnamed">
+  <component name="RunManager" selected=".NET Launch Settings Profile.WriteWaveApi: http">
     <configuration name="WriteWaveApi: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/WriteWave.Api/WriteWave.Api.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -221,7 +272,17 @@
       <workItem from="1715166533944" duration="9609000" />
       <workItem from="1715193201390" duration="47680000" />
       <workItem from="1715368669756" duration="1764000" />
-      <workItem from="1715406063442" duration="923000" />
+      <workItem from="1715406063442" duration="1746000" />
+      <workItem from="1716059996058" duration="7377000" />
+      <workItem from="1716116401801" duration="12221000" />
+      <workItem from="1716296783132" duration="1967000" />
+      <workItem from="1716369588646" duration="13165000" />
+      <workItem from="1716622884760" duration="589000" />
+      <workItem from="1716837332157" duration="8546000" />
+      <workItem from="1716967986810" duration="1870000" />
+      <workItem from="1717234088395" duration="1752000" />
+      <workItem from="1717269831916" duration="5734000" />
+      <workItem from="1717513711144" duration="3344000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -383,7 +444,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715407233075</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="url">
+      <option name="closed" value="true" />
+      <created>1715407463401</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1715407463401</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

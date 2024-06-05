@@ -3,8 +3,9 @@
 	flex-direction: column;
 	align-items: center;
 	padding: 20px;
-
+	overflow-x: hidden;
 	margin: 60px 0 30px 0;
+	width: 100vw;
 	/* margin: 160px 0 30px 0; arina */
 }
 .button {
@@ -16,6 +17,18 @@
 	cursor: pointer;
 	transition: all 0.3s ease;
 	
+}
+.subscr{
+	margin: 0 10px;
+	padding: 10px 20px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	
+	background-color: #943dd7 !important;
+	color: white;
+
 }
 .cancel {
 	background-color: #f5f5f5 !important;
@@ -41,6 +54,7 @@
 	font-size: 30px;
 	color: #943dd7;
 	font-weight: 800;
+	margin-bottom: 20px;
 }
 .email {
 	font-size: 19px;
@@ -55,6 +69,9 @@
 	display: flex;
 	justify-content: center;
 	text-align: center;
+	
+	flex-direction: column;
+	
 }
 
 .profile-info img {

@@ -1,8 +1,8 @@
 ﻿import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Pagination from '../components/Pagination';
 import CommentForm from '../components/CommentForm';
-import { useNavigate } from 'react-router-dom';
+import { HubConnectionBuilder } from '@microsoft/signalr';
 import classes from './AdminArticlePage.module.css';
 
 const AdminArticlePage = () => {
@@ -11,10 +11,10 @@ const AdminArticlePage = () => {
 	const [userId, setUserId] = useState(0);
 	const [pageNumber, setPageNumber] = useState(1);
 	const [isAdmin, setIsAdmin] = useState(false);
-	const [count, setCounter] = useState(1);
+	const [connection, setConnection] = useState(null);
 	const navigate = useNavigate();
+
 	useEffect(() => {
-		// Получаем информацию о текущем пользователе, включая его роль
 		fetch(`${window.apiUrl}/Admin/current`, {
 			method: 'GET',
 			credentials: 'include',
@@ -27,8 +27,62 @@ const AdminArticlePage = () => {
 			.catch((error) => console.error('Error fetching user info:', error));
 	}, []);
 
+	useEffect(() => {
+		fetch(`${window.apiUrl}/api/article/${articleId}?commentPageSize=3&commentPageNumber=${pageNumber - 1}`, {
+			method: 'GET',
+			credentials: 'include',
+		})
+			.then((response) => response.json())
+			.then((data) => setArticle(data))
+			.catch((error) => console.error('Error fetching article:', error));
+	}, [articleId, pageNumber]);
+
+	useEffect(() => {
+		const newConnection = new HubConnectionBuilder()
+			.withUrl(`${window.apiUrl}/api/hub`)
+			.withAutomaticReconnect()
+			.build();
+
+		setConnection(newConnection);
+	}, []);
+
+	useEffect(() => {
+		if (connection) {
+			connection.start()
+				.then(() => {
+					console.log('Connected to SignalR hub');
+
+					connection.on('Comments', (newComment) => {
+						setArticle((prevArticle) => ({
+							...prevArticle,
+							comments: [newComment, ...prevArticle.comments],
+						}));
+					});
+
+					connection.on('CommentDeleted', (deletedCommentId) => {
+						setArticle((prevArticle) => ({
+							...prevArticle,
+							comments: prevArticle.comments.filter(comment => comment.commentId !== deletedCommentId),
+						}));
+					});
+
+					connection.invoke('JoinGroup', `Article-${articleId}`);
+				})
+				.catch(error => {
+					console.error('SignalR Connection Error: ', error);
+				});
+
+			connection.onclose(error => {
+				console.error('SignalR Connection Closed: ', error);
+			});
+
+			return () => {
+				connection.stop().then(() => console.log('Disconnected from SignalR hub')).catch(error => console.error('Error while disconnecting: ', error));
+			};
+		}
+	}, [connection, articleId]);
+
 	const handlePublishArticle = () => {
-		// Отправляем запрос на публикацию статьи, если пользователь администратор
 		if (isAdmin) {
 			fetch(`${window.apiUrl}/api/article/admin/publish/${articleId}`, {
 				method: 'PUT',
@@ -36,15 +90,12 @@ const AdminArticlePage = () => {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({
-					userId: userId,
-				}),
+				body: JSON.stringify({ userId }),
 			})
 				.then((response) => {
 					if (!response.ok) {
 						throw new Error('Failed to publish article');
 					}
-					// Обновляем статью после публикации
 					setArticle((prevArticle) => ({
 						...prevArticle,
 						status: 'Published',
@@ -54,49 +105,16 @@ const AdminArticlePage = () => {
 				.catch((error) => console.error('Error publishing article:', error));
 		}
 	};
-	useEffect(() => {
-		fetch(`${window.apiUrl}/api/article/${articleId}?commentPageSize=3&commentPageNumber=${pageNumber - 1}`, {
-			method: 'GET',
-			credentials: 'include',
-		})
-			.then((response) => response.json())
-			.then((data) => setArticle(data))
-			.catch((error) => console.error('Error fetching article:', error));
-
-		fetch(`http://localhost:5177/api/User`, {
-			method: 'GET',
-			credentials: 'include',
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				setUserId(data.userId);
-			})
-			.catch((error) => console.error('Error fetching data:', error));
-	}, [articleId, pageNumber, count]);
 
 	const handleDeleteComment = (commentId) => {
-		fetch(`${window.apiUrl}/api/article/comment/${commentId}`, {
-			method: 'DELETE',
-			credentials: 'include',
-			headers: {
-				'Content-Type': 'application/json', // Правильное название заголовка
-			},
-		})
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error('Failed to delete comment');
-				}
-				handleAddComment();
-			})
-			.catch((error) => console.error('Ошибка удаления комментария:', error));
+		connection.invoke("DeleteComment", commentId)
+			.catch(error => console.error('Error deleting comment:', error));
 	};
 
 	const handlePageChange = (page) => {
 		setPageNumber(page);
 	};
-	const handleAddComment = () => {
-		setCounter(count + 1);
-	};
+
 	if (!article) {
 		return <div>Loading...</div>;
 	}
@@ -107,7 +125,7 @@ const AdminArticlePage = () => {
 				<div className={classes.user}>
 					<img
 						className={classes.user__img}
-						src={article.userImage ? `${window.apiUrl}/api:9000/writewave/` + article.userImage : 'Default User Image URL'}
+						src={article.userImage ? `${window.minioUrl}/writewave/` + article.userImage : 'Default User Image URL'}
 						alt="User Avatar"
 						style={{ width: '50px', height: '50px', borderRadius: '50%' }}
 					/>
@@ -127,40 +145,35 @@ const AdminArticlePage = () => {
 						<p>Комментарии ({article.commentCount})</p>
 					</div>
 					<div className={classes.buttons}>
-						{isAdmin &&
-							article.status !== 'Published' && ( // Условное отображение кнопки "Publish" для администратора
-								<button className={classes.post_button} onClick={handlePublishArticle}>
-									<img src="/post.png" />
-								</button>
-							)}
+						{isAdmin && article.status !== 'Published' && (
+							<button className={classes.post_button} onClick={handlePublishArticle}>
+								<img src="/post.png" />
+							</button>
+						)}
 					</div>
 				</div>
 			</div>
 
-			
-	
-
 			<h2 className={classes.comm__title}>Комментарии</h2>
 			<div className={classes.allform}>
-				<CommentForm articleId={articleId} handleAddComment={handleAddComment} />
+				<CommentForm articleId={article.articleId} connection={connection} />
 			</div>
 			<div className={classes.forms}>
 				{article.comments.map((comment) => (
 					<li key={comment.commentId} className={classes.form}>
 						<div className={classes.user}>
 							<img
-								src={comment.userImage ? `${window.apiUrl}/api:9000/writewave/` + comment.userImage : 'Default User Image URL'}
+								src={comment.userImage ? `${window.minioUrl}/writewave/` + comment.userImage : 'Default User Image URL'}
 								alt="Comment Author Avatar"
 								style={{ width: '50px', height: '50px', borderRadius: '50%' }}
 							/>
 							<h3 className={classes.username}> {comment.username}</h3>
 						</div>
 						<p>{comment.content}</p>
-
 						<div className={classes.del_btn_cont}>
-							{comment.userId === 4 && ( // Условное отображение кнопки удаления
+							{(isAdmin || comment.userId === userId) && (
 								<button className={classes.delete_button} onClick={() => handleDeleteComment(comment.commentId)}>
-									<img src="/delete.png" />
+									<img src="/delete.png" alt="Delete" />
 								</button>
 							)}
 						</div>
@@ -168,7 +181,7 @@ const AdminArticlePage = () => {
 				))}
 			</div>
 
-			<Pagination pageNumber={pageNumber} totalCount={article.commentCount} onPageChange={handlePageChange} pageSize={3}/>
+			<Pagination pageNumber={pageNumber} totalCount={article.commentCount} onPageChange={handlePageChange} pageSize={3} />
 		</div>
 	);
 };

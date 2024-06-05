@@ -20,7 +20,7 @@ public class LoginRequestValidator : AbstractValidator<LoginRequest>
     }
     private async Task<bool> IsUserExists(string? username, CancellationToken cancellationToken)
     {
-        var user = await _userRepository.GetAsync(u => u.Username == username);
+        var user = await _userRepository.GetAsync(u => u.Username == username || u.Email == username);
         return user != null;
     }
     

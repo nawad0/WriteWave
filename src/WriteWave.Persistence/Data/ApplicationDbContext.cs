@@ -10,6 +10,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<Article> Articles { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Like> Likes { get; set; }
+    public DbSet<UserChat> UserChats { get; set; }
+    public DbSet<PrivateMessage> PrivateMessages { get; set; }
     public DbSet<Subscription> Subscriptions { get; set; }
     
 

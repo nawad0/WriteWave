@@ -179,11 +179,6 @@ const Home = () => {
 					<button onClick={() => handleEndpointChange(`${window.apiUrl}/api/article/subscribed-articles`)}>Подписки</button>
 				</div>
 
-				<div>
-					{/* <button onClick={() => handleEndpointChange('http://localhost:5177/api/article/published')}>Published Articles</button>
-					<button onClick={() => handleEndpointChange('http://localhost:5177/api/article/favorites')}>Favorite Articles</button>
-					<button onClick={() => handleEndpointChange('http://localhost:5177/api/article/subscribed-articles')}>Subscribed Articles</button> */}
-				</div>
 			</div>
 
 			<div className={classes.search}>

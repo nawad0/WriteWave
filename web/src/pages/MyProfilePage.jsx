@@ -113,10 +113,10 @@ const MyProfilePage = () => {
 	return (
 		<div className={classes.container}>
 			<div className={classes['profile-card']}>
-				<div className={classes['profile-info']}>
+				<div >
 					{!isEditing && user && (
-						<div>
-							<img src={'http://83.229.83.240:9000/writewave/' + user.userImage} alt="User Avatar" />
+						<div className={classes['profile-info']}>
+							<img src={`${window.minioUrl}/writewave/` + user.userImage} alt="User Avatar" />
 							<div className={classes['profile-data']}>
 								<p className={classes.name}> {user.username}</p>
 								<p className={classes.email}> {user.email}</p>
@@ -144,7 +144,7 @@ const MyProfilePage = () => {
 					)}
 				</div>
 			</div>
-			<Button style={{ margin: '20px' }} variant="contained" color="primary" onClick={() => setOpenSubscriptions(true)}>Подписки</Button>
+			<button style={{ margin: '20px' }} className={classes.subscr} variant="contained" color="primary" onClick={() => setOpenSubscriptions(true)}>Подписки</button>
 			<Dialog open={openSubscriptions} onClose={() => setOpenSubscriptions(false)}>
 				<DialogTitle>Подписки</DialogTitle>
 				<DialogContent>
@@ -153,18 +153,18 @@ const MyProfilePage = () => {
 							<ListItem key={subscription.userId}>
 								<ListItemText primary={subscription.username} secondary={subscription.email} />
 								{subscription.userImage && (
-									<Avatar src={'http://83.229.83.240:9000/writewave/' + subscription.userImage} />
+									<Avatar src={`${window.minioUrl}/writewave/` + subscription.userImage} />
 								)}
 							</ListItem>
 						))}
 					</List>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={() => setOpenSubscriptions(false)} color="primary">Закрыть</Button>
+					<button className={classes.subscr}   onClick={() => setOpenSubscriptions(false)} color="primary">Закрыть</button>
 				</DialogActions>
 			</Dialog>
 
-			<Button variant="contained" color="primary" onClick={() => setOpenSubscribers(true)}>Подписчики</Button>
+			<button className={classes.subscr} variant="contained" color="primary" onClick={() => setOpenSubscribers(true)}>Подписчики</button>
 			<Dialog open={openSubscribers} onClose={() => setOpenSubscribers(false)}>
 				<DialogTitle>Подписчики</DialogTitle>
 				<DialogContent>
@@ -173,14 +173,14 @@ const MyProfilePage = () => {
 							<ListItem key={subscriber.userId}>
 								<ListItemText primary={subscriber.username} secondary={subscriber.email} />
 								{subscriber.userImage && (
-									<Avatar src={'http://83.229.83.240:9000/writewave/' + subscriber.userImage} />
+									<Avatar src={`${window.minioUrl}/writewave/` + subscriber.userImage} />
 								)}
 							</ListItem>
 						))}
 					</List>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={() => setOpenSubscribers(false)} color="primary">Закрыть</Button>
+					<button className={classes.subscr}  onClick={() => setOpenSubscribers(false)} color="primary">Закрыть</button>
 				</DialogActions>
 			</Dialog>
 		</div>

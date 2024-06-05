@@ -51,7 +51,7 @@ namespace WriteWave.Application.Services
 
         public async Task<string> Login(string username, string password)
         {
-            var user = await _userRepository.GetByUserName(username);
+            var user = await _userRepository.GetAsync(u => u.Username == username || u.Email == username);
             if (user.VerifiedAt == null)
             {
                 throw new UnauthorizedAccessException("User not verified");

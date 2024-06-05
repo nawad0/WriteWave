@@ -11,6 +11,7 @@ const ArticleList = ({ articles, handleLike, handleFavorite, handleSubscribe, us
 	const handleViewUser = (userId) => {
 		navigate(`/profile/${userId}`);
 	};
+	
 	const truncateText = (text, maxLength) => {
 		// Удаляем HTML-теги из текста
 		const withoutHtml = text.replace(/<[^>]*>/g, '');
@@ -31,14 +32,7 @@ const ArticleList = ({ articles, handleLike, handleFavorite, handleSubscribe, us
 			const images = {};
 			for (const article of articles) {
 				const imageUrl = extractImage(article.content);
-				if (!imageUrl) {
-					// If no image found, fetch image from Unsplash API
-					const unsplashResponse = await fetch(`https://api.unsplash.com/photos/random?query=${article.title}&client_id=VfFvLYi-1d7dj6jKipRQQf0Kk-BVl93G0OxkmjbEpg4`);
-					const unsplashData = await unsplashResponse.json();
-					images[article.articleId] = unsplashData.urls.regular;
-				} else {
 					images[article.articleId] = imageUrl;
-				}
 			}
 			setArticleImages(images);
 		};
@@ -56,6 +50,7 @@ const ArticleList = ({ articles, handleLike, handleFavorite, handleSubscribe, us
 			<div className={classes.main}>
 				{articles.map((article) => (
 					<ArticleCard
+						key={article.articleId}
 						article={article}
 						type="first"
 						handleViewArticle={handleViewArticle}

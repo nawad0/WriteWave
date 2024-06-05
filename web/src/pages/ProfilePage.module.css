@@ -27,6 +27,7 @@
 	display: flex;
 	justify-content: center;
 	text-align: center;
+	
 }
 .name {
 	font-size: 30px;
@@ -46,6 +47,7 @@
 	display: flex;
 	justify-content: center;
 	text-align: center;
+	
 }
 
 .profile-info img {

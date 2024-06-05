@@ -51,6 +51,11 @@
     build:
       context: .
       dockerfile: web/Dockerfile
+      args:
+#        VITE_API_URL: "http://83.229.83.240:5177"
+        VITE_API_URL: "http://localhost:5177"
+        VITE_WEB_URL: "http://localhost:3000"
+        VITE_MINIO_URL: "http://localhost:9000"
     ports:
       - "3000:3000"
     networks:

@@ -16,6 +16,12 @@
 	color: white;
 	background-color: #943dd7;
 	z-index: 10;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+}
+.button__container button p{
+	margin-bottom: 12px;
 }
 
 .button__container button:hover {

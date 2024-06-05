@@ -40,7 +40,7 @@ const MyArticlesList = ({ articles, handleDeleteArticle, handlePublishArticle })
 				{articles.map((article) => (
 					<li key={article.articleId} className={classes.card}>
 						<div className={classes.user}>
-							<img src={`http://83.229.83.240:9000/writewave/` + article.userImage} alt="User Avatar" style={{ width: '60px', height: '60px', borderRadius: '50%' }} />
+							<img src={`${window.minioUrl}/writewave/` + article.userImage} alt="User Avatar" style={{ width: '60px', height: '60px', borderRadius: '50%' }} />
 							<h3>{article.username}</h3>
 						</div>
 						<div className={classes.image__container} onClick={() => handleViewArticle(article.articleId)}>

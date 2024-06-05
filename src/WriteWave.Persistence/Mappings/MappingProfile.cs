@@ -32,8 +32,10 @@ public class MappingProfile : Profile
         //     .ForMember(dest => dest.UserImage, opt => opt.MapFrom(src => src.User.Image)).ReverseMap();
         CreateMap<Comment, CommentDTO>()
             .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.User.Username))
-            .ForMember(dest => dest.UserImage, opt => opt.MapFrom(src => src.User.Image));
-
+            .ForMember(dest => dest.UserImage, opt => opt.MapFrom(src => src.User.Image))
+            .ForMember(dest => dest.Replies, opt => opt.Ignore())
+            .ForMember(dest => dest.ParentId, opt => opt.MapFrom(src => src.ParentCommentId)).ReverseMap();
+            
         CreateMap<Article, ArticleDTO>()
             .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => src.Comments))
             .ForMember(dest => dest.LikeCount, opt => opt.MapFrom(src => src.Likes.Count))

@@ -22,7 +22,7 @@ const modules = {
 		upload: async (file) => {
 			try {
 				const compressedFile = await compressImage(file);
-				const filename = `http://83.229.83.240:9000/writewave/` + (await uploadImageCallBack(compressedFile));
+				const filename = `${window.minioUrl}/writewave/` + (await uploadImageCallBack(compressedFile));
 				return filename;
 			} catch (error) {
 				console.error('Failed to upload image:', error);

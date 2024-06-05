@@ -101,7 +101,7 @@ const RegisterPage = () => {
 										onClose={() => setUsernameIncorrectRegister(false)}/>
 						</div>
 						<div>
-							<input type="email" placeholder="Email" value={email}
+							<input type="text" placeholder="Email" value={email}
 								   onChange={(e) => setEmail(e.target.value)}/>
 							<ErrorAlert message={errorEmailRegisterMessage} isOpen={emailIncorrectRegister}
 										onClose={() => setEmailIncorrectRegister(false)}/>

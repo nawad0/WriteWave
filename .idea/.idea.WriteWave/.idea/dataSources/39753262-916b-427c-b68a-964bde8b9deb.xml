@@ -11,9 +11,9 @@
 4||10|c|G
 4||10|C|G
 4||10|T|G</Grants>
-      <IntrospectionStateNumber>886</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1188</IntrospectionStateNumber>
       <ServerVersion>16.2</ServerVersion>
-      <StartupTime>1712821105</StartupTime>
+      <StartupTime>1716839985</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -54,15 +54,15 @@ false Africa/Bissau
 false Africa/Blantyre
 false Africa/Brazzaville
 false Africa/Bujumbura
-false Africa/Cairo
-true Africa/Casablanca
+true Africa/Cairo
+false Africa/Casablanca
 true Africa/Ceuta
 false Africa/Conakry
 false Africa/Dakar
 false Africa/Dar_es_Salaam
 false Africa/Djibouti
 false Africa/Douala
-true Africa/El_Aaiun
+false Africa/El_Aaiun
 false Africa/Freetown
 false Africa/Gaborone
 false Africa/Harare
@@ -306,9 +306,9 @@ false Asia/Dili
 false Asia/Dubai
 false Asia/Dushanbe
 true Asia/Famagusta
-false Asia/Gaza
+true Asia/Gaza
 false Asia/Harbin
-false Asia/Hebron
+true Asia/Hebron
 false Asia/Ho_Chi_Minh
 false Asia/Hong_Kong
 false Asia/Hovd
@@ -465,7 +465,7 @@ true EGST
 false EGT
 false EST
 true EST5EDT
-false Egypt
+true Egypt
 false Eire
 false Etc/GMT
 false Etc/GMT+0
@@ -809,15 +809,15 @@ false posix/Africa/Bissau
 false posix/Africa/Blantyre
 false posix/Africa/Brazzaville
 false posix/Africa/Bujumbura
-false posix/Africa/Cairo
-true posix/Africa/Casablanca
+true posix/Africa/Cairo
+false posix/Africa/Casablanca
 true posix/Africa/Ceuta
 false posix/Africa/Conakry
 false posix/Africa/Dakar
 false posix/Africa/Dar_es_Salaam
 false posix/Africa/Djibouti
 false posix/Africa/Douala
-true posix/Africa/El_Aaiun
+false posix/Africa/El_Aaiun
 false posix/Africa/Freetown
 false posix/Africa/Gaborone
 false posix/Africa/Harare
@@ -1061,9 +1061,9 @@ false posix/Asia/Dili
 false posix/Asia/Dubai
 false posix/Asia/Dushanbe
 true posix/Asia/Famagusta
-false posix/Asia/Gaza
+true posix/Asia/Gaza
 false posix/Asia/Harbin
-false posix/Asia/Hebron
+true posix/Asia/Hebron
 false posix/Asia/Ho_Chi_Minh
 false posix/Asia/Hong_Kong
 false posix/Asia/Hovd
@@ -1185,7 +1185,7 @@ true posix/Cuba
 true posix/EET
 false posix/EST
 true posix/EST5EDT
-false posix/Egypt
+true posix/Egypt
 false posix/Eire
 false posix/Etc/GMT
 false posix/Etc/GMT+0
@@ -1421,7 +1421,7 @@ true posixrules
 13212||10|C|G
 13212||-9223372036854775808|U|G
 13212||10|U|G</Grants>
-      <IntrospectionStateNumber>886</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1188</IntrospectionStateNumber>
       <ObjectId>24584</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -9876,493 +9876,757 @@ true posixrules
     <schema id="508" parent="3" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>886</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-04-11.09:17:33</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>1188</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-05-28.08:16:06</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
     <sequence id="509" parent="508" name="Articles_ArticleId_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>32783</ObjectId>
+      <ObjectId>16505</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="510" parent="508" name="Comments_CommentId_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>32812</ObjectId>
+      <ObjectId>16534</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="511" parent="508" name="Likes_LikeId_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>32830</ObjectId>
+      <ObjectId>16552</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="512" parent="508" name="Subscriptions_SubscriptionId_seq">
+    <sequence id="512" parent="508" name="PrivateMessage_MessageId_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>32796</ObjectId>
+      <ObjectId>24675</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>833</StateNumber>
+      <StateNumber>1186</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="513" parent="508" name="Users_UserId_seq">
+    <sequence id="513" parent="508" name="Subscriptions_SubscriptionId_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>32775</ObjectId>
+      <ObjectId>16518</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <table id="514" parent="508" name="Articles">
-      <ObjectId>32784</ObjectId>
-      <StateNumber>833</StateNumber>
+    <sequence id="514" parent="508" name="UserChats_ChatId_seq">
+      <DasType>integer|0s</DasType>
+      <ObjectId>24697</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>1187</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="515" parent="508" name="Users_UserId_seq">
+      <DasType>integer|0s</DasType>
+      <ObjectId>16497</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>976</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="516" parent="508" name="Articles">
+      <ObjectId>16506</ObjectId>
+      <StateNumber>979</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="515" parent="508" name="Comments">
-      <ObjectId>32813</ObjectId>
-      <StateNumber>833</StateNumber>
+    <table id="517" parent="508" name="Comments">
+      <ObjectId>16535</ObjectId>
+      <StateNumber>982</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="516" parent="508" name="Likes">
-      <ObjectId>32831</ObjectId>
-      <StateNumber>833</StateNumber>
+    <table id="518" parent="508" name="Likes">
+      <ObjectId>16553</ObjectId>
+      <StateNumber>976</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="517" parent="508" name="Subscriptions">
-      <ObjectId>32797</ObjectId>
-      <StateNumber>833</StateNumber>
+    <table id="519" parent="508" name="PrivateMessages">
+      <ObjectId>24676</ObjectId>
+      <StateNumber>1187</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="518" parent="508" name="UserArticle">
-      <ObjectId>32853</ObjectId>
-      <StateNumber>885</StateNumber>
+    <table id="520" parent="508" name="Subscriptions">
+      <ObjectId>16519</ObjectId>
+      <StateNumber>976</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="519" parent="508" name="Users">
-      <ObjectId>32776</ObjectId>
-      <StateNumber>833</StateNumber>
+    <table id="521" parent="508" name="UserArticle">
+      <ObjectId>16575</ObjectId>
+      <StateNumber>977</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="520" parent="508" name="__EFMigrationsHistory">
-      <ObjectId>32770</ObjectId>
-      <StateNumber>832</StateNumber>
+    <table id="522" parent="508" name="UserChats">
+      <ObjectId>24698</ObjectId>
+      <StateNumber>1187</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <column id="521" parent="514" name="ArticleId">
+    <table id="523" parent="508" name="Users">
+      <ObjectId>16498</ObjectId>
+      <StateNumber>981</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="524" parent="508" name="__EFMigrationsHistory">
+      <ObjectId>16492</ObjectId>
+      <StateNumber>975</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="525" parent="516" name="ArticleId">
       <DasType>integer|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>833</StateNumber>
-      <SequenceId>32783</SequenceId>
+      <StateNumber>976</StateNumber>
+      <SequenceId>16505</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="522" parent="514" name="Title">
+    <column id="526" parent="516" name="Title">
       <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="523" parent="514" name="Content">
+    <column id="527" parent="516" name="Content">
       <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="524" parent="514" name="PublicationDate">
+    <column id="528" parent="516" name="PublicationDate">
       <DasType>timestamp with time zone|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <TypeId>1184</TypeId>
     </column>
-    <column id="525" parent="514" name="UserId">
+    <column id="529" parent="516" name="UserId">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="526" parent="514" name="FK_Articles_Users_UserId">
+    <column id="530" parent="516" name="Status">
+      <DasType>integer|0s</DasType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>979</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="531" parent="516" name="FK_Articles_Users_UserId">
       <ColNames>UserId</ColNames>
-      <ObjectId>32791</ObjectId>
+      <ObjectId>16513</ObjectId>
       <OnDelete>cascade</OnDelete>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>32776</RefTableId>
+      <RefTableId>16498</RefTableId>
     </foreign-key>
-    <index id="527" parent="514" name="PK_Articles">
+    <index id="532" parent="516" name="PK_Articles">
       <ColNames>ArticleId</ColNames>
-      <ObjectId>32789</ObjectId>
+      <ObjectId>16511</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="528" parent="514" name="IX_Articles_UserId">
+    <index id="533" parent="516" name="IX_Articles_UserId">
       <ColNames>UserId</ColNames>
-      <ObjectId>32846</ObjectId>
-      <StateNumber>833</StateNumber>
+      <ObjectId>16568</ObjectId>
+      <StateNumber>976</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="529" parent="514" name="PK_Articles">
-      <ObjectId>32790</ObjectId>
+    <key id="534" parent="516" name="PK_Articles">
+      <ObjectId>16512</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>833</StateNumber>
-      <UnderlyingIndexId>32789</UnderlyingIndexId>
+      <StateNumber>976</StateNumber>
+      <UnderlyingIndexId>16511</UnderlyingIndexId>
     </key>
-    <column id="530" parent="515" name="CommentId">
+    <column id="535" parent="517" name="CommentId">
       <DasType>integer|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>833</StateNumber>
-      <SequenceId>32812</SequenceId>
+      <StateNumber>976</StateNumber>
+      <SequenceId>16534</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="531" parent="515" name="Content">
+    <column id="536" parent="517" name="Content">
       <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="532" parent="515" name="UserId">
+    <column id="537" parent="517" name="UserId">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="533" parent="515" name="ArticleId">
+    <column id="538" parent="517" name="ArticleId">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="534" parent="515" name="FK_Comments_Users_UserId">
+    <column id="539" parent="517" name="ParentCommentId">
+      <DasType>integer|0s</DasType>
+      <Position>5</Position>
+      <StateNumber>982</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="540" parent="517" name="PublicationDate">
+      <DasType>timestamp with time zone|0s</DasType>
+      <DefaultExpression>&apos;-infinity&apos;::timestamp with time zone</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>982</StateNumber>
+      <TypeId>1184</TypeId>
+    </column>
+    <foreign-key id="541" parent="517" name="FK_Comments_Users_UserId">
       <ColNames>UserId</ColNames>
-      <ObjectId>32825</ObjectId>
+      <ObjectId>16547</ObjectId>
       <OnDelete>cascade</OnDelete>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>32776</RefTableId>
+      <RefTableId>16498</RefTableId>
     </foreign-key>
-    <foreign-key id="535" parent="515" name="FK_Comments_Articles_ArticleId">
+    <foreign-key id="542" parent="517" name="FK_Comments_Articles_ArticleId">
       <ColNames>ArticleId</ColNames>
-      <ObjectId>32820</ObjectId>
+      <ObjectId>16542</ObjectId>
       <OnDelete>cascade</OnDelete>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>32784</RefTableId>
+      <RefTableId>16506</RefTableId>
     </foreign-key>
-    <index id="536" parent="515" name="PK_Comments">
+    <foreign-key id="543" parent="517" name="FK_Comments_Comments_ParentCommentId">
+      <ColNames>ParentCommentId</ColNames>
+      <ObjectId>16595</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <StateNumber>982</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16535</RefTableId>
+    </foreign-key>
+    <index id="544" parent="517" name="PK_Comments">
       <ColNames>CommentId</ColNames>
-      <ObjectId>32818</ObjectId>
+      <ObjectId>16540</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="537" parent="515" name="IX_Comments_UserId">
+    <index id="545" parent="517" name="IX_Comments_UserId">
       <ColNames>UserId</ColNames>
-      <ObjectId>32848</ObjectId>
-      <StateNumber>833</StateNumber>
+      <ObjectId>16570</ObjectId>
+      <StateNumber>976</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="538" parent="515" name="IX_Comments_ArticleId">
+    <index id="546" parent="517" name="IX_Comments_ArticleId">
       <ColNames>ArticleId</ColNames>
-      <ObjectId>32847</ObjectId>
-      <StateNumber>833</StateNumber>
+      <ObjectId>16569</ObjectId>
+      <StateNumber>976</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="539" parent="515" name="PK_Comments">
-      <ObjectId>32819</ObjectId>
+    <index id="547" parent="517" name="IX_Comments_ParentCommentId">
+      <ColNames>ParentCommentId</ColNames>
+      <ObjectId>16594</ObjectId>
+      <StateNumber>982</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="548" parent="517" name="PK_Comments">
+      <ObjectId>16541</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>833</StateNumber>
-      <UnderlyingIndexId>32818</UnderlyingIndexId>
+      <StateNumber>976</StateNumber>
+      <UnderlyingIndexId>16540</UnderlyingIndexId>
     </key>
-    <column id="540" parent="516" name="LikeId">
+    <column id="549" parent="518" name="LikeId">
       <DasType>integer|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>833</StateNumber>
-      <SequenceId>32830</SequenceId>
+      <StateNumber>976</StateNumber>
+      <SequenceId>16552</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="541" parent="516" name="UserId">
+    <column id="550" parent="518" name="UserId">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="542" parent="516" name="ArticleId">
+    <column id="551" parent="518" name="ArticleId">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="543" parent="516" name="FK_Likes_Users_UserId">
+    <foreign-key id="552" parent="518" name="FK_Likes_Users_UserId">
       <ColNames>UserId</ColNames>
-      <ObjectId>32841</ObjectId>
+      <ObjectId>16563</ObjectId>
       <OnDelete>cascade</OnDelete>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>32776</RefTableId>
+      <RefTableId>16498</RefTableId>
     </foreign-key>
-    <foreign-key id="544" parent="516" name="FK_Likes_Articles_ArticleId">
+    <foreign-key id="553" parent="518" name="FK_Likes_Articles_ArticleId">
       <ColNames>ArticleId</ColNames>
-      <ObjectId>32836</ObjectId>
+      <ObjectId>16558</ObjectId>
       <OnDelete>cascade</OnDelete>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>32784</RefTableId>
+      <RefTableId>16506</RefTableId>
     </foreign-key>
-    <index id="545" parent="516" name="PK_Likes">
+    <index id="554" parent="518" name="PK_Likes">
       <ColNames>LikeId</ColNames>
-      <ObjectId>32834</ObjectId>
+      <ObjectId>16556</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>833</StateNumber>
+      <StateNumber>976</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="546" parent="516" name="IX_Likes_UserId">
+    <index id="555" parent="518" name="IX_Likes_UserId">
       <ColNames>UserId</ColNames>
-      <ObjectId>32850</ObjectId>
-      <StateNumber>833</StateNumber>
+      <ObjectId>16572</ObjectId>
+      <StateNumber>976</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="547" parent="516" name="IX_Likes_ArticleId">
+    <index id="556" parent="518" name="IX_Likes_ArticleId">
       <ColNames>ArticleId</ColNames>
-      <ObjectId>32849</ObjectId>
-      <StateNumber>833</StateNumber>
+      <ObjectId>16571</ObjectId>
+      <StateNumber>976</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="548" parent="516" name="PK_Likes">
-      <ObjectId>32835</ObjectId>
+    <key id="557" parent="518" name="PK_Likes">
+      <ObjectId>16557</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>833</StateNumber>
-      <UnderlyingIndexId>32834</UnderlyingIndexId>
+      <StateNumber>976</StateNumber>
+      <UnderlyingIndexId>16556</UnderlyingIndexId>
     </key>
-    <column id="549" parent="517" name="SubscriptionId">
+    <column id="558" parent="519" name="MessageId">
       <DasType>integer|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>833</StateNumber>
-      <SequenceId>32796</SequenceId>
+      <StateNumber>1186</StateNumber>
+      <SequenceId>24675</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="550" parent="517" name="SubscriberUserId">
-      <DasType>integer|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="559" parent="519" name="Content">
+      <DasType>text|0s</DasType>
       <Position>2</Position>
-      <StateNumber>833</StateNumber>
-      <TypeId>23</TypeId>
+      <StateNumber>1186</StateNumber>
+      <TypeId>25</TypeId>
     </column>
-    <column id="551" parent="517" name="TargetUserId">
-      <DasType>integer|0s</DasType>
+    <column id="560" parent="519" name="SentAt">
+      <DasType>timestamp with time zone|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>833</StateNumber>
+      <StateNumber>1186</StateNumber>
+      <TypeId>1184</TypeId>
+    </column>
+    <column id="561" parent="519" name="SenderId">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>1186</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="552" parent="517" name="FK_Subscriptions_Users_SubscriberUserId">
-      <ColNames>SubscriberUserId</ColNames>
-      <ObjectId>32802</ObjectId>
-      <OnDelete>cascade</OnDelete>
-      <StateNumber>833</StateNumber>
+    <column id="562" parent="519" name="ChatId">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>1187</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="563" parent="519" name="UserId">
+      <DasType>integer|0s</DasType>
+      <Position>6</Position>
+      <StateNumber>1187</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="564" parent="519" name="FK_PrivateMessages_Users_SenderId">
+      <ColNames>SenderId</ColNames>
+      <ObjectId>24721</ObjectId>
+      <OnDelete>restrict</OnDelete>
+      <StateNumber>1187</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>32776</RefTableId>
+      <RefTableId>16498</RefTableId>
     </foreign-key>
-    <foreign-key id="553" parent="517" name="FK_Subscriptions_Users_TargetUserId">
-      <ColNames>TargetUserId</ColNames>
-      <ObjectId>32807</ObjectId>
+    <foreign-key id="565" parent="519" name="FK_PrivateMessages_UserChats_ChatId">
+      <ColNames>ChatId</ColNames>
+      <ObjectId>24716</ObjectId>
       <OnDelete>cascade</OnDelete>
-      <StateNumber>833</StateNumber>
+      <StateNumber>1187</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>32776</RefTableId>
+      <RefTableId>24698</RefTableId>
     </foreign-key>
-    <index id="554" parent="517" name="PK_Subscriptions">
-      <ColNames>SubscriptionId</ColNames>
-      <ObjectId>32800</ObjectId>
+    <foreign-key id="566" parent="519" name="FK_PrivateMessages_Users_UserId">
+      <ColNames>UserId</ColNames>
+      <ObjectId>24726</ObjectId>
+      <StateNumber>1187</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16498</RefTableId>
+    </foreign-key>
+    <index id="567" parent="519" name="PK_PrivateMessages">
+      <ColNames>MessageId</ColNames>
+      <ObjectId>24695</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>833</StateNumber>
+      <StateNumber>1187</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="555" parent="517" name="IX_Subscriptions_SubscriberUserId">
-      <ColNames>SubscriberUserId</ColNames>
-      <ObjectId>32851</ObjectId>
-      <StateNumber>833</StateNumber>
+    <index id="568" parent="519" name="IX_PrivateMessages_SenderId">
+      <ColNames>SenderId</ColNames>
+      <ObjectId>24694</ObjectId>
+      <StateNumber>1187</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="556" parent="517" name="IX_Subscriptions_TargetUserId">
-      <ColNames>TargetUserId</ColNames>
-      <ObjectId>32852</ObjectId>
-      <StateNumber>833</StateNumber>
+    <index id="569" parent="519" name="IX_PrivateMessages_ChatId">
+      <ColNames>ChatId</ColNames>
+      <ObjectId>24693</ObjectId>
+      <StateNumber>1187</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="557" parent="517" name="PK_Subscriptions">
-      <ObjectId>32801</ObjectId>
+    <index id="570" parent="519" name="IX_PrivateMessages_UserId">
+      <ColNames>UserId</ColNames>
+      <ObjectId>24713</ObjectId>
+      <StateNumber>1187</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="571" parent="519" name="PK_PrivateMessages">
+      <ObjectId>24696</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>833</StateNumber>
-      <UnderlyingIndexId>32800</UnderlyingIndexId>
+      <StateNumber>1187</StateNumber>
+      <UnderlyingIndexId>24695</UnderlyingIndexId>
     </key>
-    <column id="558" parent="518" name="UserId">
+    <column id="572" parent="520" name="SubscriptionId">
       <DasType>integer|0s</DasType>
+      <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>885</StateNumber>
+      <StateNumber>976</StateNumber>
+      <SequenceId>16518</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="559" parent="518" name="ArticleId">
+    <column id="573" parent="520" name="SubscriberUserId">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>885</StateNumber>
+      <StateNumber>976</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="560" parent="518" name="FK_UserArticle_Users_UserId">
+    <column id="574" parent="520" name="TargetUserId">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>976</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="575" parent="520" name="FK_Subscriptions_Users_SubscriberUserId">
+      <ColNames>SubscriberUserId</ColNames>
+      <ObjectId>16524</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <StateNumber>976</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16498</RefTableId>
+    </foreign-key>
+    <foreign-key id="576" parent="520" name="FK_Subscriptions_Users_TargetUserId">
+      <ColNames>TargetUserId</ColNames>
+      <ObjectId>16529</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <StateNumber>976</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16498</RefTableId>
+    </foreign-key>
+    <index id="577" parent="520" name="PK_Subscriptions">
+      <ColNames>SubscriptionId</ColNames>
+      <ObjectId>16522</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>976</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="578" parent="520" name="IX_Subscriptions_SubscriberUserId">
+      <ColNames>SubscriberUserId</ColNames>
+      <ObjectId>16573</ObjectId>
+      <StateNumber>976</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="579" parent="520" name="IX_Subscriptions_TargetUserId">
+      <ColNames>TargetUserId</ColNames>
+      <ObjectId>16574</ObjectId>
+      <StateNumber>976</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="580" parent="520" name="PK_Subscriptions">
+      <ObjectId>16523</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>976</StateNumber>
+      <UnderlyingIndexId>16522</UnderlyingIndexId>
+    </key>
+    <column id="581" parent="521" name="UserId">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>977</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="582" parent="521" name="ArticleId">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>977</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="583" parent="521" name="FK_UserArticle_Users_UserId">
       <ColNames>UserId</ColNames>
-      <ObjectId>32863</ObjectId>
+      <ObjectId>16585</ObjectId>
       <OnDelete>cascade</OnDelete>
-      <StateNumber>885</StateNumber>
+      <StateNumber>977</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>32776</RefTableId>
+      <RefTableId>16498</RefTableId>
     </foreign-key>
-    <foreign-key id="561" parent="518" name="FK_UserArticle_Articles_ArticleId">
+    <foreign-key id="584" parent="521" name="FK_UserArticle_Articles_ArticleId">
       <ColNames>ArticleId</ColNames>
-      <ObjectId>32858</ObjectId>
+      <ObjectId>16580</ObjectId>
       <OnDelete>cascade</OnDelete>
-      <StateNumber>885</StateNumber>
+      <StateNumber>977</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>32784</RefTableId>
+      <RefTableId>16506</RefTableId>
     </foreign-key>
-    <index id="562" parent="518" name="PK_UserArticle">
+    <index id="585" parent="521" name="PK_UserArticle">
       <ColNames>UserId
 ArticleId</ColNames>
-      <ObjectId>32856</ObjectId>
+      <ObjectId>16578</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>885</StateNumber>
+      <StateNumber>977</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="563" parent="518" name="IX_UserArticle_ArticleId">
+    <index id="586" parent="521" name="IX_UserArticle_ArticleId">
       <ColNames>ArticleId</ColNames>
-      <ObjectId>32868</ObjectId>
-      <StateNumber>885</StateNumber>
+      <ObjectId>16590</ObjectId>
+      <StateNumber>977</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="564" parent="518" name="PK_UserArticle">
-      <ObjectId>32857</ObjectId>
+    <key id="587" parent="521" name="PK_UserArticle">
+      <ObjectId>16579</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>885</StateNumber>
-      <UnderlyingIndexId>32856</UnderlyingIndexId>
+      <StateNumber>977</StateNumber>
+      <UnderlyingIndexId>16578</UnderlyingIndexId>
     </key>
-    <column id="565" parent="519" name="UserId">
+    <column id="588" parent="522" name="ChatId">
       <DasType>integer|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>833</StateNumber>
-      <SequenceId>32775</SequenceId>
+      <StateNumber>1187</StateNumber>
+      <SequenceId>24697</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="566" parent="519" name="Username">
-      <DasType>text|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StateNumber>833</StateNumber>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="567" parent="519" name="Email">
-      <DasType>text|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StateNumber>833</StateNumber>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="568" parent="519" name="Password">
-      <DasType>text|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StateNumber>833</StateNumber>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="569" parent="519" name="Role">
+    <column id="589" parent="522" name="User1Id">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
-      <Position>5</Position>
-      <StateNumber>833</StateNumber>
+      <Position>2</Position>
+      <StateNumber>1187</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="570" parent="519" name="PK_Users">
-      <ColNames>UserId</ColNames>
-      <ObjectId>32781</ObjectId>
+    <column id="590" parent="522" name="User2Id">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>1187</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="591" parent="522" name="FK_UserChats_Users_User1Id">
+      <ColNames>User1Id</ColNames>
+      <ObjectId>24703</ObjectId>
+      <OnDelete>restrict</OnDelete>
+      <StateNumber>1187</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16498</RefTableId>
+    </foreign-key>
+    <foreign-key id="592" parent="522" name="FK_UserChats_Users_User2Id">
+      <ColNames>User2Id</ColNames>
+      <ObjectId>24708</ObjectId>
+      <OnDelete>restrict</OnDelete>
+      <StateNumber>1187</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16498</RefTableId>
+    </foreign-key>
+    <index id="593" parent="522" name="PK_UserChats">
+      <ColNames>ChatId</ColNames>
+      <ObjectId>24701</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>833</StateNumber>
+      <StateNumber>1187</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="571" parent="519" name="PK_Users">
-      <ObjectId>32782</ObjectId>
+    <index id="594" parent="522" name="IX_UserChats_User1Id">
+      <ColNames>User1Id</ColNames>
+      <ObjectId>24714</ObjectId>
+      <StateNumber>1187</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="595" parent="522" name="IX_UserChats_User2Id">
+      <ColNames>User2Id</ColNames>
+      <ObjectId>24715</ObjectId>
+      <StateNumber>1187</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="596" parent="522" name="PK_UserChats">
+      <ObjectId>24702</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>833</StateNumber>
-      <UnderlyingIndexId>32781</UnderlyingIndexId>
+      <StateNumber>1187</StateNumber>
+      <UnderlyingIndexId>24701</UnderlyingIndexId>
     </key>
-    <column id="572" parent="520" name="MigrationId">
+    <column id="597" parent="523" name="UserId">
+      <DasType>integer|0s</DasType>
+      <IdentityKind>by-default</IdentityKind>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>976</StateNumber>
+      <SequenceId>16497</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="598" parent="523" name="Username">
+      <DasType>text|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>976</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="599" parent="523" name="Email">
+      <DasType>text|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>976</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="600" parent="523" name="Password">
+      <DasType>text|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>976</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="601" parent="523" name="Role">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>976</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="602" parent="523" name="Image">
+      <DasType>text|0s</DasType>
+      <Position>6</Position>
+      <StateNumber>978</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="603" parent="523" name="EmailConfirmed">
+      <DasType>boolean|0s</DasType>
+      <DefaultExpression>false</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+      <StateNumber>980</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="604" parent="523" name="PasswordResetToken">
+      <DasType>text|0s</DasType>
+      <Position>8</Position>
+      <StateNumber>981</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="605" parent="523" name="PasswordResetTokenExpires">
+      <DasType>timestamp with time zone|0s</DasType>
+      <Position>9</Position>
+      <StateNumber>981</StateNumber>
+      <TypeId>1184</TypeId>
+    </column>
+    <column id="606" parent="523" name="VerificationToken">
+      <DasType>text|0s</DasType>
+      <Position>10</Position>
+      <StateNumber>981</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="607" parent="523" name="VerifiedAt">
+      <DasType>timestamp with time zone|0s</DasType>
+      <Position>11</Position>
+      <StateNumber>981</StateNumber>
+      <TypeId>1184</TypeId>
+    </column>
+    <index id="608" parent="523" name="PK_Users">
+      <ColNames>UserId</ColNames>
+      <ObjectId>16503</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>976</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="609" parent="523" name="PK_Users">
+      <ObjectId>16504</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>976</StateNumber>
+      <UnderlyingIndexId>16503</UnderlyingIndexId>
+    </key>
+    <column id="610" parent="524" name="MigrationId">
       <DasType>varchar(150)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>832</StateNumber>
+      <StateNumber>975</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="573" parent="520" name="ProductVersion">
+    <column id="611" parent="524" name="ProductVersion">
       <DasType>varchar(32)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>832</StateNumber>
+      <StateNumber>975</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="574" parent="520" name="PK___EFMigrationsHistory">
+    <index id="612" parent="524" name="PK___EFMigrationsHistory">
       <ColNames>MigrationId</ColNames>
-      <ObjectId>32773</ObjectId>
+      <ObjectId>16495</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>832</StateNumber>
+      <StateNumber>975</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="575" parent="520" name="PK___EFMigrationsHistory">
-      <ObjectId>32774</ObjectId>
+    <key id="613" parent="524" name="PK___EFMigrationsHistory">
+      <ObjectId>16496</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>832</StateNumber>
-      <UnderlyingIndexId>32773</UnderlyingIndexId>
+      <StateNumber>975</StateNumber>
+      <UnderlyingIndexId>16495</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>

@@ -21,8 +21,9 @@ namespace WriteWave.Api.Controllers;
     private IValidator<ResetPasswordRequest> _resetPasswordRequestValidator;
     private IValidator<LoginRequest> _loginRequestValidator;
     private readonly IEmailService _emailService;
+    private readonly IConfiguration _configuration;
 
-    public AuthController(UsersService usersService, IUserRepository userRepository, IValidator<RegisterRequest> registerRequestValidator, IValidator<LoginRequest> loginRequestValidator, IEmailService emailService, IValidator<ResetPasswordRequest> resetPasswordRequestValidator)
+    public AuthController(UsersService usersService, IUserRepository userRepository, IValidator<RegisterRequest> registerRequestValidator, IValidator<LoginRequest> loginRequestValidator, IEmailService emailService, IValidator<ResetPasswordRequest> resetPasswordRequestValidator, IConfiguration configuration)
     {
         _usersService = usersService;
         _userRepository = userRepository;
@@ -30,6 +31,7 @@ namespace WriteWave.Api.Controllers;
         _loginRequestValidator = loginRequestValidator;
         _emailService = emailService;
         _resetPasswordRequestValidator = resetPasswordRequestValidator;
+        _configuration = configuration;
     }
 
     [HttpPost("register")]
@@ -141,8 +143,8 @@ namespace WriteWave.Api.Controllers;
     
     private async Task<bool> SendConfirmationEmail(string? email, string VerificationToken)
     {
-        var confirmationLink = $"http://83.229.83.240:3000/confirm-email/{VerificationToken}";
-
+        var frontendUrl = _configuration["AllowedOrigins"];
+        var confirmationLink = $"{frontendUrl}/confirm-email/{VerificationToken}";
         var emailBody = $@"
             <html>
             <head>
@@ -207,8 +209,8 @@ namespace WriteWave.Api.Controllers;
     
    private async Task<bool> SendResetPasswordEmail(string? email, string VerificationToken)
     {
-        var confirmationLink = $"http://83.229.83.240:3000/reset-password/{VerificationToken}";
-        
+        var frontendUrl = _configuration["AllowedOrigins"];
+        var confirmationLink = $"{frontendUrl}/reset-password/{VerificationToken}";
         var emailBody = $@"
             <html>
             <head>

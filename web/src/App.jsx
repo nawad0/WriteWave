@@ -18,9 +18,12 @@ import RegisterPage from './pages/RegisterPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import ConfirmEmailPage from './pages/ConfirmEmailPage';
+import Chat from './pages/Chat.jsx';
+import ChatsPage from './pages/ChatsPage.jsx';
 function App() {
     const [isAdmin, setIsAdmin] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [user, setUser] = useState(null);
     useEffect(() => {
         fetch(`${window.apiUrl}/Admin/current`, {
             method: 'GET',
@@ -29,6 +32,7 @@ function App() {
             .then(response => response.json())
             .then(data => {
                 setIsAdmin(data.role === 'Admin');
+                setUser(data);
             })
             .catch(error => console.error('Error fetching user info:', error));
 
@@ -65,6 +69,8 @@ function App() {
                         <Route path="/article/:articleId" element={<ArticlePage />} />
                         {isAdmin && <Route path="/admin/article/:articleId" element={<AdminArticlePage />} />}
                         <Route path="/profile/:userId" element={<ProfilePage />} />
+                        <Route path="/chat" element={<Chat />} />
+                        <Route path="/chats" element={<ChatsPage user={user} />} />
                         <Route path="/update-article/:articleId" element={<UpdateArticlePage />} />
                         <Route path="*" element={<Navigate to="/" />} />
                     </>

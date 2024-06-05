@@ -425,56 +425,70 @@ namespace WriteWave.Api.Controllers
         }
         
         
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetArticle(int id, int commentPageSize = 0, int commentPageNumber = 0)
+       [HttpGet("{id}")]
+    public async Task<IActionResult> GetArticle(int id, int commentPageSize = 0, int commentPageNumber = 0)
+    {
+        var article = await _articleRepository.GetAsync(
+            filter: a => a.ArticleId == id,
+            includeProperties: "Comments.User,Likes,User,Comments.Replies.User"
+        );
+        if (article == null)
         {
-            var article = await _articleRepository.GetAsync(
-                filter: a => a.ArticleId == id,
-                includeProperties: "Comments.User,Likes,User"
-            );
-            if (article == null)
-            {
-                return NotFound();
-            }
-
-            List<Comment> comments = article.Comments.OrderByDescending(c => c.CommentId).Skip(commentPageSize * commentPageNumber)
-                    .Take(commentPageSize)
-                    .ToList();
-            
-            var newArticle = _mapper.Map<ArticleDTO>(article);
-            newArticle.LikeCount = article.Likes.Count;
-            newArticle.CommentCount = article.Comments.Count;
-            newArticle.Comments = _mapper.Map<List<CommentDTO>>(comments);
-
-            var userId = int.Parse(User.FindFirst("userId").Value);
-            newArticle.UserId = article.UserId;
-            var user = await _userRepository.GetUserAsync(userId);
-            
-            var userArticles = await _userArticleRepository.GetAllAsync(ua => ua.UserId == userId);
-            var favoriteArticleIds = userArticles.Select(ua => ua.ArticleId).ToList(); 
-            var like = await _likeRepository.GetAsync(l => l.UserId == userId && l.ArticleId == article.ArticleId);
-                
-            if (like != null)
-            {
-                newArticle.UserLiked = true;
-            }
-            var subscription = await _subscriptionRepository.GetAsync(s => s.SubscriberUserId == userId && s.TargetUserId == article.UserId);
-            if (subscription != null)
-            {
-                newArticle.UserSubscribed = true;
-            }
-
-            if (favoriteArticleIds.Contains(article.ArticleId))
-            {
-                newArticle.UserFavorited = true; 
-            }
-            else
-            {
-                newArticle.UserFavorited = false; 
-            }
-
-            return Ok(newArticle);
+            return NotFound();
         }
+
+        var comments = article.Comments
+            .Where(c => c.ParentCommentId == null) // Get top-level comments
+            .OrderByDescending(c => c.CommentId)
+            .Skip(commentPageSize * commentPageNumber)
+            .Take(commentPageSize)
+            .ToList();
+
+        var newArticle = _mapper.Map<ArticleDTO>(article);
+        newArticle.LikeCount = article.Likes.Count;
+        newArticle.CommentCount = article.Comments.Count;
+        newArticle.Comments = _mapper.Map<List<CommentDTO>>(comments);
+
+        // Mapping nested comments
+        foreach (var commentDto in newArticle.Comments)
+        {
+            MapReplies(commentDto, article.Comments);
+        }
+
+        var userId = int.Parse(User.FindFirst("userId").Value);
+        newArticle.UserId = article.UserId;
+        var user = await _userRepository.GetUserAsync(userId);
+
+        var userArticles = await _userArticleRepository.GetAllAsync(ua => ua.UserId == userId);
+        var favoriteArticleIds = userArticles.Select(ua => ua.ArticleId).ToList();
+        var like = await _likeRepository.GetAsync(l => l.UserId == userId && l.ArticleId == article.ArticleId);
+
+        if (like != null)
+        {
+            newArticle.UserLiked = true;
+        }
+        var subscription = await _subscriptionRepository.GetAsync(s => s.SubscriberUserId == userId && s.TargetUserId == article.UserId);
+        if (subscription != null)
+        {
+            newArticle.UserSubscribed = true;
+        }
+
+        newArticle.UserFavorited = favoriteArticleIds.Contains(article.ArticleId);
+
+        return Ok(newArticle);
+    }
+
+    private void MapReplies(CommentDTO commentDto, ICollection<Comment> allComments)
+    {
+        var replies = allComments.Where(c => c.ParentCommentId == commentDto.CommentId).ToList();
+        commentDto.Replies = _mapper.Map<List<CommentDTO>>(replies);
+
+        foreach (var replyDto in commentDto.Replies)
+        {
+            MapReplies(replyDto, allComments); // Recursive call for nested replies
+        }
+    }
+
         
         [HttpPost]
         public async Task<IActionResult> CreateArticle(ArticleCreateEditDTO article)

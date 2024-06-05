@@ -70,7 +70,7 @@ const MyArticlesPage = () => {
 			<div className={classes.main}>
 				
 				<div className={classes.button__container}>
-					<button onClick={() => handleCreatePage()}>+</button>
+					<button onClick={() => handleCreatePage()}><p>+</p></button>
 				</div>
 				{/* <h1>My Articles</h1> */}
 				<MyArticlesList handleDeleteArticle={handleDeleteArticle} articles={articles} handlePublishArticle={handlePublishArticle} />

@@ -72,7 +72,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
 						return 'Неправильный пароль'; // Сообщение об ошибке
 					}
 					if (error.response && error.response.status === 401) {
-						handleLoginUsernameError('Вы не подтвердили почту', true);
+						handleLoginUsernameError('На вау почту пришло письмо с потрвержденим аккаунта', true);
 						return 'Вы не подтвердили почту'; // Сообщение об ошибке
 					}
 					return 'Unknown error'; // Сообщение об ошибке
@@ -91,7 +91,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
 				<div className={classes.register__box}>
 					<h2 className={classes.register__heading}>Вход</h2>
 					<form onSubmit={handleSubmit} className={classes.register__form}>
-						<input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Имя пользователя" />
+						<input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Имя пользователя или email" />
 						<ErrorAlert message={errorUsernameLoginMessage} onClose={() => setUsernameIncorrectLogin(false)} isOpen={usernameIncorrectLogin} />
 						<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Пароль" />
 						<ErrorAlert message={errorPasswordLoginMessage} onClose={() => setPasswordIncorrectLogin(false)} isOpen={passwordIncorrectLogin} />

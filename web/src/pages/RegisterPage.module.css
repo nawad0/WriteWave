@@ -11,7 +11,7 @@
     padding: 20px;
     margin-top: 60px;
     background-color: #fff;
-   
+   margin-left:20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -19,6 +19,7 @@
 .register__heading {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 30px;
 }
 
 .register__form {
@@ -28,7 +29,7 @@
 
 .register__form input {
     padding: 10px;
-    width: 95%;
+    width: 100%;
     margin-bottom: 15px;
     border-radius: 4px;
     border: 1px solid #ccc;
@@ -51,7 +52,7 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: 400px !important;
+    width: 360px !important;
     transition: background-color 0.3s ease;
 }
 

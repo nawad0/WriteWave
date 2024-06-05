@@ -1,7 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import classes from './ProfilePage.module.css';
+import { useParams, useNavigate } from 'react-router-dom';
+
 const ProfilePage = () => {
 	const { userId } = useParams();
 	const [user, setUser] = useState(null);
@@ -10,178 +9,168 @@ const ProfilePage = () => {
 	const [userSubscribed, setUserSubscribed] = useState(false);
 	const [articles, setArticles] = useState([]);
 	const [currentUserId, setCurrentUserId] = useState(0);
+	const [currentUserName, setCurrentUserName] = useState('');
 	const navigate = useNavigate();
+
 	useEffect(() => {
-		fetch(`${window.apiUrl}/api/user`, {
-			method: 'GET',
-			credentials: 'include',
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				setCurrentUserId(data.user.userId);
-				console.log(data.user.userId);
-			})
-			.catch((error) => console.error('Error fetching data:', error));
-
-		fetch(`${window.apiUrl}/api/user/${userId}`, {
-			method: 'GET',
-			credentials: 'include',
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				setUser(data.user);
-				setUserSubscribed(data.userSubscribed);
-				// Выполняем запросы к API только после установки пользователя
-				fetch(`${window.apiUrl}/api/user/subscriptions/${data.user.userId}`, {
+		const fetchData = async () => {
+			try {
+				const userResponse = await fetch(`${window.apiUrl}/api/user`, {
 					method: 'GET',
 					credentials: 'include',
-				})
-					.then((response) => response.json())
-					.then((data) => {
-						setSubscriptions(data.subscriptions);
-					})
-					.catch((error) => console.error('Error fetching user subscriptions:', error));
+				});
+				const userData = await userResponse.json();
+				setCurrentUserId(userData.user.userId);
+				setCurrentUserName(userData.user.username);
 
-				fetch(`${window.apiUrl}/api/user/subscribers/${data.user.userId}`, {
+				const profileResponse = await fetch(`${window.apiUrl}/api/user/${userId}`, {
 					method: 'GET',
 					credentials: 'include',
-				})
-					.then((response) => response.json())
-					.then((data) => {
-						setSubscribers(data.subscribers);
-					})
-					.catch((error) => console.error('Error fetching user subscribers:', error));
-			})
-			.catch((error) => console.error('Error fetching user data:', error));
+				});
+				const profileData = await profileResponse.json();
+				setUser(profileData.user);
+				setUserSubscribed(profileData.userSubscribed);
 
-		fetch(`${window.apiUrl}/api/article/getArticlesByUser/${userId}`, {
-			method: 'GET',
-			credentials: 'include',
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				setArticles(data.articles);
-			})
-			.catch((error) => console.error('Error fetching user articles:', error));
+				const subscriptionsResponse = await fetch(`${window.apiUrl}/api/user/subscriptions/${profileData.user.userId}`, {
+					method: 'GET',
+					credentials: 'include',
+				});
+				const subscriptionsData = await subscriptionsResponse.json();
+				setSubscriptions(subscriptionsData.subscriptions);
+
+				const subscribersResponse = await fetch(`${window.apiUrl}/api/user/subscribers/${profileData.user.userId}`, {
+					method: 'GET',
+					credentials: 'include',
+				});
+				const subscribersData = await subscribersResponse.json();
+				setSubscribers(subscribersData.subscribers);
+
+				const articlesResponse = await fetch(`${window.apiUrl}/api/article/getArticlesByUser/${userId}`, {
+					method: 'GET',
+					credentials: 'include',
+				});
+				const articlesData = await articlesResponse.json();
+				setArticles(articlesData.articles);
+			} catch (error) {
+				console.error('Error fetching data:', error);
+			}
+		};
+
+		fetchData();
 	}, [userId, userSubscribed]);
 
-	const handleSubscribe = (userId) => {
-		fetch(`${window.apiUrl}/api/article/subscribe/${userId}`, {
-			method: 'POST',
-			credentials: 'include',
-		})
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error('Failed to subscribe');
-				}
-				return response.json();
-			})
-			.then((data) => {
-				setUserSubscribed(data.userSubscribed);
-			})
-			.catch((error) => console.error('Ошибка подписки на пользователя:', error));
+	const handleSubscribe = async (userId) => {
+		try {
+			const response = await fetch(`${window.apiUrl}/api/article/subscribe/${userId}`, {
+				method: 'POST',
+				credentials: 'include',
+			});
+
+			if (!response.ok) {
+				throw new Error('Failed to subscribe');
+			}
+
+			const data = await response.json();
+			setUserSubscribed(data.userSubscribed);
+		} catch (error) {
+			console.error('Error subscribing to user:', error);
+		}
 	};
+
 	const handleViewArticle = (articleId) => {
 		navigate(`/article/${articleId}`);
 	};
 
+	const handleOpenChat = () => {
+		navigate('/chat', { state: { userName: currentUserName, userId: currentUserId, otherUserId: userId } });
+	};
+
 	return (
-		// <div>
-		// 	{/* <h1>Profile</h1> */}
-		// 	{user && (
-		// 		<div>
-		// 			<p>Username: {user.username}</p>
-		// 			<p>Email: {user.email}</p>
-		// 			{user.userImage && <img src={'http://localhost:9000/writewave/' + user.userImage} alt="User Avatar" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />}
-		// 		</div>
-		// 	)}
-		// 	{currentUserId != userId && <button onClick={() => handleSubscribe(userId)}>{userSubscribed ? 'Subscribed' : 'Subscribe'}</button>}
+		<div className="container mx-auto p-4 max-w-2xl">
+			<div className="bg-white shadow-md rounded-lg p-6 mb-6">
+				{user && (
+					<div className="flex items-center mb-6">
+						<img
+							src={`${window.minioUrl}/writewave/${user.userImage}`}
+							alt="User Avatar"
+							className="w-20 h-20 rounded-full mr-4"
+						/>
+						<div>
+							<p className="text-2xl font-bold text-purple-700">{user.username}</p>
+							<p className="text-gray-600">{user.email}</p>
+						</div>
+						<button
+							onClick={handleOpenChat}
+							className="ml-auto px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700 focus:outline-none focus:ring focus:ring-purple-300"
+						>
+							Открыть чат
+						</button>
+					</div>
+				)}
+			</div>
 
-		// 	<h2>Подписки</h2>
-		// 	<ul>
-		// 		{subscriptions.map((subscription) => (
-		// 			<li key={subscription.userId}>
-		// 				<p>Username: {subscription.username}</p>
-		// 				<p>Email: {subscription.email}</p>
-		// 				{subscription.userImage && (
-		// 					<img src={'http://localhost:9000/writewave/' + subscription.userImage} alt="Subscription Avatar" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
-		// 				)}
-		// 			</li>
-		// 		))}
-		// 	</ul>
-		// 	<h2>Подписчики</h2>
-		// 	<ul>
-		// 		{subscribers.map((subscription) => (
-		// 			<li key={subscription.userId}>
-		// 				<p>Username: {subscription.username}</p>
-		// 				<p>Email: {subscription.email}</p>
-		// 				{subscription.userImage && (
-		// 					<img src={'http://localhost:9000/writewave/' + subscription.userImage} alt="Subscription Avatar" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
-		// 				)}
-		// 			</li>
-		// 		))}
-		// 	</ul>
-
-		// 	<h2>Статьи</h2>
-		// 	<ul>
-		// 		{articles.map((article) => (
-		// 			<li key={article.articleId}>
-		// 				<p>Title: {article.title}</p>
-		// 				<button onClick={() => handleViewArticle(article.articleId)}>View Article</button>
-		// 			</li>
-		// 		))}
-		// 	</ul>
-		// </div>
-		<>
-			<div className={classes.container}>
-				<div className={classes['profile-card']}>
-					<div className={classes['profile-info']}>
-						{user && (
-							<div>
-								<img src={'http://83.229.83.240:9000/writewave/' + user.userImage} alt="User Avatar" />
-								<div className={classes['profile-data']}>
-									<p className={classes.name}> {user.username}</p>
-									<p className={classes.email}> {user.email}</p>
-								</div>
-							</div>
+			<h2 className="text-2xl font-bold text-purple-700 mb-4">Подписки</h2>
+			<div className="grid grid-cols-1 gap-4">
+				{subscriptions.map((subscription) => (
+					<div
+						className="bg-white shadow-md rounded-lg p-4 flex items-center"
+						key={subscription.userId}
+					>
+						<div>
+							<h3 className="text-lg font-bold text-purple-700">{subscription.username}</h3>
+							<p className="text-gray-600">{subscription.email}</p>
+						</div>
+						{subscription.userImage && (
+							<img
+								src={`${window.minioUrl}/writewave/${subscription.userImage}`}
+								alt="Subscription Avatar"
+								className="ml-auto w-12 h-12 rounded-full"
+							/>
 						)}
 					</div>
-				</div>
-				<h2>Подписки</h2>
-				<div className={classes.subscrs}>
-					{subscriptions.map((subscription) => (
-						<div className={classes.subscr} key={subscription.userId}>
-							<h3>{subscription.username}</h3>
-							<p>{subscription.email}</p>
-							{subscription.userImage && (
-								<img src={'http://83.229.83.240:9000/writewave/' + subscription.userImage} alt="Subscription Avatar" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
-							)}
-						</div>
-					))}
-				</div>
-				<h2>Подписчики</h2>
-				<div className={classes.subscrs1}>
-					{subscribers.map((subscription) => (
-						<div className={classes.subscr} key={subscription.userId}>
-							<h3>{subscription.username}</h3>
-							<p>{subscription.email}</p>
-							{subscription.userImage && (
-								<img src={'http://83.229.83.240:9000/writewave/' + subscription.userImage} alt="Subscription Avatar" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
-							)}
-						</div>
-					))}
-				</div>
-				<h2>Статьи пользователя</h2>
-				<div className={classes.stati}>
-					{articles.map((article) => (
-						<div className={classes.card} key={article.articleId}>
-							<h3>{article.title}</h3>
-							<button onClick={() => handleViewArticle(article.articleId)}>Смотреть статью</button>
-						</div>
-					))}
-				</div>
+				))}
 			</div>
-		</>
+
+			<h2 className="text-2xl font-bold text-purple-700 mb-4 mt-8">Подписчики</h2>
+			<div className="grid grid-cols-1 gap-4">
+				{subscribers.map((subscriber) => (
+					<div
+						className="bg-white shadow-md rounded-lg p-4 flex items-center"
+						key={subscriber.userId}
+					>
+						<div>
+							<h3 className="text-lg font-bold text-purple-700">{subscriber.username}</h3>
+							<p className="text-gray-600">{subscriber.email}</p>
+						</div>
+						{subscriber.userImage && (
+							<img
+								src={`${window.minioUrl}/writewave/${subscriber.userImage}`}
+								alt="Subscriber Avatar"
+								className="ml-auto w-12 h-12 rounded-full"
+							/>
+						)}
+					</div>
+				))}
+			</div>
+
+			<h2 className="text-2xl font-bold text-purple-700 mb-4 mt-8">Статьи пользователя</h2>
+			<div className="grid grid-cols-1 gap-4">
+				{articles.map((article) => (
+					<div
+						className="bg-white shadow-md rounded-lg p-4"
+						key={article.articleId}
+					>
+						<h3 className="text-lg font-bold text-purple-700">{article.title}</h3>
+						<button
+							onClick={() => handleViewArticle(article.articleId)}
+							className="mt-2 px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700 focus:outline-none focus:ring focus:ring-purple-300"
+						>
+							Смотреть статью
+						</button>
+					</div>
+				))}
+			</div>
+		</div>
 	);
 };
 

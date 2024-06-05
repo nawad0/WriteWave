@@ -30,7 +30,7 @@
     networks:
       - minionetwork
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:5177
       - ConnectionStrings__DefaultConnection=Server=postgres:5432;User Id=postgres;Password=postgrespw;Database=writeDb
       - Kestrel__Endpoints__WebApi__Protocols=Http1
@@ -53,9 +53,9 @@
       dockerfile: web/Dockerfile
       args:
 #        VITE_API_URL: "http://83.229.83.240:5177"
-        VITE_API_URL: "http://localhost:5177"
-        VITE_WEB_URL: "http://localhost:3000"
-        VITE_MINIO_URL: "http://localhost:9000"
+        VITE_API_URL: "http://83.229.83.240:5177"
+        VITE_WEB_URL: "http://83.229.83.240:3000"
+        VITE_MINIO_URL: "http://83.229.83.240:9000"
     ports:
       - "3000:3000"
     networks:

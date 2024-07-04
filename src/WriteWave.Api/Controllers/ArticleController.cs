@@ -84,7 +84,8 @@ namespace WriteWave.Api.Controllers
             var totalCount = art.Count();
             var userId = int.Parse(User.FindFirst("userId").Value);
             var userArticles = await _userArticleRepository.GetAllAsync(ua => ua.UserId == userId);
-            var favoriteArticleIds = userArticles.Select(ua => ua.ArticleId).ToList(); var user = await _userRepository.GetAsync(includeProperties: "FavoritedArticles");
+            var favoriteArticleIds = userArticles.Select(ua => ua.ArticleId).ToList(); 
+            var user = await _userRepository.GetAsync(includeProperties: "FavoritedArticles");
             foreach (var article in articleDTOs)
             {
                 var like = await _likeRepository.GetAsync(l => l.UserId == userId && l.ArticleId == article.ArticleId);
@@ -99,7 +100,7 @@ namespace WriteWave.Api.Controllers
                     article.UserSubscribed = true;
                 }
 
-                if (favoriteArticleIds.Contains(article.ArticleId))
+                if (favoriteArticleIds != null && favoriteArticleIds.Contains(article.ArticleId))
                 {
                     article.UserFavorited = true; 
                 }
@@ -122,7 +123,7 @@ namespace WriteWave.Api.Controllers
         {
             var articlesDTOs = articles.Select(a => _mapper.Map<ArticlesDTO>(a)).ToList();
             var userArticles = await _userArticleRepository.GetAllAsync(ua => ua.UserId == userId);
-            var favoriteArticleIds = userArticles.Select(ua => ua.ArticleId).ToList();
+            var favoriteArticleIds = userArticles?.Select(ua => ua.ArticleId).ToList();
 
             foreach (var article in articlesDTOs)
             {
@@ -137,8 +138,8 @@ namespace WriteWave.Api.Controllers
                 {
                     article.UserSubscribed = true;
                 }
-
-                if (favoriteArticleIds.Contains(article.ArticleId))
+                
+                if (favoriteArticleIds != null && favoriteArticleIds.Contains(article.ArticleId))
                 {
                     article.UserFavorited = true;
                 }
@@ -355,9 +356,6 @@ namespace WriteWave.Api.Controllers
 
             return Ok(new { userFavorited = true});
         }
-    
-      
-        
         [HttpPost]
         [Route("comment/{articleId}")]
         public async Task<IActionResult> AddComment(int articleId, CommentCreateEditDTO comment)
@@ -488,75 +486,73 @@ namespace WriteWave.Api.Controllers
             MapReplies(replyDto, allComments); // Recursive call for nested replies
         }
     }
-
-        
-        [HttpPost]
-        public async Task<IActionResult> CreateArticle(ArticleCreateEditDTO article)
+    [HttpPost]
+    public async Task<IActionResult> CreateArticle(ArticleCreateEditDTO article)
+    {
+        if (!ModelState.IsValid)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var newArticle = _mapper.Map<Article>(article);
-            newArticle.UserId = int.Parse(User.FindFirst("userId").Value);
-            newArticle.Status = (ArticleStatus)article.ArticleStatus;
-            await _articleRepository.CreateAsync(newArticle);
-            return CreatedAtAction(nameof(GetArticle), new { id = newArticle.ArticleId }, article);
+            return BadRequest(ModelState);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateArticle(int id, ArticleCreateEditDTO articleDto)
+        var newArticle = _mapper.Map<Article>(article);
+        newArticle.UserId = int.Parse(User.FindFirst("userId").Value);
+        newArticle.Status = (ArticleStatus)article.ArticleStatus;
+        await _articleRepository.CreateAsync(newArticle);
+        return CreatedAtAction(nameof(GetArticle), new { id = newArticle.ArticleId }, article);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateArticle(int id, ArticleCreateEditDTO articleDto)
+    {
+
+        var existingArticle = await _articleRepository.GetAsync(a => a.ArticleId == id);
+        if (existingArticle == null)
         {
-
-            var existingArticle = await _articleRepository.GetAsync(a => a.ArticleId == id);
-            if (existingArticle == null)
-            {
-                return NotFound();
-            }
-
-            try
-            {
-                existingArticle.Title = articleDto.Title;
-                existingArticle.Content = articleDto.Content;
-                existingArticle.Status = (ArticleStatus)articleDto.ArticleStatus;
-                await _articleRepository.UpdateAsync(existingArticle);
-
-                return Ok("Статья успешно обновлена");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Internal server error");
-            }
+            return NotFound();
         }
-        [HttpPut("updateStatus/{id}")]
-        public async Task<IActionResult> UpdateStatus(int id, int articleStatus)
+
+        try
         {
-            var existingArticle = await _articleRepository.GetAsync(a => a.ArticleId == id);
-            existingArticle.Status = (ArticleStatus)articleStatus;
+            existingArticle.Title = articleDto.Title;
+            existingArticle.Content = articleDto.Content;
+            existingArticle.Status = (ArticleStatus)articleDto.ArticleStatus;
             await _articleRepository.UpdateAsync(existingArticle);
-            return NoContent();
+
+            return Ok("Статья успешно обновлена");
         }
-        [Authorize(Roles = "Admin")]
-        [HttpPut("admin/publish/{articleId}")]
-        public async Task<IActionResult> UpdateStatus(int articleId)
+        catch (Exception ex)
         {
-            var existingArticle = await _articleRepository.GetAsync(a => a.ArticleId == articleId, includeProperties: "Comments");
-            existingArticle.Status = (ArticleStatus)1;
-            existingArticle.Comments.Clear();
-            await _articleRepository.UpdateAsync(existingArticle);
-            return NoContent();
+            return StatusCode(500, "Internal server error");
         }
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteArticle(int id)
+    }
+    [HttpPut("updateStatus/{id}")]
+    public async Task<IActionResult> UpdateStatus(int id, int articleStatus)
+    {
+        var existingArticle = await _articleRepository.GetAsync(a => a.ArticleId == id);
+        existingArticle.Status = (ArticleStatus)articleStatus;
+        await _articleRepository.UpdateAsync(existingArticle);
+        return NoContent();
+    }
+    [Authorize(Roles = "Admin")]
+    [HttpPut("admin/publish/{articleId}")]
+    public async Task<IActionResult> UpdateStatus(int articleId)
+    {
+        var existingArticle = await _articleRepository.GetAsync(a => a.ArticleId == articleId, includeProperties: "Comments");
+        existingArticle.Status = (ArticleStatus)1;
+        existingArticle.Comments.Clear();
+        await _articleRepository.UpdateAsync(existingArticle);
+        return NoContent();
+    }
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteArticle(int id)
+    {
+        var article = await _articleRepository.GetAsync(a => a.ArticleId == id);
+        if (article == null)
         {
-            var article = await _articleRepository.GetAsync(a => a.ArticleId == id);
-            if (article == null)
-            {
-                return NotFound();
-            }
-            await _articleRepository.RemoveAsync(article);
-            return NoContent();
+            return NotFound();
         }
+        await _articleRepository.RemoveAsync(article);
+        return NoContent();
+    }
     }
 }

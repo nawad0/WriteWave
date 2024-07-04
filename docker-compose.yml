@@ -30,7 +30,7 @@
     networks:
       - minionetwork
     environment:
-      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:5177
       - ConnectionStrings__DefaultConnection=Server=postgres:5432;User Id=postgres;Password=postgrespw;Database=writeDb
       - Kestrel__Endpoints__WebApi__Protocols=Http1
